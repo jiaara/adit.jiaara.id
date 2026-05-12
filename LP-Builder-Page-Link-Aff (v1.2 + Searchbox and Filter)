@@ -1,0 +1,334 @@
+<!-- ADIT BIO CONTAINER -->
+<div class="adit-bio-wrapper">
+
+    <!-- 1. Header (Dapat diganti URL gambarnya) -->
+    <div class="adit-bio-header" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwYq_n8mQzK2Z3J3Q5uX9U5N4V8v1pQ/s1600/header-bg.jpg');">
+    </div>
+
+    <!-- 2. Avatar / Foto Profil -->
+    <div class="adit-bio-profile-section">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiR6X5z-9P4O5Y4M6V7B8N9M0L1K2J3/s1600/avatar.jpg" alt="Profile" class="adit-bio-avatar">
+        
+        <!-- 3. Nama + Verified Icon -->
+        <h1 class="adit-bio-name">@ADIT.LAB <span class="adit-bio-verified"></span></h1>
+        
+        <!-- 4. Bio Singkat -->
+        <p class="adit-bio-description">Founder <a href="https://jiaara.id" target="_blank">@Jiaara</a>, <i>Blogger, Buruh</i></p>
+        
+        <!-- 5. Social Media Icons -->
+        <div class="adit-bio-socials">
+            <a href="#" class="adit-bio-soc-link"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="FB"></a>
+            <a href="https://instagram.com/adit.lab" class="adit-bio-soc-link"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="IG"></a>
+            <a href="#" class="adit-bio-soc-link"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
+            <a href="#" class="adit-bio-soc-link"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YT"></a>
+        </div>
+    </div>
+
+    <div class="adit-bio-content">
+        <h2 class="adit-bio-title-list">List Produk</h2>
+
+        <!-- 7 & 8. Search & Filter -->
+        <div class="adit-bio-search-container">
+            <div class="adit-bio-search-box">
+                <span class="adit-bio-search-icon">🔍</span>
+                <input type="text" id="adit-bio-input-search" placeholder="Cari Produk..." onkeyup="aditBioSearch()">
+            </div>
+            <div class="adit-bio-filter-group">
+                <button class="adit-bio-filter-btn" onclick="aditBioSort('toggle')">
+                    <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+                </button>
+                <button class="adit-bio-filter-btn" onclick="aditBioSort('az')">
+                    <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 6. Post List Container -->
+        <div id="adit-bio-product-list">
+            <p style="text-align:center">Memuat produk...</p>
+        </div>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="adit-bio-footer">
+        <p class="adit-bio-url">https://adit.jiaara.id</p>
+        <p class="adit-bio-location">Kec. Sukoharjo, Kab. Sukoharjo, Jawa Tengah</p>
+    </div>
+
+</div>
+
+<style>
+/* CSS UNTUK TAMPILAN */
+.adit-bio-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.adit-bio-header {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+.adit-bio-profile-section {
+    text-align: center;
+    margin-top: -60px;
+    padding: 0 20px;
+}
+
+.adit-bio-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    object-fit: cover;
+    background: #eee;
+}
+
+.adit-bio-name {
+    margin: 10px 0 5px;
+    font-size: 28px;
+    color: #b91d1d;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adit-bio-verified {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #1DA1F2;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.5 12.5c0-1.58-.8-3.04-2.12-3.88.13-1.58-.35-3.11-1.39-4.28-1.04-1.17-2.54-1.76-4.04-1.63-.84-1.31-2.31-2.21-3.95-2.21s-3.11.9-3.95 2.21c-1.5-.13-3 .46-4.04 1.63-1.04 1.17-1.52 2.7-1.39 4.28-1.32.84-2.12 2.3-2.12 3.88 0 1.58.8 3.04 2.12 3.88-.13 1.58.35 3.11 1.39 4.28 1.04 1.17 2.54 1.76 4.04 1.63.84 1.31 2.31 2.21 3.95 2.21s3.11-.9 3.95-2.21c1.5.13 3-.46 4.04-1.63 1.04-1.17 1.52-2.7 1.39-4.28 1.32-.84 2.12-2.3 2.12-3.88zm-11.5 5l-4-4 1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5-8 8z'/%3E%3C/svg%3E");
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.5 12.5c0-1.58-.8-3.04-2.12-3.88.13-1.58-.35-3.11-1.39-4.28-1.04-1.17-2.54-1.76-4.04-1.63-.84-1.31-2.31-2.21-3.95-2.21s-3.11.9-3.95 2.21c-1.5-.13-3 .46-4.04 1.63-1.04 1.17-1.52 2.7-1.39 4.28-1.32.84-2.12 2.3-2.12 3.88 0 1.58.8 3.04 2.12 3.88-.13 1.58.35 3.11 1.39 4.28 1.04 1.17 2.54 1.76 4.04 1.63.84 1.31 2.31 2.21 3.95 2.21s3.11-.9 3.95-2.21c1.5.13 3-.46 4.04-1.63 1.04-1.17 1.52-2.7 1.39-4.28 1.32-.84 2.12-2.3 2.12-3.88zm-11.5 5l-4-4 1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5-8 8z'/%3E%3C/svg%3E");
+    margin-left: 5px;
+}
+
+.adit-bio-description {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.adit-bio-description a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.adit-bio-socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.adit-bio-soc-link img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.2s;
+}
+
+.adit-bio-soc-link:hover img { transform: scale(1.1); }
+
+.adit-bio-content { padding: 0 20px; }
+
+.adit-bio-title-list {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* SEARCH & FILTER STYLES */
+.adit-bio-search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.adit-bio-search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #b91d1d;
+    border-radius: 25px;
+    padding: 5px 15px;
+}
+
+.adit-bio-search-box input {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.adit-bio-search-icon { color: #b91d1d; margin-right: 5px; }
+
+.adit-bio-filter-group { display: flex; gap: 5px; }
+
+.adit-bio-filter-btn {
+    background: none;
+    border: none;
+    color: #b91d1d;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* PRODUCT ITEM STYLES */
+.adit-bio-item {
+    background: #b91d1d;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: background 0.3s;
+}
+
+.adit-bio-item:hover { background: #991818; }
+
+.adit-bio-thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #fff;
+    margin-right: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid #fff;
+}
+
+.adit-bio-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.adit-bio-prod-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.adit-bio-notfound {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.adit-bio-footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.adit-bio-url { font-weight: bold; font-size: 16px; margin-bottom: 5px; }
+</style>
+
+<script>
+// JAVASCRIPT UNTUK DATA DINAMIS
+let aditBioOriginalPosts = [];
+let aditBioCurrentSort = 'newest';
+
+// Fungsi mengambil data dari Blogger Feed
+function aditBioLoadPosts() {
+    const feedUrl = '/feeds/posts/default?alt=json&max-results=99';
+    
+    fetch(feedUrl)
+        .then(response => response.json())
+        .then(data => {
+            const entries = data.feed.entry || [];
+            aditBioOriginalPosts = entries.map(entry => {
+                // Ambil gambar pertama dari post atau gambar default jika kosong
+                let imgUrl = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwYq_n8mQzK2Z3J3Q5uX9U5N4V8v1pQ/s1600/default-thumb.png';
+                if (entry.media$thumbnail) {
+                    imgUrl = entry.media$thumbnail.url.replace('s72-c', 's200');
+                } else if (entry.content && entry.content.$t.includes('<img')) {
+                    const srcMatch = entry.content.$t.match(/src="([^"]+)"/);
+                    if (srcMatch) imgUrl = srcMatch[1];
+                }
+
+                return {
+                    title: entry.title.$t,
+                    link: entry.link.find(l => l.rel === 'alternate').href,
+                    image: imgUrl,
+                    date: new Date(entry.published.$t)
+                };
+            });
+            aditBioRender(aditBioOriginalPosts);
+        })
+        .catch(err => {
+            document.getElementById('adit-bio-product-list').innerHTML = '<p style="color:red;text-align:center">Gagal memuat produk. Pastikan blog memiliki postingan.</p>';
+        });
+}
+
+// Render list ke HTML
+function aditBioRender(posts) {
+    const listContainer = document.getElementById('adit-bio-product-list');
+    if (posts.length === 0) {
+        listContainer.innerHTML = '<div class="adit-bio-notfound">Maaf Produk Tidak Ditemukan, Silahkan Cek Kembali Penulisan Nomer/ Nama Produk</div>';
+        return;
+    }
+
+    listContainer.innerHTML = posts.map(post => `
+        <a href="${post.link}" class="adit-bio-item">
+            <div class="adit-bio-thumb">
+                <img src="${post.image}" alt="${post.title}">
+            </div>
+            <div class="adit-bio-prod-title">${post.title}</div>
+        </a>
+    `).join('');
+}
+
+// Fungsi Pencarian (Search)
+function aditBioSearch() {
+    const query = document.getElementById('adit-bio-input-search').value.toLowerCase();
+    const filtered = aditBioOriginalPosts.filter(post => 
+        post.title.toLowerCase().includes(query)
+    );
+    aditBioRender(filtered);
+}
+
+// Fungsi Sorting (Urutan)
+function aditBioSort(type) {
+    let sorted = [...aditBioOriginalPosts];
+    
+    if (type === 'toggle') {
+        // Toggle Terbaru / Terlama
+        if (aditBioCurrentSort === 'newest') {
+            sorted.sort((a, b) => a.date - b.date);
+            aditBioCurrentSort = 'oldest';
+        } else {
+            sorted.sort((a, b) => b.date - a.date);
+            aditBioCurrentSort = 'newest';
+        }
+    } else if (type === 'az') {
+        // A-Z / Z-A Toggle
+        if (aditBioCurrentSort === 'az') {
+            sorted.sort((a, b) => b.title.localeCompare(a.title));
+            aditBioCurrentSort = 'za';
+        } else {
+            sorted.sort((a, b) => a.title.localeCompare(b.title));
+            aditBioCurrentSort = 'az';
+        }
+    }
+    
+    aditBioRender(sorted);
+}
+
+// Jalankan fungsi saat halaman dimuat
+aditBioLoadPosts();
+</script>
