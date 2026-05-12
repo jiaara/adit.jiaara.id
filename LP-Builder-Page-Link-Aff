@@ -1,0 +1,277 @@
+<!-- JI-BIO-LINKTREE-CONTAINER -->
+<div class="ji-bio-wrapper">
+    
+    <!-- 1. Header (Dapat diganti URL gambarnya) -->
+    <div class="ji-bio-header-banner" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghD9eW0pG-Z7uS3H5B_7W4D_B_G3H3zH3/s1600/header-bg.jpg');">
+        <!-- Overlay atau placeholder jika gambar tidak ada -->
+    </div>
+
+    <div class="ji-bio-profile-section">
+        <!-- 2. Avatar / Foto Profil -->
+        <div class="ji-bio-avatar-container">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhL9_yS7m9_WqY_Pz7m_D9eW_H_S3zH3/s1600/avatar.jpg" alt="Profile" class="ji-bio-avatar-img">
+        </div>
+
+        <!-- 3. Nama + Icon Verified -->
+        <h1 class="ji-bio-handle">
+            @ADIT.LAB 
+            <span class="ji-bio-verified-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5213 2.62368C11.3147 1.75255 12.6853 1.75255 13.4787 2.62368L14.4989 3.74391C14.8026 4.07739 15.2231 4.27522 15.6729 4.29571L17.1824 4.36446C18.3568 4.41792 19.3104 5.3141 19.4316 6.4842L19.5873 7.98777C19.6337 8.43534 19.8631 8.84313 20.2274 9.12567L21.4526 10.0757C22.4058 10.8149 22.7562 12.072 22.2854 13.197L21.6806 14.6421C21.5006 15.0721 21.5 15.5562 21.6787 15.9868L22.28 17.4339C22.7483 18.5598 22.3951 19.8166 21.4404 20.5545L20.2138 21.5023C19.8489 21.7845 19.619 22.1927 19.573 22.6406L19.421 24.1444C19.3032 25.315 18.352 26.2133 17.1773 26.2706L15.6677 26.3442C15.2178 26.3661 14.7963 26.5654 14.4938 26.9001L13.4787 28.0237C12.6853 28.8948 11.3147 28.8948 10.5213 28.0237L9.50616 26.9001C9.20372 26.5654 8.78223 26.3661 8.3323 26.3442L6.82271 26.2706C5.64803 26.2133 4.6968 25.315 4.57903 24.1444L4.42698 22.6406C4.38104 22.1927 4.15112 21.7845 3.78619 21.5023L2.55959 20.5545C1.60492 19.8166 1.25173 18.5598 1.71997 17.4339L2.32131 15.9868C2.5 15.5562 2.49942 15.0721 2.31944 14.6421L1.7146 13.197C1.24376 12.072 1.59425 10.8149 2.54737 10.0757L3.77259 9.12567C4.13689 8.84313 4.36629 8.43534 4.41274 7.98777L4.56839 6.4842C4.68958 5.3141 5.6432 4.41792 6.81759 4.36446L8.32707 4.29571C8.77691 4.27522 9.19736 4.07739 9.5011 3.74391L10.5213 2.62368Z" fill="#1DA1F2"/><path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+        </h1>
+
+        <!-- 4. Bio Singkat -->
+        <div class="ji-bio-description">
+            Founder <a href="https://www.jiaara.id" class="ji-bio-link-text">@Jiaara</a>, Blogger, Buruh
+        </div>
+
+        <!-- 5. Social Icons (Dapat diganti hyperlinknya) -->
+        <div class="ji-bio-social-icons">
+            <a href="#" class="ji-bio-social-item"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" class="ji-bio-social-item"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="ji-bio-social-item"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="ji-bio-social-item"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <!-- 6. List Produk (Dinamis dari Postingan) -->
+    <div class="ji-bio-content-area">
+        <h2 class="ji-bio-list-title">List Produk</h2>
+        <div id="ji-bio-post-container">
+            <!-- Loading state -->
+            <div class="ji-bio-loading">Memuat produk...</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="ji-bio-footer">
+        <div class="ji-bio-url">https://adit.jiaara.id</div>
+        <div class="ji-bio-location">Kec. Sukoharjo, Kab. Sukoharjo, Jawa Tengah</div>
+    </div>
+
+</div>
+
+<!-- CSS STYLING -->
+<style>
+    /* Import Font & Icons */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+    .ji-bio-wrapper {
+        font-family: 'Inter', sans-serif;
+        max-width: 480px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        min-height: 100vh;
+        color: #333;
+        overflow: hidden;
+    }
+
+    .ji-bio-header-banner {
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        background-color: #333;
+    }
+
+    .ji-bio-profile-section {
+        text-align: center;
+        padding: 0 20px;
+        margin-top: -60px;
+    }
+
+    .ji-bio-avatar-container {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        overflow: hidden;
+        background: #eee;
+    }
+
+    .ji-bio-avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .ji-bio-handle {
+        font-size: 24px;
+        font-weight: 800;
+        margin: 15px 0 5px 0;
+        color: #b71c1c; /* Warna Merah seperti contoh */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .ji-bio-verified-icon svg {
+        width: 22px;
+        height: 22px;
+        vertical-align: middle;
+    }
+
+    .ji-bio-description {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        font-style: italic;
+    }
+
+    .ji-bio-link-text {
+        color: #1da1f2;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .ji-bio-social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .ji-bio-social-item {
+        font-size: 24px;
+        color: #b71c1c;
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+
+    .ji-bio-social-item:hover {
+        transform: scale(1.1);
+    }
+
+    .ji-bio-content-area {
+        padding: 0 20px;
+    }
+
+    .ji-bio-list-title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    /* Tombol Produk Styling */
+    .ji-bio-product-item {
+        display: flex;
+        align-items: center;
+        background-color: #b71c1c; /* Merah Bold */
+        color: white !important;
+        text-decoration: none !important;
+        padding: 10px 15px;
+        border-radius: 40px;
+        margin-bottom: 15px;
+        transition: 0.3s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .ji-bio-product-item:hover {
+        background-color: #d32f2f;
+        transform: translateY(-2px);
+    }
+
+    .ji-bio-thumb {
+        width: 45px;
+        height: 45px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin-right: 15px;
+        flex-shrink: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ji-bio-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .ji-bio-product-title {
+        font-weight: 600;
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .ji-bio-footer {
+        margin-top: 40px;
+        padding: 20px;
+        text-align: center;
+        font-size: 13px;
+        color: #333;
+    }
+
+    .ji-bio-url {
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .ji-bio-loading {
+        text-align: center;
+        padding: 20px;
+        color: #999;
+    }
+</style>
+
+<!-- JAVASCRIPT UNTUK LOAD POSTINGAN OTOMATIS -->
+<script>
+    (function() {
+        // Ambil data dari Blogger JSON Feed
+        // URL ini mengambil 10 postingan terbaru secara otomatis
+        const jiBioFeedUrl = '/feeds/posts/default?alt=json-in-script&max-results=10&callback=jiBioRenderPosts';
+        
+        // Buat Script Tag untuk JSONP
+        const script = document.createElement('script');
+        script.src = jiBioFeedUrl;
+        document.body.appendChild(script);
+    })();
+
+    // Fungsi Callback untuk merender list
+    function jiBioRenderPosts(json) {
+        const container = document.getElementById('ji-bio-post-container');
+        container.innerHTML = ''; // Hapus loading text
+
+        if (!json.feed.entry) {
+            container.innerHTML = '<div class="ji-bio-loading">Belum ada postingan.</div>';
+            return;
+        }
+
+        json.feed.entry.forEach((entry, index) => {
+            const title = entry.title.$t;
+            let link = "";
+            for (let i = 0; i < entry.link.length; i++) {
+                if (entry.link[i].rel == 'alternate') {
+                    link = entry.link[i].href;
+                    break;
+                }
+            }
+
+            // Ambil gambar (thumbnail)
+            let thumbUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu3r1iE6f5G7P7m_D9eW_H_S3zH3/s1600/default-thumb.png";
+            if (entry.media$thumbnail) {
+                // Ubah ukuran thumbnail agar lebih tajam (s72-c jadi s200-c)
+                thumbUrl = entry.media$thumbnail.url.replace('/s72-c/', '/s200-c/');
+            }
+
+            // Buat Element HTML
+            const itemHtml = `
+                <a href="${link}" class="ji-bio-product-item">
+                    <div class="ji-bio-thumb">
+                        <img src="${thumbUrl}" alt="${title}">
+                    </div>
+                    <div class="ji-bio-product-title">${index + 1}. ${title}</div>
+                </a>
+            `;
+            
+            container.innerHTML += itemHtml;
+        });
+    }
+</script>
