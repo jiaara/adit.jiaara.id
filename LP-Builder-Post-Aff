@@ -1,0 +1,136 @@
+<!-- CSS KHUSUS JI-AFF-POST -->
+<style>
+    .ji-aff-post-wrapper {
+        max-width: 500px;
+        margin: 20px auto;
+        font-family: 'Arial', sans-serif;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .ji-aff-post-thumbnail {
+        width: 100%;
+        height: auto;
+        display: block;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        background-color: #f0f0f0;
+    }
+
+    .ji-aff-post-content {
+        padding: 20px;
+    }
+
+    .ji-aff-post-title {
+        font-weight: 800;
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .ji-aff-post-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .ji-aff-post-link {
+        text-decoration: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 10px;
+        border-radius: 10px;
+        font-weight: bold;
+        color: #fff !important;
+        font-size: 16px;
+        transition: transform 0.2s, opacity 0.2s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .ji-aff-post-link:active {
+        transform: scale(0.95);
+    }
+
+    /* Warna Tombol */
+    .ji-aff-post-shopee {
+        background-color: #EE4D2D; /* Warna khas Shopee */
+    }
+
+    .ji-aff-post-tiktok {
+        background-color: #000000; /* Warna khas TikTok */
+    }
+
+    .ji-aff-post-video {
+        background-color: #FF3131; /* Warna merah video */
+        grid-column: span 2;
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+
+    /* Icon Play Simple */
+    .ji-aff-post-icon-play {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    @media (max-width: 480px) {
+        .ji-aff-post-wrapper {
+            margin: 10px;
+        }
+        .ji-aff-post-title {
+            font-size: 16px;
+        }
+    }
+</style>
+
+<!-- STRUKTUR HTML -->
+<div class="ji-aff-post-wrapper">
+    <!-- Ganti URL gambar di bawah ini -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf_h8XjVpL8jYxYm_Ue4_J_t-8e2b8_jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW8jW/s1600/placeholder.png" alt="Produk" class="ji-aff-post-thumbnail">
+
+    <div class="ji-aff-post-content">
+        <div class="ji-aff-post-title">INGIN CHECKOUT DARI PLATFORM APA?</div>
+        
+        <div class="ji-aff-post-grid">
+            <!-- Ganti href="#" dengan link produk Anda -->
+            <a href="#" class="ji-aff-post-link ji-aff-post-shopee ji-aff-post-btn-check">SHOPEE</a>
+            <a href="#" class="ji-aff-post-link ji-aff-post-tiktok ji-aff-post-btn-check">TIKTOK</a>
+            
+            <a href="#" class="ji-aff-post-link ji-aff-post-video ji-aff-post-btn-check">
+                <svg class="ji-aff-post-icon-play" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"></path>
+                </svg>
+                LIHAT VIDEO
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT VALIDASI LINK -->
+<script>
+    (function() {
+        const jiButtons = document.querySelectorAll('.ji-aff-post-btn-check');
+        
+        jiButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const hrefValue = this.getAttribute('href');
+                
+                // Cek jika link kosong, hanya berisi #, atau javascript:void(0)
+                if (!hrefValue || hrefValue === "#" || hrefValue === "" || hrefValue.includes("javascript:void")) {
+                    e.preventDefault();
+                    alert("Mohon Maaf, Link Tidak Ada/ Rusak. Silahkan Laporkan Admin!");
+                }
+            });
+        });
+    })();
+</script>
