@@ -1,0 +1,511 @@
+<!-- KODE CSS ADIT-BIO -->
+<style>
+    .adit-bio-wrapper {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        min-height: 100vh;
+        color: #333;
+        padding-bottom: 50px;
+    }
+
+    .adit-bio-header-bg {
+        width: 100%;
+        height: 180px;
+        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitG7hYfN-P0Y7S_4V9j9_1f0o_1z_1y_1x_1w_1v_1u_1t_1s_1r_1q_1p_1o_1n_1m_1l_1k_1j_1i_1h_1g_1f_1e_1d_1c_1b_1a/s1600/header-dummy.jpg') center/cover no-repeat;
+        position: relative;
+    }
+
+    .adit-bio-profile-section {
+        text-align: center;
+        margin-top: -65px;
+        position: relative;
+        padding: 0 20px;
+    }
+
+    .adit-bio-avatar {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .adit-bio-name {
+        font-size: 32px;
+        font-weight: 800;
+        color: #b31a1a;
+        margin: 15px 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .adit-bio-verified-icon {
+        color: #1DA1F2;
+        width: 24px;
+        height: 24px;
+    }
+
+    .adit-bio-short-bio {
+        font-size: 15px;
+        font-style: italic;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .adit-bio-short-bio a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .adit-bio-social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .adit-bio-social-icons a svg {
+        width: 32px;
+        height: 32px;
+        fill: #b31a1a;
+    }
+
+    .adit-bio-list-title {
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 15px;
+        text-align: center;
+        /* Tambahkan scroll-margin agar saat digulir tidak tertutup elemen lain */
+        scroll-margin-top: 20px; 
+    }
+
+    /* Search & Filter Bar */
+    .adit-bio-search-container {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .adit-bio-search-box {
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        border: 2px solid #b31a1a;
+        border-radius: 25px;
+        padding: 5px 15px;
+    }
+
+    .adit-bio-search-box input {
+        border: none;
+        outline: none;
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .adit-bio-search-box svg {
+        width: 20px;
+        height: 20px;
+        fill: #b31a1a;
+    }
+
+    .adit-bio-filter-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .adit-bio-filter-btn svg {
+        width: 30px;
+        height: 30px;
+        fill: #b31a1a;
+    }
+
+    /* Filter Dropdown */
+    #adit-bio-filter-options {
+        display: none;
+        margin: 0 20px 20px;
+        padding: 15px;
+        background: #f8f8f8;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    }
+
+    #adit-bio-filter-options select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    /* Product List Area */
+    .adit-bio-product-list {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .adit-bio-item {
+        display: flex;
+        align-items: center;
+        background-color: #b31a1a;
+        border-radius: 30px;
+        padding: 8px;
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+
+    .adit-bio-item:hover {
+        transform: scale(1.02);
+    }
+
+    .adit-bio-item-img-container {
+        width: 55px;
+        height: 55px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .adit-bio-item-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .adit-bio-item-title {
+        color: white;
+        font-weight: 600;
+        font-size: 18px;
+        margin-left: 20px;
+    }
+
+    .adit-bio-no-result {
+        text-align: center;
+        color: #666;
+        padding: 20px;
+        font-style: italic;
+    }
+
+    /* Pagination CSS Baru */
+    .adit-bio-pagination {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 25px;
+        padding: 0 20px;
+        flex-wrap: wrap;
+    }
+
+    .adit-bio-page-btn {
+        padding: 8px 14px;
+        border: 2px solid #b31a1a;
+        background: white;
+        color: #b31a1a;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s;
+    }
+
+    .adit-bio-page-btn:hover, .adit-bio-page-btn.active {
+        background: #b31a1a;
+        color: white;
+    }
+
+    .adit-bio-page-btn:disabled {
+        border-color: #ddd;
+        color: #aaa;
+        cursor: not-allowed;
+        background: #f9f9f9;
+    }
+
+    .adit-bio-footer {
+        text-align: center;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+
+    .adit-bio-url {
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .adit-bio-location {
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+
+<div class="adit-bio-wrapper">
+    <!-- Header -->
+    <div class="adit-bio-header-bg"></div>
+
+    <div class="adit-bio-profile-section">
+        <img class="adit-bio-avatar" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyQbrG3kWZVPAwnjC3w1PJCYqrIqaY9yyCCMENcqRiunWwMozRfcRhVYKgFw2X8kOoR9-fDWaXAnuFVd9n39UzH72E7X805BcDkePr_9MnVkJtCZCnUzYNJryTaUuA3ET-HtV2mPmjGjZiMZTTlH7Je5Wd1hcTwy8pGYQsbXyWdkcizyMVyOJg_5EAl04/s1656/ADIT%20BATMAN%20WKWKWK.png" alt="Profile" />
+        
+        <div class="adit-bio-name">
+            @ADIT.LAB 
+            <svg class="adit-bio-verified-icon" viewbox="0,0,256,256" width="96px" height="96px" fill-rule="nonzero"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.33333,5.33333)"><path d="M29.62,3l3.433,5.308l6.314,0.316l0.319,6.313l5.311,3.43l-2.881,5.628l2.884,5.625l-5.308,3.433l-0.316,6.314l-6.313,0.319l-3.43,5.311l-5.628,-2.881l-5.625,2.884l-3.433,-5.308l-6.314,-0.316l-0.319,-6.313l-5.311,-3.43l2.881,-5.628l-2.884,-5.625l5.308,-3.433l0.316,-6.314l6.313,-0.319l3.43,-5.311l5.628,2.881z" fill="#42a5f5"></path><path d="M21.396,31.255l-6.497,-6.495l2.122,-2.121l4.407,4.407l9.568,-9.274l2.088,2.154z" fill="#ffffff"></path></g></g></svg>
+        </div>
+
+        <div class="adit-bio-short-bio">
+            Founder <a href="https://jiaara.blogspot.com" target="_blank">@Jiaara</a>, Blogger, Buruh
+        </div>
+
+        <div class="adit-bio-social-icons">
+            <a href="https://instagram.com/adit.lab"><svg viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413 1.266-.057 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.012 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.012 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.012-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></path></svg></a>
+            <a href="https://instagram.com/@adit.lab"><svg viewbox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2s-1.03 0-1.57 0v12.51a3.16 3.16 0 0 1-3.34 3.12 3.19 3.19 0 0 1-3.19-3.19 3.13 3.13 0 0 1 3.12-3.13c.27 0 .58.02.82.12V9.7a6.84 6.84 0 0 0-.82-.05A6.66 6.66 0 0 0 4.5 16.31 6.72 6.72 0 0 0 11.24 23a6.66 6.66 0 0 0 6.66-6.67V10.82a8.2 8.2 0 0 0 5.25 1.9V10.1a5.83 5.83 0 0 1-3.56-3.41z"/></path></svg></a>
+            <a href="#"><svg viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></path></svg></a>
+        </div>
+    </div>
+
+    <!-- ID adit-bio-section ditambahkan sebagai titik tumpu scroll kembali -->
+    <div class="adit-bio-list-title" id="adit-bio-section">List Produk</div>
+
+    <!-- Search & Filter -->
+    <div class="adit-bio-search-container">
+        <div class="adit-bio-search-box">
+            <svg viewbox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></path></svg>
+            <input type="text" id="adit-bio-search-input" placeholder="Cari produk..." />
+        </div>
+        <button class="adit-bio-filter-btn" id="adit-bio-filter-toggle">
+            <svg viewbox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h18V5H3zm0 7h12v-2H3v2z"/></path></svg>
+        </button>
+    </div>
+
+    <!-- Filter Dropdown Options -->
+    <div id="adit-bio-filter-options">
+        <label>Urutkan Berdasarkan:</label>
+        <select id="adit-bio-sort-select">
+            <option value="newest" />Terbaru
+            <option value="oldest" />Terlama
+            <option value="az" />Nama (A-Z)
+            <option value="za" />Nama (Z-A)
+        </select>
+        <label style="margin-top: 10px; display: block;">Kategori:</label>
+        <select id="adit-bio-category-select">
+            <option value="all" />Semua Kategori
+        </select>
+    </div>
+
+    <!-- Container Postingan -->
+    <div class="adit-bio-product-list" id="adit-bio-container">
+        <div class="adit-bio-no-result">Memuat produk...</div>
+    </div>
+
+    <!-- Pagination Container -->
+    <div class="adit-bio-pagination" id="adit-bio-pagination"></div>
+
+    <!-- Footer -->
+    <div class="adit-bio-footer">
+        <div class="adit-bio-url">https://adit.jiaara.id</div>
+        <div class="adit-bio-location">Kec. Sukoharjo, Kab. Sukoharjo, Jawa Tengah</div>
+    </div>
+</div>
+
+<!-- KODE JAVASCRIPT ADIT-BIO -->
+<script>
+    const aditBioConfig = {
+        labelKhusus: 'affiliate', // Postingan harus punya label ini
+        maxResults: 999,
+        itemsPerPage: 10 // Konfigurasi maksimal 10 produk per halaman
+    };
+
+    let aditBioAllPosts = [];
+    let aditBioFilteredPosts = []; // Menyimpan array yang sudah difilter
+    let aditBioCategories = new Set();
+    let aditBioCurrentPage = 1;
+
+    async function aditBioFetchPosts() {
+        const feedUrl = `/feeds/posts/default/-/${aditBioConfig.labelKhusus}?alt=json&max-results=${aditBioConfig.maxResults}`;
+        
+        try {
+            const response = await fetch(feedUrl);
+            const data = await response.json();
+            
+            if (data.feed.entry) {
+                aditBioAllPosts = data.feed.entry.map(entry => {
+                    const title = entry.title.$t;
+                    const link = entry.link.find(l => l.rel === 'alternate').href;
+                    
+                    let imgUrl = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8V35_v_Gg9K-O0qO3M4zZ5v9v8v7v6v5v4v3v2v1v0v_v-v_v8v7v6v5v4v3v2v1v0v/s1600/cloud-placeholder.png';
+                    if (entry.media$thumbnail) {
+                        imgUrl = entry.media$thumbnail.url.replace('s72-c', 's1600');
+                    } else if (entry.content && entry.content.$t.includes('<img')) {
+                        const div = document.createElement('div');
+                        div.innerHTML = entry.content.$t;
+                        imgUrl = div.querySelector('img').src;
+                    }
+
+                    const cats = entry.category ? entry.category.filter(c => c.term !== aditBioConfig.labelKhusus).map(c => c.term) : [];
+                    cats.forEach(c => aditBioCategories.add(c));
+
+                    return {
+                        title: title,
+                        link: link,
+                        img: imgUrl,
+                        date: new Date(entry.published.$t),
+                        categories: cats
+                    };
+                });
+                
+                aditBioFilteredPosts = [...aditBioAllPosts]; // Copy data ke array filter
+                aditBioPopulateCategories();
+                aditBioRenderPage(); // Render halaman pertama
+            } else {
+                document.getElementById('adit-bio-container').innerHTML = '<div class="adit-bio-no-result">Belum ada produk dengan label "' + aditBioConfig.labelKhusus + '"</div>';
+            }
+        } catch (error) {
+            console.error("Gagal memuat feed Blogger", error);
+            document.getElementById('adit-bio-container').innerHTML = '<div class="adit-bio-no-result">Gagal memuat data.</div>';
+        }
+    }
+
+    function aditBioPopulateCategories() {
+        const select = document.getElementById('adit-bio-category-select');
+        aditBioCategories.forEach(cat => {
+            const opt = document.createElement('option');
+            opt.value = cat;
+            opt.textContent = cat;
+            select.appendChild(opt);
+        });
+    }
+
+    // Fungsi Render Khusus Halaman
+    function aditBioRenderPage() {
+        const start = (aditBioCurrentPage - 1) * aditBioConfig.itemsPerPage;
+        const end = start + aditBioConfig.itemsPerPage;
+        const paginatedPosts = aditBioFilteredPosts.slice(start, end);
+        
+        aditBioRender(paginatedPosts);
+        aditBioRenderPagination();
+    }
+
+    function aditBioRender(posts) {
+        const container = document.getElementById('adit-bio-container');
+        container.innerHTML = '';
+
+        if (posts.length === 0) {
+            container.innerHTML = '<div class="adit-bio-no-result">Maaf Produk Tidak Ditemukan, Silahkan Cek Kembali Penulisan Nomer/ Nama Produk</div>';
+            return;
+        }
+
+        posts.forEach(post => {
+            const item = document.createElement('a');
+            item.className = 'adit-bio-item';
+            item.href = post.link;
+            item.innerHTML = `
+                <div class="adit-bio-item-img-container">
+                    <img class="adit-bio-item-img" src="${post.img}" alt="${post.title}">
+                </div>
+                <div class="adit-bio-item-title">${post.title}</div>
+            `;
+            container.appendChild(item);
+        });
+    }
+
+    // Render Tombol Pagination
+    function aditBioRenderPagination() {
+        const container = document.getElementById('adit-bio-pagination');
+        container.innerHTML = '';
+        
+        const totalPages = Math.ceil(aditBioFilteredPosts.length / aditBioConfig.itemsPerPage);
+        
+        if (totalPages <= 1) return; // Sembunyikan pagination jika produk kurang dari 10
+
+        // Tombol Prev
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'adit-bio-page-btn';
+        prevBtn.innerHTML = '&#171;'; // Tanda panah ke kiri
+        prevBtn.disabled = aditBioCurrentPage === 1;
+        prevBtn.onclick = () => aditBioChangePage(aditBioCurrentPage - 1);
+        container.appendChild(prevBtn);
+
+        // Logic Angka Halaman (Max tampil 5 angka di tengah)
+        let startPage = Math.max(1, aditBioCurrentPage - 2);
+        let endPage = Math.min(totalPages, startPage + 4);
+        if (endPage - startPage < 4) {
+            startPage = Math.max(1, endPage - 4);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            const btn = document.createElement('button');
+            btn.className = `adit-bio-page-btn ${i === aditBioCurrentPage ? 'active' : ''}`;
+            btn.innerText = i;
+            btn.onclick = () => aditBioChangePage(i);
+            container.appendChild(btn);
+        }
+
+        // Tombol Next
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'adit-bio-page-btn';
+        nextBtn.innerHTML = '&#187;'; // Tanda panah ke kanan
+        nextBtn.disabled = aditBioCurrentPage === totalPages;
+        nextBtn.onclick = () => aditBioChangePage(aditBioCurrentPage + 1);
+        container.appendChild(nextBtn);
+    }
+
+    // Aksi Pindah Halaman & Scroll
+    function aditBioChangePage(page) {
+        aditBioCurrentPage = page;
+        aditBioRenderPage();
+        
+        // Smooth scroll ke List Produk
+        const section = document.getElementById('adit-bio-section');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // Fungsi Search & Filter
+    function aditBioApplyFilters() {
+        const searchTerm = document.getElementById('adit-bio-search-input').value.toLowerCase();
+        const sortType = document.getElementById('adit-bio-sort-select').value;
+        const catType = document.getElementById('adit-bio-category-select').value;
+
+        aditBioFilteredPosts = aditBioAllPosts.filter(p => {
+            const matchSearch = p.title.toLowerCase().includes(searchTerm);
+            const matchCat = (catType === 'all') || p.categories.includes(catType);
+            return matchSearch && matchCat;
+        });
+
+        // Sorting
+        if (sortType === 'newest') aditBioFilteredPosts.sort((a, b) => b.date - a.date);
+        if (sortType === 'oldest') aditBioFilteredPosts.sort((a, b) => a.date - b.date);
+        if (sortType === 'az') aditBioFilteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+        if (sortType === 'za') aditBioFilteredPosts.sort((a, b) => b.title.localeCompare(a.title));
+
+        // Reset ke halaman 1 tiap kali filter/search dijalankan
+        aditBioCurrentPage = 1; 
+        aditBioRenderPage();
+    }
+
+    // Events
+    document.getElementById('adit-bio-search-input').addEventListener('input', aditBioApplyFilters);
+    document.getElementById('adit-bio-sort-select').addEventListener('change', aditBioApplyFilters);
+    document.getElementById('adit-bio-category-select').addEventListener('change', aditBioApplyFilters);
+    
+    document.getElementById('adit-bio-filter-toggle').addEventListener('click', () => {
+        const opts = document.getElementById('adit-bio-filter-options');
+        opts.style.display = opts.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Inisialisasi
+    window.onload = aditBioFetchPosts;
+</script>
