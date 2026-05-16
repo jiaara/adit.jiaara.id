@@ -1,0 +1,164 @@
+<style>
+/* CSS JIAARA YOUTUBE POST */
+  
+   .post-title, .entry-title, h1.post-title {
+    display: none !important;
+  }
+  
+.jiaara-youtube-post-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #0f0f0f;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: block;
+}
+.jiaara-youtube-post-wrapper * {
+    box-sizing: border-box;
+}
+/* Video Container 16:9 */
+.jiaara-youtube-post-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: 0px; 
+    margin-bottom: 15px;
+}
+.jiaara-youtube-post-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+/* Judul Postingan */
+.jiaara-youtube-post-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+/* Profil & Tombol Subscribe */
+.jiaara-youtube-post-author-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.jiaara-youtube-post-author-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.jiaara-youtube-post-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #e0e0e0;
+}
+.jiaara-youtube-post-author-info {
+    display: flex;
+    flex-direction: column;
+}
+.jiaara-youtube-post-author-name {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 2px 0;
+    letter-spacing: 0.5px;
+}
+.jiaara-youtube-post-author-link {
+    font-size: 13px;
+    color: #606060;
+    text-decoration: none;
+}
+.jiaara-youtube-post-author-link:hover {
+    text-decoration: underline;
+}
+.jiaara-youtube-post-subscribe {
+    background-color: #cc0000;
+    color: #fff !important;
+    padding: 10px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+.jiaara-youtube-post-subscribe:hover {
+    background-color: #a30000;
+}
+/* Kotak Deskripsi */
+.jiaara-youtube-post-desc {
+    background-color: #dbdbdb;
+    padding: 15px 20px;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 120px; /* Sesuai proporsi gambar */
+}
+.jiaara-youtube-post-desc-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #000;
+}
+</style>
+
+<div class="jiaara-youtube-post-wrapper">
+    
+    <div class="jiaara-youtube-post-video">
+        <iframe src="https://www.youtube.com/embed/ID_VIDEO?autoplay=1&mute=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <h1 class="jiaara-youtube-post-title" id="jiaara-youtube-post-main-title">Judul Postingan Sedang Dimuat...</h1>
+
+    <div class="jiaara-youtube-post-author-row">
+        <div class="jiaara-youtube-post-author-left">
+            <img class="jiaara-youtube-post-avatar" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsE.../s1600/profil.jpg" alt="Profile">
+            <div class="jiaara-youtube-post-author-info">
+                <h2 class="jiaara-youtube-post-author-name">ADHITYA R.</h2>
+                <a href="https://adit.jiaara.id/" class="jiaara-youtube-post-author-link" target="_blank">Kunjungi Profil</a>
+            </div>
+        </div>
+        <a href="https://www.youtube.com/@jiaara?sub_confirmation=1" class="jiaara-youtube-post-subscribe" target="_blank">SUBSCRIBE</a>
+    </div>
+
+    <div class="jiaara-youtube-post-desc">
+        <div class="jiaara-youtube-post-desc-title">Deskripsi di sini ...</div>
+    </div>
+    
+</div>
+
+<script>
+// IIFE (Immediately Invoked Function Expression)
+(function() {
+    // Jalankan saat seluruh elemen (DOM) selesai dimuat
+    window.addEventListener('DOMContentLoaded', function() {
+        
+        // A. Fungsi Tarik Judul H1 / Tittle Post Otomatis
+        var postTitleEl = document.querySelector('h1.post-title, h3.post-title, .entry-title, h1');
+        var targetTitle = document.getElementById('jiaara-youtube-post-main-title');
+        
+        // Pastikan judul target ada dan mencegah replace dengan judulnya sendiri jika id-nya sama
+        if (postTitleEl && targetTitle && postTitleEl.innerText !== targetTitle.innerText) {
+            targetTitle.innerText = postTitleEl.innerText;
+        } else if (targetTitle) {
+            targetTitle.innerText = document.title.split(' - ')[0]; // Fallback
+        }
+
+    });
+})();
+</script>
