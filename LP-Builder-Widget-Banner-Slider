@@ -1,0 +1,252 @@
+<style>
+  /* ===== CSS BANNER SLIDER ===== */
+  /* CSS dengan Prefix jdp-promo- */
+.jdp-promo-wrapper {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.jdp-promo-left-section {
+  flex: 2.5;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  aspect-ratio: 16 / 7.5;
+}
+
+.jdp-promo-slider-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.jdp-promo-slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.jdp-promo-slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.jdp-promo-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tombol Navigasi Kanan Bawah */
+.jdp-promo-navigation {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.jdp-promo-nav-btn {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.jdp-promo-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Dots Tengah Bawah */
+.jdp-promo-dots-container {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.jdp-promo-dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.jdp-promo-dot.active {
+  background: #fff;
+  width: 25px;
+  border-radius: 10px;
+}
+
+/* Bagian Kanan */
+.jdp-promo-right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.jdp-promo-static-card {
+  flex: 1;
+  border-radius: 15px;
+  overflow: hidden;
+  display: block;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.jdp-promo-static-card:hover {
+  transform: translateY(-3px);
+}
+
+.jdp-promo-static-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+  .jdp-promo-wrapper {
+    flex-direction: column;
+  }
+  .jdp-promo-left-section {
+    aspect-ratio: 16 / 9;
+  }
+  .jdp-promo-right-section {
+    flex-direction: row;
+  }
+}
+</style>
+
+<div><br /></div>
+<section id="promo">
+<!-- Container Utama Promo -->
+<div class="jdp-promo-wrapper">
+  
+  <!-- Bagian Kiri: Slider -->
+  <div class="jdp-promo-left-section">
+    <div class="jdp-promo-slider-container">
+      <div class="jdp-promo-slider-track" id="jdp-promo-sliderTrack">
+        
+		
+        <a href="/co" class="jdp-promo-slide">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZaCKDpxKk_G7NS9Bn26PbC69cAHmtH4FaWAtVrJv7nbamT0TQ9Z0Ko4osHAcV7B_wzk9PKoXKxfaneagEACxLAVgm7BUcDboEs1_sZ_gYgENO42EzbTNjYZg4aVYoi7GpKQpyopDr21emdhdweiNjH_LDs1i9Cw5vWF0dLVegxp59BlrutAWupB92FJk/s700/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20Slider%20001%20Review%20Produk.jpg" alt="Aplikasi Web-Based" />
+        </a>
+
+		<a href="https://jiaara.blogspot.com/apps" class="jdp-promo-slide">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp2W9wOZjJ7nNpMRgl80ZerZSbDAJle2zuxJxr4g1oHTauRSpSBHsyIp4g-qedkB20zH8PubLTxKP8vxKEPOLvXhJ5yimL4BT1AhqhUnNT8XdELfNvknePnaLLwgSRE9ce8K5RFny3g7s4Rk9z6uXUyVU00WPdP602nKpAh0lVjvg5b8rvG-DN5IAnaqg/s700/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20Slider%20002%20Aplikasi%20Gratis%20Tanpa%20Instal.jpg" alt="Promo 3" />
+        </a>
+        
+
+        <a href="/tutorial" class="jdp-promo-slide">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4icrJfiN4usMHCDmCsOQqmvpeaqLk2NYGSetDfwj_Ax3ZqZNsQ_WfrRLBj9VC0zpUEjEu2IoHEk9-cYp2DjjfpRWuj6h1wWj_jjck_xTcMsulx1cfgs3XgKd8Jpw2RlwgxZK_t4UQpE1xIE6-7Em62EgH5Djo7w-rqxxAPt9KgheKHv3DmZD0EFxEp8E/s700/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20Slider%20003%20Tutorial.jpg" alt="Shopee" />
+        </a>
+		
+		<a href="/podcast" class="jdp-promo-slide">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyONFnzRJ8tp5cCjHB8G78Xo8XdfL2PqTDJyRbI1_a3-vmGKH5em_IeJg0KxihAQqtUzoBkXEyPU2o7enMeflNIrcMPzh06kvVpcw1WQJkKfJ6ftQAacZNAKncCojIc3UuHh0bqFg5NWyYIJharF3bzbHG0GlECHfxTMGNdIgPxSMXPzDUEEK_35_Et08/s700/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20Slider%20004%20Podcast.jpg" />
+        </a>
+		
+        <a href="/mabar" class="jdp-promo-slide">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9lLcHJdd_jd4TPJFzVM65DRlMeJUCiMlbW2BejgSGVYWwtodm6-bF4C4Rp6Ugpl88DlwAqeF1sYvBfW9RN6Y5IgpPXHmY7J0Qqh6T7pqtZoIpNS3WORE-mKJ2t_cDnaMN-QP_HU103d4NRBnToaZnAvxLvrR4zKWmKFlFHWetMhLnXXWt1UYAIQpjglM/s700/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20Slider%20005%20Mabar.jpg" alt="Shopee" />
+        </a>
+		
+
+      </div>
+
+      <!-- Navigasi Slider -->
+      <div class="jdp-promo-navigation">
+        <button class="jdp-promo-nav-btn" onclick="moveJdpSlide(-1)">❮</button>
+        <button class="jdp-promo-nav-btn" onclick="moveJdpSlide(1)">❯</button>
+      </div>
+
+      <!-- Indikator Dots -->
+      <div class="jdp-promo-dots-container" id="jdp-promo-dots">
+        <span class="jdp-promo-dot active" onclick="currentJdpSlide(0)"></span>
+        <span class="jdp-promo-dot" onclick="currentJdpSlide(1)"></span>
+        <span class="jdp-promo-dot" onclick="currentJdpSlide(2)"></span>
+		<span class="jdp-promo-dot" onclick="currentJdpSlide(3)"></span>
+		<span class="jdp-promo-dot" onclick="currentJdpSlide(4)"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bagian Kanan: Gambar Statis -->
+  <div class="jdp-promo-right-section">
+    <!-- Gambar Atas (Cetak Kalender) -->
+    <a href="#" class="jdp-promo-static-card jdp-promo-card-top">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHhRVzg2E4YmNclPMC6U2sBreJMOOrIr-ETZUv4otxW_4iRZ2-CQDvaKW1Mc2UjBF_ICvCpJ1GDEOo2r4ZMR0EyISFCXN1C57lJEDNibpDEemzJS5PXCw02V4Bx8O981VQ72Du7rI-OiKixRnie79LLuib4DRx5zPr5VOHSU2snN-7PDbjVxGeYzSBbgw/s430/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20GIF%20Unsplash.gif" alt="PHONEGRAPHY" />
+    </a>
+
+    <!-- Gambar Bawah (App Promo) -->
+    <a href="/kopi" class="jdp-promo-static-card jdp-promo-card-bottom">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwRhL6FzSDCXKQCYHzFZjhXqd4LtFKN43KOEGGG9jes7LoXvokqnoiAYpxbWO0MZVejM6-L8wuFnlWP2K_bRxIVWFTECpOOD3AgVipVnnlM7YPLX67-58lsAVIgE09GIBNH4mDgIVyoQd7f34G6gtaOo93t3qvcDa9DRtAxUosjgsRUj_eXurV_AUUTLg/s430/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20GIF%20Traktir%20Ngopi.gif" alt="BUY ME A CUP OF COFFEE" />
+    </a>
+  </div>
+
+</div>
+</section>
+
+<script>
+// JavaScript untuk Slider Otomatis dan Manual
+let jdpCurrentIndex = 0;
+const jdpSlides = document.querySelectorAll('.jdp-promo-slide');
+const jdpDots = document.querySelectorAll('.jdp-promo-dot');
+const jdpTrack = document.getElementById('jdp-promo-sliderTrack');
+const jdpTotalSlides = jdpSlides.length;
+
+function updateJdpSlider() {
+  jdpTrack.style.transform = `translateX(-${jdpCurrentIndex * 100}%)`;
+  
+  // Update dots
+  jdpDots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === jdpCurrentIndex);
+  });
+}
+
+function moveJdpSlide(direction) {
+  jdpCurrentIndex += direction;
+  if (jdpCurrentIndex >= jdpTotalSlides) jdpCurrentIndex = 0;
+  if (jdpCurrentIndex < 0) jdpCurrentIndex = jdpTotalSlides - 1;
+  updateJdpSlider();
+  resetJdpTimer();
+}
+
+function currentJdpSlide(index) {
+  jdpCurrentIndex = index;
+  updateJdpSlider();
+  resetJdpTimer();
+}
+
+// Auto Slide setiap 5 detik
+let jdpAutoSlide = setInterval(() => {
+  moveJdpSlide(1);
+}, 5000);
+
+function resetJdpTimer() {
+  clearInterval(jdpAutoSlide);
+  jdpAutoSlide = setInterval(() => {
+    moveJdpSlide(1);
+  }, 5000);
+}
+</script>
