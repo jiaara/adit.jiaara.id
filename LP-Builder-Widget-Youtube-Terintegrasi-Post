@@ -62,7 +62,7 @@
     flex-grow: 1;
     border: none;
     padding: 0 20px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: #555;
     outline: none;
     font-family: inherit;
@@ -119,7 +119,7 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 1.5rem;
     outline: none;
   }
 
@@ -164,7 +164,7 @@
     object-fit: cover;
   }
   .jiaara-youtube-title {
-    font-size: 1.05rem;
+    font-size: 1.55rem;
     font-weight: 800;
     line-height: 1.3;
     color: #111;
@@ -243,12 +243,12 @@
 
   <div class="jiaara-youtube-filter-panel" id="jiaara-youtube-filter-panel">
     <select class="jiaara-youtube-filter-select" id="jiaara-youtube-sort-select">
-      <option value="newest" />Tanggal: Terbaru
-      <option value="oldest" />Tanggal: Terlama
+      <option value="newest">Tanggal: Terbaru</option>
+      <option value="oldest">Tanggal: Terlama</option>
     </select>
     <select class="jiaara-youtube-filter-select" id="jiaara-youtube-label-select">
-      <option value="all" />Semua Label Kedua
-      </select>
+      <option value="all">Semua Label Kedua</option>
+    </select>
   </div>
 
   <div class="jiaara-youtube-grid" id="jiaara-youtube-grid">
@@ -280,7 +280,6 @@
   const jiaaraLabelSelect = document.getElementById('jiaara-youtube-label-select');
 
   // URL API Feed Blogger (Mengambil post dengan label 'youtube')
-  // Menggunakan path relatif agar otomatis sesuai dengan domain blog Anda
   const jiaaraYoutubeFeedUrl = '/feeds/posts/default/-/youtube?alt=json&max-results=150';
 
   // Inisialisasi
@@ -319,7 +318,6 @@
       let rawThumbUrl = '';
       let thumbnail = '';
 
-      // Dapatkan URL gambar mentah dari feed atau konten
       if (entry.media$thumbnail) {
         rawThumbUrl = entry.media$thumbnail.url;
       } else if (entry.content && entry.content.$t.match(/<img[^>]+src="([^">]+)"/)) {
@@ -328,32 +326,28 @@
         rawThumbUrl = 'https://via.placeholder.com/1280x720.png?text=No+Image';
       }
 
-      // Proses URL menjadi resolusi HD (1280x720)
       if (rawThumbUrl.includes('ytimg.com') || rawThumbUrl.includes('youtube.com')) {
-        // Jika gambar dari server YouTube, gunakan 'maxresdefault.jpg' (HD 1080p/720p)
         thumbnail = rawThumbUrl.replace(/(default|hqdefault|mqdefault|sddefault)\.jpg/i, 'maxresdefault.jpg');
       } else if (rawThumbUrl.match(/\/(s\d+|w\d+-h\d+)(\-c)?\//)) {
-        // Jika gambar dari server Blogger, ubah parameter resolusinya ke w1280-h720-c
         thumbnail = rawThumbUrl.replace(/\/(s\d+|w\d+-h\d+)(\-c)?\//, '/w1280-h720-c/');
       } else {
-        // Jika format lain, gunakan gambar asli
         thumbnail = rawThumbUrl;
       }
 
       // 4. Ambil Tanggal
       const published = new Date(entry.published.$t);
 
-      // 5. Ambil Label Kedua (Abaikan label utama 'youtube')
+      // 5. Ambil Label Kedua (Simpan dalam Array agar semua label terdeteksi)
       let labels = entry.category ? entry.category.map(c => c.term) : [];
-      let labelKedua = '';
+      let labelKeduaArray = []; // Menggunakan Array di sini
       labels.forEach(lbl => {
         if (lbl.toLowerCase() !== 'youtube') {
-          labelKedua = lbl;
+          labelKeduaArray.push(lbl);
           jiaaraYoutubeAllLabels.add(lbl);
         }
       });
 
-      return { title, postUrl, thumbnail, published, labelKedua };
+      return { title, postUrl, thumbnail, published, labelKeduaArray };
     });
 
     // Populate dropdown label
@@ -378,17 +372,14 @@
       return;
     }
 
-    // Kalkulasi Pagination
     const startIndex = (jiaaraYoutubeCurrentPage - 1) * jiaaraYoutubeItemsPerPage;
     const endIndex = startIndex + jiaaraYoutubeItemsPerPage;
     const currentItems = jiaaraYoutubeFilteredPosts.slice(startIndex, endIndex);
 
-    // Render Kartu Video
     currentItems.forEach(post => {
       const card = document.createElement('div');
       card.className = 'jiaara-youtube-card';
       
-      // Susun elemen HTML kartu tanpa durasi, nama, dan label
       card.innerHTML = `
         <a href="${post.postUrl}" class="jiaara-youtube-thumb-wrap">
           <img src="${post.thumbnail}" alt="${post.title}" class="jiaara-youtube-thumb">
@@ -408,7 +399,6 @@
 
     if (totalPages <= 1) return;
 
-    // Tombol Prev (<<)
     const btnPrev = document.createElement('button');
     btnPrev.className = 'jiaara-youtube-page-btn';
     btnPrev.innerHTML = '&laquo;';
@@ -421,7 +411,6 @@
     });
     jiaaraPagination.appendChild(btnPrev);
 
-    // Tombol Angka (1, 2, 3...)
     for (let i = 1; i <= totalPages; i++) {
       const btnPage = document.createElement('button');
       btnPage.className = 'jiaara-youtube-page-btn';
@@ -434,7 +423,6 @@
       jiaaraPagination.appendChild(btnPage);
     }
 
-    // Tombol Next (>>)
     const btnNext = document.createElement('button');
     btnNext.className = 'jiaara-youtube-page-btn';
     btnNext.innerHTML = '&raquo;';
@@ -454,10 +442,10 @@
     const sortValue = jiaaraSortSelect.value;
     const labelValue = jiaaraLabelSelect.value;
 
-    // 1. Filter Search & Label
+    // 1. Filter Search & Label menggunakan .includes() pada Array
     jiaaraYoutubeFilteredPosts = jiaaraYoutubeAllPosts.filter(post => {
       const matchSearch = post.title.toLowerCase().includes(searchQuery);
-      const matchLabel = (labelValue === 'all') || (post.labelKedua === labelValue);
+      const matchLabel = (labelValue === 'all') || post.labelKeduaArray.includes(labelValue);
       return matchSearch && matchLabel;
     });
 
