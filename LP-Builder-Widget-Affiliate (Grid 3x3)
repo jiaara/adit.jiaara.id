@@ -1,0 +1,437 @@
+<style>
+  /* Variabel Warna & Font */
+  :root {
+    --jiaara-affiliate-review-blue: #3b98ea;
+    --jiaara-affiliate-review-gray: #e2e8f0;
+    --jiaara-affiliate-review-text: #a0aec0;
+  }
+
+  .jiaara-affiliate-review-wrapper {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+
+  .jiaara-affiliate-review-wrapper * {
+    box-sizing: border-box;
+  }
+
+  /* Judul */
+  .jiaara-affiliate-review-title {
+    text-align: center;
+    color: var(--jiaara-affiliate-review-blue);
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Baris Pencarian & Filter */
+  .jiaara-affiliate-review-header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  /* Kotak Pencarian */
+  .jiaara-affiliate-review-search-box {
+    display: flex;
+    flex: 1;
+    border: 3px solid var(--jiaara-affiliate-review-blue);
+    border-radius: 50px;
+    overflow: hidden;
+    background: #fff;
+    height: 50px;
+  }
+
+  .jiaara-affiliate-review-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0 25px;
+    font-size: 18px;
+    color: #888;
+  }
+
+  .jiaara-affiliate-review-search-input::placeholder {
+    color: #b0b0b0;
+  }
+
+  .jiaara-affiliate-review-search-btn {
+    background-color: var(--jiaara-affiliate-review-blue);
+    border: none;
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .jiaara-affiliate-review-search-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+  }
+
+  /* Tombol Filter */
+  .jiaara-affiliate-review-filter-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .jiaara-affiliate-review-filter-toggle svg {
+    width: 40px;
+    height: 40px;
+    stroke: var(--jiaara-affiliate-review-blue);
+  }
+
+  /* Panel Filter */
+  .jiaara-affiliate-review-filter-panel {
+    display: none;
+    background: #f8fafc;
+    border: 1px solid var(--jiaara-affiliate-review-gray);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .jiaara-affiliate-review-filter-panel.active {
+    display: flex;
+  }
+
+  .jiaara-affiliate-review-filter-select {
+    padding: 10px;
+    border: 1px solid var(--jiaara-affiliate-review-gray);
+    border-radius: 8px;
+    outline: none;
+    flex: 1;
+    min-width: 200px;
+    color: #444;
+    font-size: 14px;
+  }
+
+  /* Grid Produk */
+  .jiaara-affiliate-review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  /* Item Produk */
+  .jiaara-affiliate-review-item {
+    background-color: var(--jiaara-affiliate-review-blue);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    text-decoration: none !important;
+    transition: transform 0.2s ease;
+  }
+
+  .jiaara-affiliate-review-item:hover {
+    transform: scale(1.02);
+  }
+
+  .jiaara-affiliate-review-item-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #fff;
+    border: 2px solid #fff;
+    flex-shrink: 0;
+  }
+
+  .jiaara-affiliate-review-item-title {
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-left: 12px;
+    padding-right: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Pagination */
+  .jiaara-affiliate-review-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  .jiaara-affiliate-review-page-btn {
+    background: white;
+    border: 1px solid var(--jiaara-affiliate-review-gray);
+    color: var(--jiaara-affiliate-review-blue);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .jiaara-affiliate-review-page-btn.active, 
+  .jiaara-affiliate-review-page-btn:hover {
+    background: var(--jiaara-affiliate-review-blue);
+    color: white;
+    border-color: var(--jiaara-affiliate-review-blue);
+  }
+
+  .jiaara-affiliate-review-page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .jiaara-affiliate-review-loading {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--jiaara-affiliate-review-blue);
+    padding: 20px;
+    font-weight: bold;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .jiaara-affiliate-review-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .jiaara-affiliate-review-search-input {
+      font-size: 15px;
+      padding: 0 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .jiaara-affiliate-review-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="jiaara-affiliate-review-wrapper">
+  
+  <div class="jiaara-affiliate-review-title">PRODUK YANG PERNAH SAYA BELI</div>
+  
+  <div class="jiaara-affiliate-review-header-controls">
+    <div class="jiaara-affiliate-review-search-box">
+      <input type="text" id="jiaara-affiliate-review-search-input" class="jiaara-affiliate-review-search-input" placeholder="Cari Video Panjang Adit di sini ..." />
+      <button class="jiaara-affiliate-review-search-btn" aria-label="Search">
+        <svg viewbox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <button id="jiaara-affiliate-review-filter-btn" class="jiaara-affiliate-review-filter-toggle" aria-label="Filter">
+      <svg viewbox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <circle cx="8" cy="6" r="2.5" fill="white"></circle>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <circle cx="16" cy="12" r="2.5" fill="white"></circle>
+        <line x1="4" y1="18" x2="20" y2="18"></line>
+        <circle cx="10" cy="18" r="2.5" fill="white"></circle>
+      </svg>
+    </button>
+  </div>
+
+  <div id="jiaara-affiliate-review-filter-panel" class="jiaara-affiliate-review-filter-panel">
+    <select id="jiaara-affiliate-review-category" class="jiaara-affiliate-review-filter-select">
+      <option value="all" />Semua Kategori
+    </select>
+    <select id="jiaara-affiliate-review-sort" class="jiaara-affiliate-review-filter-select">
+      <option value="newest" />Tanggal: Terbaru ke Terlama
+      <option value="oldest" />Tanggal: Terlama ke Terbaru
+    </select>
+  </div>
+
+  <div id="jiaara-affiliate-review-grid" class="jiaara-affiliate-review-grid">
+    <div class="jiaara-affiliate-review-loading">Memuat produk...</div>
+  </div>
+
+  <div id="jiaara-affiliate-review-pagination" class="jiaara-affiliate-review-pagination"></div>
+
+</div>
+
+<script>
+  const jiaaraAffiliateReview_state = {
+    allPosts: [],
+    filteredPosts: [],
+    categories: new Set(),
+    currentPage: 1,
+    itemsPerPage: 9,
+  };
+
+  function jiaaraAffiliateReview_init() {
+    // Menggunakan feed/posts/default agar seluruh isi HTML postingan termuat untuk ekstraksi gambar
+    const feedUrl = '/feeds/posts/default/-/affiliate?alt=json&max-results=150';
+
+    fetch(feedUrl)
+      .then(response => response.json())
+      .then(data => {
+        const entries = data.feed.entry || [];
+        
+        jiaaraAffiliateReview_state.allPosts = entries.map(entry => {
+          const title = entry.title.$t;
+          const link = entry.link.find(l => l.rel === 'alternate')?.href || '#';
+          
+          let img = '';
+
+          // 1. Ambil dari thumbnail bawaan Blogger jika ada
+          if (entry.media$thumbnail) {
+            let thumbUrl = entry.media$thumbnail.url;
+            // Optimasi resolusi agar gambar bulat tajam tidak blur (Mendukung struktur URL lama & baru)
+            if (thumbUrl.includes('/s72-c/')) {
+              img = thumbUrl.replace('/s72-c/', '/s150-c/');
+            } else if (thumbUrl.includes('/w72-h72')) {
+              img = thumbUrl.replace('/w72-h72', '/w150-h150');
+            } else {
+              img = thumbUrl;
+            }
+          }
+
+          // 2. Jika thumbnail kosong, scan isi konten postingan (berguna jika memakai image hosting eksternal)
+          if (!img && entry.content && entry.content.$t) {
+            const dummyDiv = document.createElement('div');
+            dummyDiv.innerHTML = entry.content.$t;
+            const firstImg = dummyDiv.querySelector('img');
+            if (firstImg) img = firstImg.src;
+          }
+
+          // 3. Batas Fallback Akhir: Jika benar-benar tidak ada gambar, pakai placeholder awan minimalis persis seperti layout gambar
+          if (!img) {
+            img = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23a0aec0"><rect width="100" height="100" fill="%23ffffff"/><path d="M30 65c-3.3 0-6-2.7-6-6 0-2.5 1.5-4.7 3.9-5.6.3-2.8 2.7-5 5.6-5 1.1 0 2.2.3 3.1.9C38 45.4 41.6 42 46 42c4.9 0 8.9 3.7 9.4 8.5 1.1-.3 2.2-.5 3.3-.5 4.4 0 8 3.6 8 8s-3.6 8-8 8H30z"/><path d="M15 80l20-25 15 18 13-15 22 22H15z" fill="%23cbd5e1"/></svg>`;
+          }
+
+          // Filter label kategori selain kata "affiliate"
+          const labels = entry.category ? entry.category.map(c => c.term) : [];
+          const categories = labels.filter(l => l.toLowerCase() !== 'affiliate');
+          categories.forEach(c => jiaaraAffiliateReview_state.categories.add(c));
+
+          const date = new Date(entry.published.$t);
+
+          return { title, link, img, categories, date };
+        });
+
+        jiaaraAffiliateReview_populateFilters();
+        jiaaraAffiliateReview_applyFilters();
+      })
+      .catch(error => {
+        console.error('Jiaara Affiliate Error:', error);
+        document.getElementById('jiaara-affiliate-review-grid').innerHTML = '<div class="jiaara-affiliate-review-loading">Gagal memuat data postingan.</div>';
+      });
+  }
+
+  function jiaaraAffiliateReview_populateFilters() {
+    const categorySelect = document.getElementById('jiaara-affiliate-review-category');
+    jiaaraAffiliateReview_state.categories.forEach(cat => {
+      const option = document.createElement('option');
+      option.value = cat;
+      option.textContent = cat;
+      categorySelect.appendChild(option);
+    });
+  }
+
+  function jiaaraAffiliateReview_applyFilters() {
+    const keyword = document.getElementById('jiaara-affiliate-review-search-input').value.toLowerCase();
+    const selectedCategory = document.getElementById('jiaara-affiliate-review-category').value;
+    const sortOrder = document.getElementById('jiaara-affiliate-review-sort').value;
+
+    jiaaraAffiliateReview_state.filteredPosts = jiaaraAffiliateReview_state.allPosts.filter(post => {
+      const matchKeyword = post.title.toLowerCase().includes(keyword);
+      const matchCategory = selectedCategory === 'all' || post.categories.includes(selectedCategory);
+      return matchKeyword && matchCategory;
+    });
+
+    jiaaraAffiliateReview_state.filteredPosts.sort((a, b) => {
+      return sortOrder === 'newest' ? b.date - a.date : a.date - b.date;
+    });
+
+    jiaaraAffiliateReview_state.currentPage = 1;
+    jiaaraAffiliateReview_renderGrid();
+  }
+
+  function jiaaraAffiliateReview_renderGrid() {
+    const grid = document.getElementById('jiaara-affiliate-review-grid');
+    grid.innerHTML = '';
+
+    const startIdx = (jiaaraAffiliateReview_state.currentPage - 1) * jiaaraAffiliateReview_state.itemsPerPage;
+    const endIdx = startIdx + jiaaraAffiliateReview_state.itemsPerPage;
+    const paginatedPosts = jiaaraAffiliateReview_state.filteredPosts.slice(startIdx, endIdx);
+
+    if (paginatedPosts.length === 0) {
+      grid.innerHTML = '<div class="jiaara-affiliate-review-loading">Tidak ada produk ditemukan.</div>';
+    } else {
+      paginatedPosts.forEach(post => {
+        const itemHTML = `
+          <a href="${post.link}" class="jiaara-affiliate-review-item" target="_blank">
+            <img src="${post.img}" alt="Product Thumbnail" class="jiaara-affiliate-review-item-img">
+            <div class="jiaara-affiliate-review-item-title">${post.title}</div>
+          </a>
+        `;
+        grid.insertAdjacentHTML('beforeend', itemHTML);
+      });
+    }
+    jiaaraAffiliateReview_renderPagination();
+  }
+
+  function jiaaraAffiliateReview_renderPagination() {
+    const pagination = document.getElementById('jiaara-affiliate-review-pagination');
+    pagination.innerHTML = '';
+
+    const totalPages = Math.ceil(jiaaraAffiliateReview_state.filteredPosts.length / jiaaraAffiliateReview_state.itemsPerPage);
+    if (totalPages <= 1) return;
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'jiaara-affiliate-review-page-btn';
+    prevBtn.innerHTML = '&laquo;';
+    prevBtn.disabled = jiaaraAffiliateReview_state.currentPage === 1;
+    prevBtn.onclick = () => { jiaaraAffiliateReview_state.currentPage--; jiaaraAffiliateReview_renderGrid(); };
+    pagination.appendChild(prevBtn);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.className = `jiaara-affiliate-review-page-btn ${i === jiaaraAffiliateReview_state.currentPage ? 'active' : ''}`;
+      pageBtn.textContent = i;
+      pageBtn.onclick = () => { jiaaraAffiliateReview_state.currentPage = i; jiaaraAffiliateReview_renderGrid(); };
+      pagination.appendChild(pageBtn);
+    }
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'jiaara-affiliate-review-page-btn';
+    nextBtn.innerHTML = '&raquo;';
+    nextBtn.disabled = jiaaraAffiliateReview_state.currentPage === totalPages;
+    nextBtn.onclick = () => { jiaaraAffiliateReview_state.currentPage++; jiaaraAffiliateReview_renderGrid(); };
+    pagination.appendChild(nextBtn);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('jiaara-affiliate-review-search-input').addEventListener('input', jiaaraAffiliateReview_applyFilters);
+    document.getElementById('jiaara-affiliate-review-category').addEventListener('change', jiaaraAffiliateReview_applyFilters);
+    document.getElementById('jiaara-affiliate-review-sort').addEventListener('change', jiaaraAffiliateReview_applyFilters);
+
+    document.getElementById('jiaara-affiliate-review-filter-btn').addEventListener('click', () => {
+      document.getElementById('jiaara-affiliate-review-filter-panel').classList.toggle('active');
+    });
+
+    jiaaraAffiliateReview_init();
+  });
+</script>
