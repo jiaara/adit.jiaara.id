@@ -1,0 +1,298 @@
+<div class="jiaara-video-vertical-container">
+  
+  <div class="jiaara-video-vertical-header">
+    Video Pendek
+  </div>
+
+  <div class="jiaara-video-vertical-content">
+    
+    <div class="jiaara-video-vertical-sidebar" id="jiaara-video-vertical-sidebar">
+      <div class="jiaara-video-vertical-tab" data-label="Facebook">Facebook <span>></span></div>
+      <div class="jiaara-video-vertical-tab active" data-label="Instagram">Instagram <span>></span></div>
+      <div class="jiaara-video-vertical-tab" data-label="Tiktok">Tiktok <span>></span></div>
+      <div class="jiaara-video-vertical-tab" data-label="Twitter">Twitter <span>></span></div>
+      <div class="jiaara-video-vertical-tab" data-label="Youtube Short">Youtube Short <span>></span></div>
+    </div>
+
+    <div class="jiaara-video-vertical-carousel-wrapper">
+      <button class="jiaara-video-vertical-nav prev" id="jiaara-video-vertical-prev">&#10132;</button>
+      
+      <div class="jiaara-video-vertical-carousel" id="jiaara-video-vertical-carousel">
+        <div class="jiaara-video-vertical-loading">Memuat konten...</div>
+      </div>
+      
+      <button class="jiaara-video-vertical-nav next" id="jiaara-video-vertical-next">&#10132;</button>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* Menghindari konflik dengan menambahkan prefix unik pada setiap class */
+  .jiaara-video-vertical-container {
+    font-family: Arial, sans-serif;
+    max-width: 1800px; /* Diubah menjadi 1800px */
+    margin: 0 auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+
+  .jiaara-video-vertical-header {
+    background-color: #3299F3;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 8px 15px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .jiaara-video-vertical-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .jiaara-video-vertical-sidebar {
+    flex: 0 0 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e6e6e6;
+  }
+
+  .jiaara-video-vertical-tab {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    transition: background 0.2s;
+  }
+  
+  .jiaara-video-vertical-tab:last-child {
+    border-bottom: none;
+  }
+
+  .jiaara-video-vertical-tab:hover,
+  .jiaara-video-vertical-tab.active {
+    background-color: #cccccc;
+  }
+
+  .jiaara-video-vertical-carousel-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0; /* Mencegah overflow pada flexbox */
+  }
+
+  .jiaara-video-vertical-carousel {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 5px 0;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .jiaara-video-vertical-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .jiaara-video-vertical-card {
+    flex: 0 0 calc(25% - 11.25px); /* Menampilkan tepat 4 kolom dengan gap */
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    min-width: 140px;
+  }
+
+  .jiaara-video-vertical-media {
+    width: 100%;
+    aspect-ratio: 9 / 16; /* Ketentuan Rasio 9:16 terbaru */
+    background-color: #cce6fa; 
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .jiaara-video-vertical-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+  }
+
+  .jiaara-video-vertical-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .jiaara-video-vertical-nav {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .jiaara-video-vertical-nav.prev {
+    left: -20px;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .jiaara-video-vertical-nav.next {
+    right: -20px;
+  }
+  
+  .jiaara-video-vertical-loading, .jiaara-video-vertical-empty {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    font-weight: bold;
+    color: #666;
+  }
+
+  /* Responsif jika diakses melalui HP */
+  @media (max-width: 768px) {
+    .jiaara-video-vertical-content { flex-direction: column; }
+    .jiaara-video-vertical-sidebar { width: 100%; flex: auto; }
+    .jiaara-video-vertical-card { flex: 0 0 calc(50% - 10px); }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const jiaaraTabs = document.querySelectorAll('.jiaara-video-vertical-tab');
+    const jiaaraCarousel = document.getElementById('jiaara-video-vertical-carousel');
+    const jiaaraPrevBtn = document.getElementById('jiaara-video-vertical-prev');
+    const jiaaraNextBtn = document.getElementById('jiaara-video-vertical-next');
+    
+    // Konfigurasi Label Utama
+    const jiaaraMainLabel = "video vertikal";
+
+    // Fungsi Fetch ke API JSON Blogger
+    async function fetchJiaaraVideoVerticalData(subLabel) {
+      jiaaraCarousel.innerHTML = '<div class="jiaara-video-vertical-loading">Memuat konten...</div>';
+      
+      const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(jiaaraMainLabel)}/${encodeURIComponent(subLabel)}?alt=json&max-results=8`;
+
+      try {
+        const response = await fetch(feedUrl);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        const entries = data.feed.entry || [];
+        
+        renderJiaaraVideoVerticalCards(entries);
+      } catch (error) {
+        jiaaraCarousel.innerHTML = '<div class="jiaara-video-vertical-empty">Gagal memuat atau konten tidak ditemukan.</div>';
+        console.error('Jiaara Video Vertical Error:', error);
+      }
+    }
+
+    // Fungsi Render HTML dari data JSON
+    function renderJiaaraVideoVerticalCards(entries) {
+      jiaaraCarousel.innerHTML = '';
+      
+      if (entries.length === 0) {
+        jiaaraCarousel.innerHTML = '<div class="jiaara-video-vertical-empty">Belum ada konten pada kategori ini.</div>';
+        return;
+      }
+
+      entries.forEach(entry => {
+        const title = entry.title.$t;
+        const contentHtml = entry.content ? entry.content.$t : "";
+        
+        // Ekstraksi tag <img src="..."> pertama dari dalam isi postingan
+        const imgMatch = contentHtml.match(/<img[^>]+src="([^">]+)"/i);
+        let mediaTag = "";
+        
+        if (imgMatch && imgMatch[1]) {
+          let imgSrc = imgMatch[1];
+          // Trik optimalisasi resolusi gambar khusus server Blogger (rasio 9:16)
+          imgSrc = imgSrc.replace(/\/(s\d+|w\d+-h\d+)(-[cp])?\//, '/w450-h800-c/');
+          mediaTag = `<img src="${imgSrc}" alt="Thumbnail ${title}">`;
+        } else {
+          // Fallback jika tidak ada gambar
+          mediaTag = `<div style="text-align:center; padding:50% 0; color:#888;">No Image</div>`;
+        }
+
+        // Cari link artikel asli
+        let postLink = "#";
+        for (let i = 0; i < entry.link.length; i++) {
+          if (entry.link[i].rel === "alternate") {
+            postLink = entry.link[i].href;
+            break;
+          }
+        }
+
+        const card = document.createElement('a');
+        card.className = 'jiaara-video-vertical-card';
+        card.href = postLink;
+        card.innerHTML = `
+          <div class="jiaara-video-vertical-media">
+            ${mediaTag}
+          </div>
+          <div class="jiaara-video-vertical-title">${title}</div>
+        `;
+        
+        jiaaraCarousel.appendChild(card);
+      });
+    }
+
+    // Event Listener Navigasi Carousel (Geser Kiri/Kanan)
+    jiaaraPrevBtn.addEventListener('click', () => {
+      jiaaraCarousel.scrollBy({ left: -250, behavior: 'smooth' });
+    });
+
+    jiaaraNextBtn.addEventListener('click', () => {
+      jiaaraCarousel.scrollBy({ left: 250, behavior: 'smooth' });
+    });
+
+    // Event Listener Menu Sidebar (Label Kedua)
+    jiaaraTabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        jiaaraTabs.forEach(t => t.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        
+        const selectedSubLabel = e.currentTarget.getAttribute('data-label');
+        fetchJiaaraVideoVerticalData(selectedSubLabel);
+      });
+    });
+
+    // Muat data saat halaman pertama kali dibuka berdasarkan tab yang aktif (Instagram)
+    if (jiaaraTabs.length > 0) {
+      const activeTab = document.querySelector('.jiaara-video-vertical-tab.active');
+      if(activeTab) {
+        fetchJiaaraVideoVerticalData(activeTab.getAttribute('data-label'));
+      }
+    }
+  });
+</script>
