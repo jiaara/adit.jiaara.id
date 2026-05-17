@@ -35,6 +35,7 @@
     margin: 0 auto;
     padding: 20px 0;
     box-sizing: border-box;
+    overflow-x: hidden; /* Mencegah overflow horizontal dari container utama */
   }
 
   .jiaara-video-vertical-header {
@@ -62,7 +63,7 @@
 
   .jiaara-video-vertical-tab {
     padding: 10px 15px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     color: #000;
     cursor: pointer;
@@ -132,7 +133,7 @@
   }
 
   .jiaara-video-vertical-title {
-    font-size: 13px;
+    font-size: 18px;
     font-weight: bold;
     color: #000;
     margin-top: 10px;
@@ -182,9 +183,43 @@
 
   /* Responsif jika diakses melalui HP */
   @media (max-width: 768px) {
-    .jiaara-video-vertical-content { flex-direction: column; }
-    .jiaara-video-vertical-sidebar { width: 100%; flex: auto; }
-    .jiaara-video-vertical-card { flex: 0 0 calc(50% - 10px); }
+    .jiaara-video-vertical-container {
+      max-width: 100%; /* Memaksimalkan lebar layar */
+      padding: 15px 10px; /* Menambah padding agar konten tidak terlalu menempel ke tepi layar */
+    }
+    
+    .jiaara-video-vertical-content { 
+      flex-direction: column; 
+    }
+    
+    .jiaara-video-vertical-sidebar { 
+      width: 100%; 
+      flex: auto; 
+      margin-bottom: 10px; /* Menambahkan jarak antara menu dan video */
+    }
+    
+    .jiaara-video-vertical-carousel-wrapper {
+      width: 100%;
+    }
+    
+    .jiaara-video-vertical-card { 
+      flex: 0 0 calc(50% - 7.5px); /* Menampilkan 2 kolom dengan akurat */
+    }
+    
+    /* Perbaikan agar tombol tidak keluar layar */
+    .jiaara-video-vertical-nav {
+      width: 35px; /* Sedikit dikecilkan agar proporsional di HP */
+      height: 35px;
+      font-size: 16px;
+    }
+    
+    .jiaara-video-vertical-nav.prev {
+      left: 5px; /* Menarik tombol ke dalam frame */
+    }
+    
+    .jiaara-video-vertical-nav.next {
+      right: 5px; /* Menarik tombol ke dalam frame */
+    }
   }
 </style>
 
@@ -202,8 +237,7 @@
     async function fetchJiaaraVideoVerticalData(subLabel) {
       jiaaraCarousel.innerHTML = '<div class="jiaara-video-vertical-loading">Memuat konten...</div>';
       
-     
-const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(jiaaraMainLabel)}/${encodeURIComponent(subLabel.toLowerCase())}?alt=json&max-results=8`;
+      const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(jiaaraMainLabel)}/${encodeURIComponent(subLabel.toLowerCase())}?alt=json&max-results=8`;
 
       try {
         const response = await fetch(feedUrl);
@@ -270,11 +304,14 @@ const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(jiaaraMainLabel)}/$
 
     // Event Listener Navigasi Carousel (Geser Kiri/Kanan)
     jiaaraPrevBtn.addEventListener('click', () => {
-      jiaaraCarousel.scrollBy({ left: -250, behavior: 'smooth' });
+      // Sesuaikan jarak geser untuk mobile vs desktop
+      const scrollAmount = window.innerWidth <= 768 ? jiaaraCarousel.clientWidth / 2 : 250;
+      jiaaraCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
 
     jiaaraNextBtn.addEventListener('click', () => {
-      jiaaraCarousel.scrollBy({ left: 250, behavior: 'smooth' });
+      const scrollAmount = window.innerWidth <= 768 ? jiaaraCarousel.clientWidth / 2 : 250;
+      jiaaraCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
 
     // Event Listener Menu Sidebar (Label Kedua)
