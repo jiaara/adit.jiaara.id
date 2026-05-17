@@ -1,7 +1,7 @@
 <div class="jiaara-video-vertical-container">
   
   <div class="jiaara-video-vertical-header">
-    Video Pendek
+    TOP 5 Video Pendek di Semua Platform
   </div>
 
   <div class="jiaara-video-vertical-content">
@@ -31,7 +31,7 @@
   /* Menghindari konflik dengan menambahkan prefix unik pada setiap class */
   .jiaara-video-vertical-container {
     font-family: Arial, sans-serif;
-    max-width: 1800px; /* Diubah menjadi 1800px */
+    max-width: 85%; 
     margin: 0 auto;
     padding: 20px 0;
     box-sizing: border-box;
@@ -202,7 +202,8 @@
     async function fetchJiaaraVideoVerticalData(subLabel) {
       jiaaraCarousel.innerHTML = '<div class="jiaara-video-vertical-loading">Memuat konten...</div>';
       
-      const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(jiaaraMainLabel)}/${encodeURIComponent(subLabel)}?alt=json&max-results=8`;
+     
+const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(jiaaraMainLabel)}/${encodeURIComponent(subLabel.toLowerCase())}?alt=json&max-results=8`;
 
       try {
         const response = await fetch(feedUrl);
