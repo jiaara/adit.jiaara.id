@@ -247,7 +247,7 @@
       <option value="oldest">Tanggal: Terlama</option>
     </select>
     <select class="jiaara-youtube-filter-select" id="jiaara-youtube-label-select">
-      <option value="all">Semua Label Kedua</option>
+      <option value="all">Semua Kategori</option>
     </select>
   </div>
 
