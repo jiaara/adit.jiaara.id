@@ -2,8 +2,8 @@
 <style>
     :root {
         /* Ganti link di bawah untuk mengubah background */
-        --jiaara-bg-lock: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
-        --jiaara-bg-home: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        --jiaara-bg-lock: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLN7jvUCi_WoKDVBreh3lgIZRWI4JNLA8qPHGozL1c4tcxcACuah2J6WoTsPIuLDE1gRunIcxvdWgyjNiWqDmUZlcYKefiDAm9NL-5lblaViCInacM_m9yVsVgma1TBSDQY93RwfLSuDdG_6UgxB_r3kIMA3a-SJCKbKL9Se7hL8Gv56SDD8sNl11RToE/s1000/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20WALLPAPER%20LOCKSCREEN.jpg');
+        --jiaara-bg-home: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-e18ALep0lRVvkGTBAK4r_j6u2mvI40vJKfJRSwcaHdIPBWQsaXCycXk5hgcDle1tCvz1WNspScUW9u2oM0qgwMXHZi_OBGhccalZs8BR6Lu2-tdar3kgoQvc1ds_OyahjtNw0D36ucoZPppRndt7YhL1OAxSaaQBw-bhIC5K5_ClYaR-ePPnEBrZT50/s1000/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20WALLPAPER%20MENU.jpg');
     }
 
     #jiaara-biolink-notif-wrapper {
@@ -66,8 +66,9 @@
     }
 
     .jiaara-biolink-notif-item {
-        background: rgba(64, 153, 255, 0.85);
-        backdrop-filter: blur(10px);
+        background-color: rgba(74, 164, 239, 0.4);
+        backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
         border-radius: 18px;
         padding: 12px;
         color: white;
@@ -78,6 +79,8 @@
         transition: transform 0.4s ease, opacity 0.4s ease;
         position: relative;
     }
+	
+	
 
     /* Efek geser kiri */
     .jiaara-biolink-notif-item.jiaara-removing {
@@ -275,30 +278,30 @@
 <script>
     // --- KONFIGURASI DATA ---
     const jiaaraNotifData = [
-        { name: "Adhitya Ramadhan", img: "https://i.ibb.co/L5T3KzP/profile.jpg", text: "Hai Kawan! Lihat ini, Aku bikin video baru...", link: "#" },
-        { name: "JIAARA.ID", img: "https://i.ibb.co/V9mPrPq/icon-jiaara.png", text: "Sobat, Taukah kamu kalau mas Adit habis bikin Aplikasi?", link: "#" },
-        { name: "Adhitya Ramadhan", img: "https://i.ibb.co/L5T3KzP/profile.jpg", text: "Wah, Pakai Produk ini emang se-Worth It ini! Cobain deh!", link: "#" },
-        { name: "Psst... Jangan Lupa!", img: "https://cdn-icons-png.flaticon.com/512/3652/3652191.png", text: "Cek Promo di Akun Sosial Media @JIAARA atau Situs JIAARA.ID", link: "#" },
-        { name: "Adhitya Ramadhan", img: "https://i.ibb.co/L5T3KzP/profile.jpg", text: "Eh tau gak? mau cerita nih. Tadi masa ada ....", link: "#" }
+        { name: "Adhitya Ramadhan", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2zxL4s9WVuNfKYLlZkJ-H2xm54c1AHaszCZH9eT8z3AkojaLwpcTbGlftQpaK8dxJUh17Mpf0C5T3aM3v6nrgBvTxA0EbrzpoH-guYPiyCl27d-qw5gxPuKWNlZjxf4dKDPgrKsigwUh6mgmgXFDWJi0eyQcIBZSe-Zuu8gbZnEKc7SxBKSvdrULLBBs/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20AVATAR%20.png", text: "Hai Kawan! Lihat ini, Aku bikin video baru...", link: "/video" },
+        { name: "JIAARA.ID", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieNI3S8w4reeBRN8R_eO8gB8c2FvRUnyfIsEXPvM9vjFQaBUl5jN0HXqFgrRSpBrnuRFGZE6I1u6aoQxmO9Iqp3pi3gbnCvM3Pcy4C8FdgNucp0eXMe-nVADW8-zEKVI6CdNpvNhQdcwG5Lw0dmO55LdF-1eJnb-v4VL00IoB4pu0jYqeUaGBpbzR4Wpk/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN.png", text: "Sobat, Taukah kamu kalau mas Adit habis bikin Aplikasi?", link: "https://jiaara.blogspot.com/apps" },
+        { name: "Adhitya Ramadhan", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2zxL4s9WVuNfKYLlZkJ-H2xm54c1AHaszCZH9eT8z3AkojaLwpcTbGlftQpaK8dxJUh17Mpf0C5T3aM3v6nrgBvTxA0EbrzpoH-guYPiyCl27d-qw5gxPuKWNlZjxf4dKDPgrKsigwUh6mgmgXFDWJi0eyQcIBZSe-Zuu8gbZnEKc7SxBKSvdrULLBBs/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20AVATAR%20.png", text: "Wah, Pakai Produk ini emang se-Worth It ini! Cobain deh!", link: "/co" },
+        { name: "Psst... Jangan Lupa!", img: "https://cdn-icons-png.flaticon.com/512/3652/3652191.png", text: "Cek Promo di Akun Sosial Media @JIAARA atau Situs JIAARA.ID", link: "https://jiaara.blogspot.com/promo" },
+        { name: "Adhitya Ramadhan", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2zxL4s9WVuNfKYLlZkJ-H2xm54c1AHaszCZH9eT8z3AkojaLwpcTbGlftQpaK8dxJUh17Mpf0C5T3aM3v6nrgBvTxA0EbrzpoH-guYPiyCl27d-qw5gxPuKWNlZjxf4dKDPgrKsigwUh6mgmgXFDWJi0eyQcIBZSe-Zuu8gbZnEKc7SxBKSvdrULLBBs/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20AVATAR%20.png", text: "Eh tau gak? mau cerita nih. Tadi masa ada ....", link: "/blog" }
     ];
 
     const jiaaraAppData = [
-        { name: "Galeri", img: "https://cdn-icons-png.flaticon.com/512/1040/1040241.png", link: "#" },
-        { name: "Github", img: "https://cdn-icons-png.flaticon.com/512/25/25231.png", link: "#" },
-        { name: "Google Bus..", img: "https://cdn-icons-png.flaticon.com/512/2991/2991147.png", link: "#" },
+        { name: "Galeri", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGqZ-n8c4q0Hn1684McY9MINLrQHN3AFwXZMNVzODyHRfi4lqJEJWqzTgJlRDgrCGkMvc0ILj3cSfqLj223w6i3ZxW_gsXSyCqm42XzWOnZh-EPsElJPJqcLRYojQUCUG_O7Y2_eksjoylft4T0jix-7fhu77bl-aJRkt0Uw4D3YL3DPwbaha8IjoPzC0/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GALERI.png", link: "#" },
+        { name: "Github", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjeD6KYDSv0ZbSwwbRcnKVEjsmXDcRGDU3MhWLkh1OOFFY9_hpBqx09EO_yezpMC3qk_-qai0rMjq6U_8BBY62vh4u8PIFrnLRt0gpObkVIk9pwV1Rm-_frKAs7fCqhxWUiUmTeqqSE2bAXaYz5ck6DM5pZIdr_10Two5Id7QVj8DTMPSKVdtLYY_DcY7I/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GITHUB.png", link: "#" },
+        { name: "Google Business", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRqZJ6tw0HJyPsUfOt7cMLZRiwHktztadkjN3CtD_oGSCvRMBbXLGfPVOdCdmzJ_8OvFf4GCKZ2uZiC2I-R1mrCviIzOWi4Xcj9wOaSliv2GE9W22NQmDI15U_5Mq1VjvsPE0q0XRqRcwThSadM8y1xsCVwBLxxgwFOmppV09IM7mem9cU8Vap5FG3Td8/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GOOGLE%20BUSINESS.png", link: "#" },
         { name: "Instagram", img: "https://cdn-icons-png.flaticon.com/512/174/174855.png", link: "#" },
-        { name: "Shopee", img: "https://cdn-icons-png.flaticon.com/512/5968/5968600.png", link: "#" },
-        { name: "Tiktok", img: "https://cdn-icons-png.flaticon.com/512/3046/3046121.png", link: "#" },
-        { name: "Whatsapp", img: "https://cdn-icons-png.flaticon.com/512/124/124034.png", type: "wa" },
-        { name: "WA Bisnis", img: "https://cdn-icons-png.flaticon.com/512/5968/5968841.png", type: "wa" },
-        { name: "X", img: "https://cdn-icons-png.flaticon.com/512/5969/5969020.png", link: "#" },
-        { name: "Youtube", img: "https://cdn-icons-png.flaticon.com/512/1384/1384060.png", link: "#" },
-        { name: "Call of Duty", img: "https://play-lh.googleusercontent.com/6_GZk8s-XW97h-9u_vB_W_fPZ7U6_OqZk66BwA=w240-h480-rw", link: "#" },
-        { name: "FC Mobile", img: "https://play-lh.googleusercontent.com/9O_pU72uE6E78y0-x2H3q7-x8-v-Z0-I=w240-h480-rw", link: "#" },
-        { name: "Ninja Sage", img: "https://play-lh.googleusercontent.com/mYv_S6U_y6y-W_fPZ7U6_OqZk66BwA=w240-h480-rw", link: "#" },
-        { name: "WoiLo", img: "https://play-lh.googleusercontent.com/6_GZk8s-XW97h-9u_vB_W_fPZ7U6_OqZk66BwA=w240-h480-rw", link: "#" },
-        { name: "CapCut", img: "https://cdn-icons-png.flaticon.com/512/10069/10069720.png", link: "#" },
-        { name: "Gmail", img: "https://cdn-icons-png.flaticon.com/512/281/281769.png", link: "#" }
+        { name: "Shopee", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4TjE7fpl1Ch0bDyTlQJWAGjlCLFw9u1kYG2IQ9a_s6NzrjVUveBfQrGV0TN8iFF-GKykwFGy7FdP3V28nQkkM3CV7qAIeUIpcJuPwYLq80wmZFrzB1DHhUuqw4tmG2kY4Jt1la68_CnGJBy8Tz3tjr4g11PM91ILzlUc9eD9qzKMR0YnzFvoDXBpYOPE/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20SHOPEE.png", link: "#" },
+        { name: "Tiktok", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5jVx402p7h45hlvOx9L6LBxfgCamV26KXYGp48ZmW8P4dUNIu-aHZFEHhTypA-OEkViEMP__zaYQkEvBtaigh_0z6hxQzwWBjRRapktNL3387dOb-YR8hSRK3Lsdx74x5kmasVerdCd11c7tyyPYEugPwkrF8LizVi6cmpQqwhr7Lf1wus3Njy2mZS5M/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20TIKTOK.png", link: "#" },
+        { name: "Whatsapp", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2CF758vTa-gqh9ydGaq-JH2XDHK0uR09M4gKuyLCySdfvePralsrayfMMXAMFVR6u4CPoG4UtgRpDt7r6zUPlb9aidTLoFqXtA-dy66fqNV_w4dVUyywvXrE2Og5mCd9lJwcVqFTlt5T-9gtOgiTLQIBW-LtmEfw241YcMZidckGkoxLRaDH_NQLnSXk/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20WHATSAPP.png", type: "wa" },
+        { name: "WA Bisnis", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijqam7jscmXIE9Y0CNa6cduUU-LJS-br3w-GuFcDwFVBuJkeR8DGc6Kmgxzk_UgrHIuN_o3C2pCt1D6d2anQgiaez268i3bp_UHlbJ4PQylpTAGnUfyrtUo2h1XpVVQdo7-VXdlcqRiw6L83-504fG8ynzPTLO-bIGbMwMgxl1gszNG6F1LspgrYQ8p8E/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20WHATSAPP%20BUSINESS.png", type: "wa" },
+        { name: "X", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnT0w2COZCOhowGfUAws0sZIY2fe0OHO3FOT7ZOfY8LI4Dyjj_xKewplfawhGZPdr94QjlIjdgZnYgFVAEheJNb0nCEgfy8yUBEShulboNaG8ZRpl8-yIuz_qFg10_K-vbcwRlYS8RQfF6ntoBtjdfUoxVL1i2BTdBchWsHUQ1b2xS2stxsz76HIwbpmQ/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20X%20TWITTER.png", link: "#" },
+        { name: "Youtube", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQ9N4EzCe_nVi96f_ZKx8Q9eqyxBDpXaCxS4jSTLfc-gZliYy2k8wnVXXqVBzy5M7d7UdXFmlHcNZwpzKhQdUSTGYgDzFqDo8ITu5xNFT_lYEtMFJlEn77ZKuB89vuH-TXv4ms7ns77LkkXVrM-raZ6hcR5qEO2pKmlnYpathW7PK0Y-xsQ0NW9yBfBuk/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20YOUTUBE.png", link: "#" },
+        { name: "Call of Duty", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0UBpqO61nlwRIt8iqtPHB-AfEUHvGFJrmjl79Le_QudfHBKt-gN92lBq7upu5Im_uEOt2BovliyGNEVs6iFGOO9pMGhtL8IMqhBI27LqLGx0uVf_emxfbCsfyr1qPNkfQYeKDvWBE0Nd8F9KCIcTcNJfwIFTa7zumJxqK4mnrwBETTw2X9ihqd3WSKA8/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20CALL%20OF%20DUTY%20MOBILE.png", link: "#" },
+        { name: "FC Mobile", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD9PLeyU2KZkbytFjun9WpRHB-pe2FijLF5eplruPTC5vFttMMcerIOkcjoSnsCEIkRst8NQtQyjw5ZN7EfCTFM7Gnlxqr1LrVfoGyAbqI_2hJsne7qrkEZBI8_1rvtBBmI28hYZ9UPxbzvackzAC5Uj3_ouNjVknjMwDUvU5DQlX9U80xW2vLvk438lY/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20FC%20MOBILE.png", link: "#" },
+        { name: "Ninja Sage", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEix63XNn_VYU1BJTWUCbiVFa6NZJJaQh5jLTtdRLeVaLprNAySNB6S1oneoFmbh9u2HHwEckylMVWWr65AG_KUyJF62n6ztAi-xLBdjN12DyXv-Inh_rybn1wNQllReA_VxlNMGRt7gqQjZyBprUxp1RAtdMCnuAJARHERClw-21Uv6YqTtQjE_j7cszpY/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20NINJA%20SAGE.png", link: "#" },
+        { name: "WoiLo", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhP_C_isBUjYUudSuWx00WpFmtXe7yR5Snkc59wL2_JLRK30evAvzN_5VVn50w7LoxnZA807xN2LsCgJPFwc4Gsi5YNR-JR_LfnVMhADhbd9J7MLlB-MVa-OzhEtMhfwkJ3JEcG-_VBicw-2DTUMXyk4bPkQ9EizWpD_p-nt7rIqrBXbo8lEcRHp3WvZjI/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20WOILO.png", link: "#" },
+        { name: "CapCut", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4yUWDsRNZGPJdop3wXzIOPeNIxuF_AaLImR1tB3ak2S7xxAgdINWrihPjaWtLAT9iqtLMPqIBiSZ8sqf5Cmtamrkdd6fkZbnxykkQMgznO58nqEd-xyo7bp9SQOD4eYCUVpkv19SEFpbdCWesJPrx2hk76bRm-dTR5JHeUuvJIk4U9tKJJNknrnNuGpM/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20CAPCUT.png", link: "#" },
+        { name: "Gmail", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFAw92GheAZ2a2fhbvL5WdUj-SKkO-jwNbAamOzresy7nuEemanXgFANCCx396rEUowRZGexA61GChHSJrE_q1Z17GDzK5mllXSlbmAQjofRoxKSumqaYTHTc9rLIeYaLHWU0VWveoHepQNQk0do8gKKkcCAesQ8SLbDPpmaPqdJUnWoCFJc4PDcvsyYw/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GMAIL.png", link: "#" }
     ];
 
     let currentApps = [...jiaaraAppData];
