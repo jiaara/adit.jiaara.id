@@ -1,0 +1,413 @@
+<!-- JIAARA BIO LINK NOTIF STYLE -->
+<style>
+    :root {
+        /* Ganti link di bawah untuk mengubah background */
+        --jiaara-bg-lock: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        --jiaara-bg-home: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+    }
+
+    #jiaara-biolink-notif-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999999;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    /* LOCK SCREEN SECTION */
+    .jiaara-biolink-notif-screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        background-size: cover;
+        background-position: center;
+    }
+
+    #jiaara-biolink-notif-lock {
+        background-image: var(--jiaara-bg-lock);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+    }
+
+    .jiaara-biolink-notif-lock-icon {
+        font-size: 30px;
+        margin-bottom: 10px;
+        color: #000;
+    }
+
+    .jiaara-biolink-notif-time {
+        font-size: 80px;
+        font-weight: 300;
+        color: #222;
+        line-height: 1;
+    }
+
+    .jiaara-biolink-notif-date {
+        font-size: 18px;
+        font-weight: 500;
+        color: #222;
+        margin-bottom: 30px;
+    }
+
+    .jiaara-biolink-notif-container {
+        width: 90%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .jiaara-biolink-notif-item {
+        background: rgba(64, 153, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 18px;
+        padding: 12px;
+        color: white;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        text-decoration: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        position: relative;
+    }
+
+    /* Efek geser kiri */
+    .jiaara-biolink-notif-item.jiaara-removing {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+
+    .jiaara-biolink-notif-img {
+        width: 45px;
+        height: 45px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .jiaara-biolink-notif-content {
+        flex: 1;
+    }
+
+    .jiaara-biolink-notif-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .jiaara-biolink-notif-body {
+        font-size: 13px;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .jiaara-biolink-notif-close-btn {
+        margin-top: 30px;
+        width: 45px;
+        height: 45px;
+        background: #ff4d4d;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* HOME SCREEN SECTION */
+    #jiaara-biolink-notif-home {
+        background-image: var(--jiaara-bg-home);
+        z-index: 5;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .jiaara-biolink-notif-search-bar {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid #4099ff;
+        border-radius: 25px;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .jiaara-biolink-notif-search-bar input {
+        border: none;
+        background: transparent;
+        width: 100%;
+        outline: none;
+        padding-left: 10px;
+        color: #333;
+    }
+
+    .jiaara-biolink-notif-menu-trigger {
+        cursor: pointer;
+        font-size: 20px;
+        padding-left: 10px;
+    }
+
+    .jiaara-biolink-notif-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px 10px;
+    }
+
+    .jiaara-biolink-notif-app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .jiaara-biolink-notif-app img {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        margin-bottom: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+
+    .jiaara-biolink-notif-app:active img {
+        transform: scale(0.9);
+    }
+
+    .jiaara-biolink-notif-dropdown {
+        position: absolute;
+        right: 0;
+        top: 45px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: none;
+        z-index: 100;
+        min-width: 120px;
+    }
+
+    .jiaara-biolink-notif-dropdown div {
+        padding: 10px 15px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        color: #333;
+        text-align: left;
+    }
+
+    /* Swipe down handle */
+    .jiaara-biolink-notif-handle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        cursor: ns-resize;
+    }
+
+    .jiaara-biolink-notif-handle::after {
+        content: '';
+        width: 50px;
+        height: 5px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 3px;
+    }
+</style>
+
+<div id="jiaara-biolink-notif-wrapper">
+    <!-- Screen 1: Lock Screen -->
+    <div id="jiaara-biolink-notif-lock" class="jiaara-biolink-notif-screen">
+        <div class="jiaara-biolink-notif-lock-icon">🔒</div>
+        <div class="jiaara-biolink-notif-time" id="jiaara-time">00:00</div>
+        <div class="jiaara-biolink-notif-date" id="jiaara-date">Loading...</div>
+
+        <div class="jiaara-biolink-notif-container" id="jiaara-notif-list">
+            <!-- Items generated by JS -->
+        </div>
+
+        <div class="jiaara-biolink-notif-close-btn" onclick="jiaaraClearAllNotif()">✖</div>
+    </div>
+
+    <!-- Screen 2: Home Screen -->
+    <div id="jiaara-biolink-notif-home" class="jiaara-biolink-notif-screen" style="transform: translateY(100%);">
+        <!-- Area untuk swipe down kembali ke notif -->
+        <div class="jiaara-biolink-notif-handle" onclick="jiaaraBackToLock()"></div>
+        
+        <div style="padding-top: 40px;">
+            <div class="jiaara-biolink-notif-search-bar">
+                <input type="text" id="jiaara-app-search" placeholder="Cari Aplikasi ...." />
+                <div class="jiaara-biolink-notif-menu-trigger" onclick="jiaaraToggleMenu()">⋮</div>
+                <div class="jiaara-biolink-notif-dropdown" id="jiaara-sort-menu">
+                    <div onclick="jiaaraSortApps('default')">Default</div>
+                    <div onclick="jiaaraSortApps('az')">Urutkan A-Z</div>
+                </div>
+            </div>
+
+            <div class="jiaara-biolink-notif-grid" id="jiaara-app-grid">
+                <!-- Apps generated by JS -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- KONFIGURASI DATA ---
+    const jiaaraNotifData = [
+        { name: "Adhitya Ramadhan", img: "https://i.ibb.co/L5T3KzP/profile.jpg", text: "Hai Kawan! Lihat ini, Aku bikin video baru...", link: "#" },
+        { name: "JIAARA.ID", img: "https://i.ibb.co/V9mPrPq/icon-jiaara.png", text: "Sobat, Taukah kamu kalau mas Adit habis bikin Aplikasi?", link: "#" },
+        { name: "Adhitya Ramadhan", img: "https://i.ibb.co/L5T3KzP/profile.jpg", text: "Wah, Pakai Produk ini emang se-Worth It ini! Cobain deh!", link: "#" },
+        { name: "Psst... Jangan Lupa!", img: "https://cdn-icons-png.flaticon.com/512/3652/3652191.png", text: "Cek Promo di Akun Sosial Media @JIAARA atau Situs JIAARA.ID", link: "#" },
+        { name: "Adhitya Ramadhan", img: "https://i.ibb.co/L5T3KzP/profile.jpg", text: "Eh tau gak? mau cerita nih. Tadi masa ada ....", link: "#" }
+    ];
+
+    const jiaaraAppData = [
+        { name: "Galeri", img: "https://cdn-icons-png.flaticon.com/512/1040/1040241.png", link: "#" },
+        { name: "Github", img: "https://cdn-icons-png.flaticon.com/512/25/25231.png", link: "#" },
+        { name: "Google Bus..", img: "https://cdn-icons-png.flaticon.com/512/2991/2991147.png", link: "#" },
+        { name: "Instagram", img: "https://cdn-icons-png.flaticon.com/512/174/174855.png", link: "#" },
+        { name: "Shopee", img: "https://cdn-icons-png.flaticon.com/512/5968/5968600.png", link: "#" },
+        { name: "Tiktok", img: "https://cdn-icons-png.flaticon.com/512/3046/3046121.png", link: "#" },
+        { name: "Whatsapp", img: "https://cdn-icons-png.flaticon.com/512/124/124034.png", type: "wa" },
+        { name: "WA Bisnis", img: "https://cdn-icons-png.flaticon.com/512/5968/5968841.png", type: "wa" },
+        { name: "X", img: "https://cdn-icons-png.flaticon.com/512/5969/5969020.png", link: "#" },
+        { name: "Youtube", img: "https://cdn-icons-png.flaticon.com/512/1384/1384060.png", link: "#" },
+        { name: "Call of Duty", img: "https://play-lh.googleusercontent.com/6_GZk8s-XW97h-9u_vB_W_fPZ7U6_OqZk66BwA=w240-h480-rw", link: "#" },
+        { name: "FC Mobile", img: "https://play-lh.googleusercontent.com/9O_pU72uE6E78y0-x2H3q7-x8-v-Z0-I=w240-h480-rw", link: "#" },
+        { name: "Ninja Sage", img: "https://play-lh.googleusercontent.com/mYv_S6U_y6y-W_fPZ7U6_OqZk66BwA=w240-h480-rw", link: "#" },
+        { name: "WoiLo", img: "https://play-lh.googleusercontent.com/6_GZk8s-XW97h-9u_vB_W_fPZ7U6_OqZk66BwA=w240-h480-rw", link: "#" },
+        { name: "CapCut", img: "https://cdn-icons-png.flaticon.com/512/10069/10069720.png", link: "#" },
+        { name: "Gmail", img: "https://cdn-icons-png.flaticon.com/512/281/281769.png", link: "#" }
+    ];
+
+    let currentApps = [...jiaaraAppData];
+
+    // --- LOGIKA UTAMA ---
+    document.addEventListener("DOMContentLoaded", () => {
+        updateJiaaraTime();
+        renderJiaaraNotifs();
+        renderJiaaraApps();
+        setInterval(updateJiaaraTime, 1000);
+
+        // Pencarian Aplikasi
+        document.getElementById('jiaara-app-search').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = jiaaraAppData.filter(app => app.name.toLowerCase().includes(term));
+            renderJiaaraApps(filtered);
+        });
+    });
+
+    function updateJiaaraTime() {
+        const now = new Date();
+        const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        const dateStr = now.toLocaleDateString('id-ID', options);
+        
+        document.getElementById('jiaara-time').innerText = timeStr;
+        document.getElementById('jiaara-date').innerText = dateStr;
+    }
+
+    function renderJiaaraNotifs() {
+        const container = document.getElementById('jiaara-notif-list');
+        container.innerHTML = jiaaraNotifData.map((n, i) => `
+            <a href="${n.link}" class="jiaara-biolink-notif-item" id="jiaara-notif-${i}">
+                <img src="${n.img}" class="jiaara-biolink-notif-img">
+                <div class="jiaara-biolink-notif-content">
+                    <div class="jiaara-biolink-notif-header">
+                        <span>${n.name}</span>
+                        <span>Sekarang ▾</span>
+                    </div>
+                    <div class="jiaara-biolink-notif-body">${n.text}</div>
+                </div>
+            </a>
+        `).join('');
+    }
+
+    function renderJiaaraApps(dataArr = currentApps) {
+        const grid = document.getElementById('jiaara-app-grid');
+        grid.innerHTML = dataArr.map(app => `
+            <div class="jiaara-biolink-notif-app" onclick="jiaaraHandleAppClick('${app.type}', '${app.link}')">
+                <img src="${app.img}" alt="${app.name}">
+                <span>${app.name}</span>
+            </div>
+        `).join('');
+    }
+
+    async function jiaaraClearAllNotif() {
+        const items = document.querySelectorAll('.jiaara-biolink-notif-item');
+        // Animasi geser kiri satu per satu
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.add('jiaara-removing');
+            await new Promise(r => setTimeout(r, 100));
+        }
+        
+        // Transisi ke home screen
+        setTimeout(() => {
+            document.getElementById('jiaara-biolink-notif-lock').style.transform = 'translateY(-100%)';
+            document.getElementById('jiaara-biolink-notif-home').style.transform = 'translateY(0)';
+        }, 400);
+    }
+
+    function jiaaraBackToLock() {
+        // Kembalikan layar lock ke posisi normal
+        document.getElementById('jiaara-biolink-notif-lock').style.transform = 'translateY(0)';
+        document.getElementById('jiaara-biolink-notif-home').style.transform = 'translateY(100%)';
+        
+        // Kembalikan semua notifikasi agar terlihat lagi
+        const items = document.querySelectorAll('.jiaara-biolink-notif-item');
+        items.forEach(item => {
+            item.classList.remove('jiaara-removing');
+        });
+    }
+
+    function jiaaraHandleAppClick(type, link) {
+        if (type === 'wa') {
+            alert('Maaf, tidak membagikan nomor pribadi');
+        } else if (link && link !== '#') {
+            window.open(link, '_blank');
+        }
+    }
+
+    function jiaaraToggleMenu() {
+        const menu = document.getElementById('jiaara-sort-menu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function jiaaraSortApps(mode) {
+        if (mode === 'az') {
+            currentApps.sort((a, b) => a.name.localeCompare(b.name));
+        } else {
+            currentApps = [...jiaaraAppData];
+        }
+        renderJiaaraApps();
+        jiaaraToggleMenu();
+    }
+
+    // Menutup menu jika klik di luar
+    window.onclick = function(event) {
+        if (!event.target.matches('.jiaara-biolink-notif-menu-trigger')) {
+            document.getElementById('jiaara-sort-menu').style.display = 'none';
+        }
+    }
+</script>
