@@ -1,0 +1,536 @@
+<div class="jiaara-youtube-platform-wrapper" id="jiaara-youtube-platform-app">
+    <aside class="jiaara-youtube-platform-sidebar">
+        <div class="jiaara-youtube-platform-logo">
+            <h2>ADIT.LAB</h2>
+            <span><small>ON</small> <span class="jiaara-youtube-platform-yt-icon">▶</span> YouTube</span>
+        </div>
+        
+        <nav class="jiaara-youtube-platform-nav">
+            <button class="jiaara-youtube-platform-tab-btn active" data-tab="beranda">Beranda</button>
+            <button class="jiaara-youtube-platform-tab-btn" data-tab="short">Short</button>
+            <button class="jiaara-youtube-platform-tab-btn" data-tab="playlist">Playlist</button>
+        </nav>
+
+        <div class="jiaara-youtube-platform-categories-wrapper" id="jiaara-youtube-platform-cat-container">
+            <h3>Kategori</h3>
+            <ul id="jiaara-youtube-platform-category-list">
+                </ul>
+        </div>
+    </aside>
+
+    <main class="jiaara-youtube-platform-main">
+        <header class="jiaara-youtube-platform-header">
+            <div class="jiaara-youtube-platform-search-bar">
+                <input type="text" id="jiaara-youtube-platform-search-input" placeholder="Cari Video ....">
+                <button class="jiaara-youtube-platform-search-btn">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+            <div class="jiaara-youtube-platform-sort-container" id="jiaara-youtube-platform-sort-wrapper">
+                <select id="jiaara-youtube-platform-sort-select">
+                    <option value="newest">Terbaru</option>
+                    <option value="asc">A - Z</option>
+                    <option value="desc">Z - A</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="jiaara-youtube-platform-grid" id="jiaara-youtube-platform-post-grid">
+            </div>
+    </main>
+</div>
+
+<style>
+/* CSS JIAARA YOUTUBE PLATFORM */
+.jiaara-youtube-platform-wrapper {
+    display: flex;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.jiaara-youtube-platform-wrapper * {
+    box-sizing: border-box;
+}
+
+/* Sidebar */
+.jiaara-youtube-platform-sidebar {
+    width: 250px;
+    background-color: #000;
+    padding: 20px 0;
+    border-right: 1px solid #333;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.jiaara-youtube-platform-logo {
+    padding: 0 20px 30px 20px;
+}
+
+.jiaara-youtube-platform-logo h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.jiaara-youtube-platform-logo span {
+    font-size: 12px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+}
+
+.jiaara-youtube-platform-yt-icon {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+.jiaara-youtube-platform-nav {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.jiaara-youtube-platform-tab-btn {
+    background: transparent;
+    color: #aaa;
+    border: none;
+    text-align: left;
+    padding: 12px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.jiaara-youtube-platform-tab-btn:hover {
+    background-color: #222;
+}
+
+.jiaara-youtube-platform-tab-btn.active {
+    color: #fff;
+    font-weight: bold;
+}
+
+.jiaara-youtube-platform-categories-wrapper {
+    padding: 20px;
+}
+
+.jiaara-youtube-platform-categories-wrapper h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#jiaara-youtube-platform-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.jiaara-youtube-platform-cat-item {
+    padding: 8px 0;
+    color: #ddd;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.jiaara-youtube-platform-cat-item:hover, .jiaara-youtube-platform-cat-item.active {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Main Content */
+.jiaara-youtube-platform-main {
+    flex-grow: 1;
+    padding: 20px 40px;
+    background-color: #000;
+    overflow-y: auto;
+}
+
+.jiaara-youtube-platform-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.jiaara-youtube-platform-search-bar {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#jiaara-youtube-platform-search-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-right: none;
+    background-color: #fff;
+    color: #000;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+.jiaara-youtube-platform-search-btn {
+    background-color: #3ea6ff;
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#jiaara-youtube-platform-sort-select {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 12px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Grid Layouts */
+.jiaara-youtube-platform-grid {
+    display: grid;
+    gap: 20px;
+}
+
+/* Layout Beranda & Playlist */
+.jiaara-youtube-platform-grid.layout-beranda,
+.jiaara-youtube-platform-grid.layout-playlist {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Layout Short */
+.jiaara-youtube-platform-grid.layout-short {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.jiaara-youtube-platform-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.jiaara-youtube-platform-thumb {
+    width: 100%;
+    background: linear-gradient(to bottom, #dcedfc 50%, #8bc34a 50%, #689f38 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.jiaara-youtube-platform-grid.layout-beranda .jiaara-youtube-platform-thumb,
+.jiaara-youtube-platform-grid.layout-playlist .jiaara-youtube-platform-thumb {
+    aspect-ratio: 16 / 9;
+}
+
+.jiaara-youtube-platform-grid.layout-short .jiaara-youtube-platform-thumb {
+    aspect-ratio: 9 / 16;
+}
+
+.jiaara-youtube-platform-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.jiaara-youtube-platform-title {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.jiaara-youtube-platform-subtitle {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .jiaara-youtube-platform-grid.layout-beranda, 
+    .jiaara-youtube-platform-grid.layout-playlist { grid-template-columns: repeat(2, 1fr); }
+    .jiaara-youtube-platform-grid.layout-short { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 768px) {
+    .jiaara-youtube-platform-wrapper { flex-direction: column; }
+    .jiaara-youtube-platform-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #333; flex-direction: row; flex-wrap: wrap; justify-content: space-between;}
+    .jiaara-youtube-platform-nav { flex-direction: row; border-bottom: none; padding-bottom: 0; }
+    .jiaara-youtube-platform-header { flex-direction: column; gap: 15px; }
+    .jiaara-youtube-platform-grid.layout-beranda, 
+    .jiaara-youtube-platform-grid.layout-playlist { grid-template-columns: 1fr; }
+    .jiaara-youtube-platform-grid.layout-short { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+
+<script>
+/* JAVASCRIPT JIAARA YOUTUBE PLATFORM */
+(function() {
+    const jiaaraYTP_State = {
+        currentTab: 'beranda', // beranda | short | playlist
+        posts: [],
+        activeCategory: '',
+        searchQuery: '',
+        sortType: 'newest'
+    };
+
+    const jiaaraYTP_Config = {
+        labels: {
+            beranda: 'youtube',
+            short: 'youtube short',
+            playlist: 'youtube playlist'
+        }
+    };
+
+    const jiaaraYTP_Elements = {
+        tabs: document.querySelectorAll('.jiaara-youtube-platform-tab-btn'),
+        grid: document.getElementById('jiaara-youtube-platform-post-grid'),
+        catContainer: document.getElementById('jiaara-youtube-platform-cat-container'),
+        catList: document.getElementById('jiaara-youtube-platform-category-list'),
+        searchInput: document.getElementById('jiaara-youtube-platform-search-input'),
+        sortWrapper: document.getElementById('jiaara-youtube-platform-sort-wrapper'),
+        sortSelect: document.getElementById('jiaara-youtube-platform-sort-select')
+    };
+
+    function jiaaraYTP_Init() {
+        jiaaraYTP_Elements.tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                jiaaraYTP_Elements.tabs.forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+                jiaaraYTP_SwitchTab(e.target.dataset.tab);
+            });
+        });
+
+        jiaaraYTP_Elements.searchInput.addEventListener('input', (e) => {
+            jiaaraYTP_State.searchQuery = e.target.value.toLowerCase();
+            jiaaraYTP_Render();
+        });
+
+        jiaaraYTP_Elements.sortSelect.addEventListener('change', (e) => {
+            jiaaraYTP_State.sortType = e.target.value;
+            jiaaraYTP_Render();
+        });
+
+        // Load Default Tab
+        jiaaraYTP_SwitchTab('beranda');
+    }
+
+    function jiaaraYTP_SwitchTab(tabName) {
+        jiaaraYTP_State.currentTab = tabName;
+        jiaaraYTP_State.activeCategory = '';
+        jiaaraYTP_State.searchQuery = '';
+        jiaaraYTP_Elements.searchInput.value = '';
+        
+        // Update Grid Class
+        jiaaraYTP_Elements.grid.className = `jiaara-youtube-platform-grid layout-${tabName}`;
+
+        // Toggle UI Elements based on tab
+        if (tabName === 'beranda') {
+            jiaaraYTP_Elements.sortWrapper.style.display = 'block';
+            jiaaraYTP_Elements.catContainer.style.display = 'block';
+        } else if (tabName === 'short') {
+            jiaaraYTP_Elements.sortWrapper.style.display = 'none';
+            jiaaraYTP_Elements.catContainer.style.display = 'block';
+        } else if (tabName === 'playlist') {
+            jiaaraYTP_Elements.sortWrapper.style.display = 'none';
+            jiaaraYTP_Elements.catContainer.style.display = 'none';
+        }
+
+        jiaaraYTP_FetchData(jiaaraYTP_Config.labels[tabName]);
+    }
+
+    function jiaaraYTP_FetchData(mainLabel) {
+        jiaaraYTP_Elements.grid.innerHTML = '<p style="color:#aaa;">Memuat data...</p>';
+        
+        // Blogger Feed API URL (Relative URL works on Blogspot domain)
+        const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(mainLabel)}?alt=json&max-results=150`;
+
+        fetch(feedUrl)
+            .then(response => {
+                if(!response.ok) throw new Error('Network error');
+                return response.json();
+            })
+            .then(data => {
+                jiaaraYTP_State.posts = jiaaraYTP_FormatBloggerData(data, mainLabel);
+                jiaaraYTP_ExtractCategories(mainLabel);
+                jiaaraYTP_Render();
+            })
+            .catch(error => {
+                console.error('Jiaara YTP Fetch Error:', error);
+                jiaaraYTP_Elements.grid.innerHTML = '<p style="color:red;">Gagal memuat postingan atau label tidak ditemukan.</p>';
+            });
+    }
+
+    function jiaaraYTP_FormatBloggerData(json, mainLabelFilter) {
+        if (!json.feed || !json.feed.entry) return [];
+        return json.feed.entry.map(entry => {
+            let thumbUrl = '';
+            
+            // Logic Extract HD Thumbnail
+            if (entry.media$thumbnail) {
+                let rawThumb = entry.media$thumbnail.url;
+                
+                // Jika URL gambar dari Blogger server
+                if (rawThumb.includes('bp.blogspot.com') || rawThumb.includes('googleusercontent.com')) {
+                    thumbUrl = rawThumb.replace(/\/(s|w|h)\d+(\-c)?\//, '/s0/'); // s0 mengambil resolusi asli (HD)
+                } 
+                // Jika URL adalah thumbnail YouTube bawaan
+                else if (rawThumb.includes('ytimg.com') || rawThumb.includes('img.youtube.com')) {
+                    thumbUrl = rawThumb.replace('default.jpg', 'maxresdefault.jpg').replace('hqdefault.jpg', 'maxresdefault.jpg');
+                } else {
+                    thumbUrl = rawThumb.replace('/s72-c/', '/s0/');
+                }
+            }
+            
+            let link = entry.link.find(l => l.rel === 'alternate')?.href || '#';
+            let categories = entry.category ? entry.category.map(c => c.term) : [];
+            let published = entry.published ? entry.published.$t : '';
+
+            // Remove the main label from secondary labels list
+            let secondaryLabels = categories.filter(c => c.toLowerCase() !== mainLabelFilter.toLowerCase());
+
+            return {
+                title: entry.title.$t,
+                url: link,
+                thumb: thumbUrl,
+                labels: secondaryLabels,
+                allLabelsStr: secondaryLabels.join(' ').toLowerCase(),
+                date: new Date(published).getTime()
+            };
+        });
+    }
+
+    function jiaaraYTP_ExtractCategories() {
+        if (jiaaraYTP_State.currentTab === 'playlist') return; // Playlist doesn't need category filter
+
+        let allSecondaryLabels = new Set();
+        jiaaraYTP_State.posts.forEach(post => {
+            post.labels.forEach(lbl => allSecondaryLabels.add(lbl));
+        });
+
+        let html = '';
+        allSecondaryLabels.forEach(cat => {
+            html += `<li class="jiaara-youtube-platform-cat-item" data-cat="${cat}">> ${cat}</li>`;
+        });
+        
+        jiaaraYTP_Elements.catList.innerHTML = html;
+
+        // Attach event listeners to new categories
+        document.querySelectorAll('.jiaara-youtube-platform-cat-item').forEach(el => {
+            el.addEventListener('click', (e) => {
+                document.querySelectorAll('.jiaara-youtube-platform-cat-item').forEach(i => i.classList.remove('active'));
+                
+                if(jiaaraYTP_State.activeCategory === e.target.dataset.cat) {
+                    // Toggle off
+                    jiaaraYTP_State.activeCategory = '';
+                } else {
+                    // Toggle on
+                    e.target.classList.add('active');
+                    jiaaraYTP_State.activeCategory = e.target.dataset.cat;
+                }
+                jiaaraYTP_Render();
+            });
+        });
+    }
+
+    function jiaaraYTP_Render() {
+        let filteredPosts = jiaaraYTP_State.posts;
+
+        // 1. Filter by Category Sidebar (Beranda & Short)
+        if (jiaaraYTP_State.activeCategory !== '') {
+            filteredPosts = filteredPosts.filter(post => 
+                post.labels.includes(jiaaraYTP_State.activeCategory)
+            );
+        }
+
+        // 2. Filter by Search Box
+        if (jiaaraYTP_State.searchQuery !== '') {
+            if (jiaaraYTP_State.currentTab === 'beranda') {
+                // Beranda: Search by Title
+                filteredPosts = filteredPosts.filter(post => 
+                    post.title.toLowerCase().includes(jiaaraYTP_State.searchQuery)
+                );
+            } else {
+                // Short & Playlist: Search by Label
+                filteredPosts = filteredPosts.filter(post => 
+                    post.allLabelsStr.includes(jiaaraYTP_State.searchQuery)
+                );
+            }
+        }
+
+        // 3. Sort
+        if (jiaaraYTP_State.currentTab === 'beranda') {
+            if (jiaaraYTP_State.sortType === 'newest') {
+                filteredPosts.sort((a, b) => b.date - a.date);
+            } else if (jiaaraYTP_State.sortType === 'asc') {
+                filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (jiaaraYTP_State.sortType === 'desc') {
+                filteredPosts.sort((a, b) => b.title.localeCompare(a.title));
+            }
+        }
+
+        // 4. Build HTML Grid
+        jiaaraYTP_Elements.grid.innerHTML = '';
+        if (filteredPosts.length === 0) {
+            jiaaraYTP_Elements.grid.innerHTML = '<p style="color:#aaa; grid-column: 1 / -1;">Tidak ada postingan yang ditemukan.</p>';
+            return;
+        }
+
+        filteredPosts.forEach(post => {
+            let subtitleHtml = '';
+            // Menghilangkan "2 Baris" pada tab Beranda dan Short
+            if (jiaaraYTP_State.currentTab === 'playlist') {
+                subtitleHtml = '<div class="jiaara-youtube-platform-subtitle">Lihat Selengkapnya</div>';
+            }
+
+            let imgHtml = post.thumb ? `<img src="${post.thumb}" alt="${post.title}">` : '';
+
+            const card = document.createElement('a');
+            card.href = post.url;
+            card.className = 'jiaara-youtube-platform-card';
+            card.innerHTML = `
+                <div class="jiaara-youtube-platform-thumb">
+                    ${imgHtml}
+                    </div>
+                <div class="jiaara-youtube-platform-title">${post.title}</div>
+                ${subtitleHtml}
+            `;
+            jiaaraYTP_Elements.grid.appendChild(card);
+        });
+    }
+
+    // Initialize after DOM load
+    document.addEventListener('DOMContentLoaded', jiaaraYTP_Init);
+
+})();
+</script>
