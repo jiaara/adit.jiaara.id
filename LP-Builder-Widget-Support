@@ -1,0 +1,354 @@
+<style>
+/* =========================
+   JIAARA SUPPORT SECTION
+   Namespace: jiaara-support
+========================= */
+
+.jiaara-support-wrapper *{
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+.jiaara-support-wrapper{
+  width:100%;
+  max-width:100%;
+  padding:20px;
+  background:#f5f5f5;
+  color:#111;
+}
+
+.jiaara-support-container{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* HEADER */
+.jiaara-support-topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.jiaara-support-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.jiaara-support-logo img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+}
+
+.jiaara-support-logo h1{
+  margin:0;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:0.5px;
+}
+
+.jiaara-support-nav{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.jiaara-support-nav a{
+  text-decoration:none;
+  color:#111;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.jiaara-support-nav a:hover{
+  opacity:0.7;
+}
+
+.jiaara-support-other-btn{
+  background:#e60012;
+  color:#fff !important;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  text-align:center;
+  line-height:1.2;
+}
+
+/* HERO */
+.jiaara-support-hero{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.jiaara-support-left,
+.jiaara-support-right{
+  flex:1 1 450px;
+}
+
+.jiaara-support-left img{
+  width:100%;
+  border-radius:10px;
+  display:block;
+}
+
+.jiaara-support-right h2{
+  margin:0 0 15px;
+  font-size:24px;
+  line-height:1.15;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.jiaara-support-blue{
+  color:#2b95d6;
+}
+
+.jiaara-support-red{
+  color:#d40000;
+}
+
+.jiaara-support-right p{
+  font-size:16px;
+  line-height:1.6;
+  margin:0 0 18px;
+}
+
+.jiaara-support-trakteer{
+  margin:20px 0 8px;
+}
+
+.jiaara-support-small{
+  color:#999;
+  font-size:13px;
+}
+
+/* FAQ */
+.jiaara-support-faq{
+  margin-top:30px;
+}
+
+.jiaara-support-faq h3{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.jiaara-support-select{
+  width:100%;
+  padding:14px 18px;
+  border-radius:30px;
+  border:1.5px solid #111;
+  font-size:18px;
+  background:#fff;
+  outline:none;
+  cursor:pointer;
+}
+
+.jiaara-support-answer{
+  margin-top:12px;
+  width:100%;
+  min-height:180px;
+  border:1.5px solid #111;
+  border-radius:24px;
+  background:#fff;
+  padding:18px;
+  font-size:18px;
+  line-height:1.7;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .jiaara-support-topbar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .jiaara-support-nav{
+    gap:12px;
+  }
+
+  .jiaara-support-right h2{
+    font-size:20px;
+  }
+
+  .jiaara-support-select{
+    font-size:16px;
+  }
+
+  .jiaara-support-answer{
+    font-size:16px;
+  }
+
+}
+</style>
+
+<div class="jiaara-support-wrapper">
+  <div class="jiaara-support-container">
+
+    <!-- TOPBAR -->
+    <div class="jiaara-support-topbar">
+
+      <div class="jiaara-support-logo">
+        <!-- GANTI GAMBAR KOPI -->
+        <img src="https://cdn-icons-png.flaticon.com/512/924/924514.png" alt="Coffee">
+        <h1>SUPPORT KAMI</h1>
+      </div>
+
+      <div class="jiaara-support-nav">
+        <a href="https://jiaara.id/" target="_blank">BERANDA @JIAARA</a>
+
+        <a href="https://aditlab.com/" target="_blank">BERANDA @ADIT.LAB</a>
+
+        <a href="https://wa.me/" target="_blank" class="jiaara-support-other-btn">
+          AKU INGIN DUKUNG<br>
+          DENGAN CARA LAIN
+        </a>
+      </div>
+
+    </div>
+
+    <!-- HERO -->
+    <div class="jiaara-support-hero">
+
+      <div class="jiaara-support-left">
+        <!-- GANTI GAMBAR ILUSTRASI -->
+        <img src="https://i.imgur.com/7g8YV7M.png" alt="Support Illustration">
+      </div>
+
+      <div class="jiaara-support-right">
+
+        <h2>
+          DUKUNG <span class="jiaara-support-blue">@ADIT.LAB</span> BERSAMA DIVISI
+          <i>CORPORATE SOCIAL RESPONSIBILITY (CSR)</i>
+          <span class="jiaara-support-red">JIAARA.ID</span>
+          AGAR TETAP SEMANGAT MEMBUAT APLIKASI,
+          ASSET DIGITAL DAN KONTEN YANG GRATIS !
+        </h2>
+
+        <p>
+          Hosting Gratis disediakan Google, Domain Sudah Ditanggung lini bisnis JIAARA. Tapi?
+        </p>
+
+        <p>
+          Seluruh lini kegiatan non-profit kami membutuhkan dukunganmu!
+        </p>
+
+        <!-- TRAKTEER -->
+        <div class="jiaara-support-trakteer">
+          <script type='text/javascript' src='https://edge-cdn.trakteer.id/js/trbtn-overlay.min.js?v=14-05-2025'></script>
+
+          <script type='text/javascript' class='troverlay'>
+          (function() {
+            var trbtnId = trbtnOverlay.init(
+              'Dukung Saya di Trakteer',
+              '#be1e2d',
+              'https://trakteer.id/v1/jiaara/tip/embed/modal',
+              'https://edge-cdn.trakteer.id/images/embed/trbtn-icon.png?v=14-05-2025',
+              '40',
+              'inline'
+            );
+
+            trbtnOverlay.draw(trbtnId);
+          })();
+          </script>
+        </div>
+
+        <div class="jiaara-support-small">
+          Membutuhkan waktu kurang dari satu menit
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="jiaara-support-faq">
+
+      <h3>F.A.Q :</h3>
+
+      <select class="jiaara-support-select" id="jiaara-support-faq-select">
+        <option value="">– Pilih Pertanyaan –</option>
+
+        <option value="q1">
+          Kenapa membuka donasi?
+        </option>
+
+        <option value="q2">
+          Dana digunakan untuk apa?
+        </option>
+
+        <option value="q3">
+          Apakah ini wajib?
+        </option>
+
+        <option value="q4">
+          Apakah nominal donasi bebas?
+        </option>
+
+      </select>
+
+      <div class="jiaara-support-answer" id="jiaara-support-answer">
+        Jawaban Akan Muncul di sini...
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* =========================
+   JIAARA SUPPORT FAQ
+========================= */
+
+(function(){
+
+  const jiaaraSupportAnswers = {
+
+    q1: `
+      Kami membuka dukungan agar seluruh proyek non-profit seperti aplikasi,
+      asset digital, konten edukasi dan eksperimen digital dapat terus berjalan
+      dan berkembang secara gratis untuk semua orang.
+    `,
+
+    q2: `
+      Dana digunakan untuk kebutuhan operasional seperti domain, server,
+      maintenance aplikasi, pengembangan fitur baru, riset, dan produksi konten.
+    `,
+
+    q3: `
+      Tidak wajib sama sekali. Dukungan bersifat sukarela dan tidak ada paksaan.
+      Kamu tetap bisa menikmati seluruh konten gratis seperti biasa.
+    `,
+
+    q4: `
+      Ya, nominal donasi sepenuhnya bebas dan dapat disesuaikan dengan kemampuanmu.
+      Dukungan sekecil apapun sangat berarti bagi perkembangan project kami.
+    `
+
+  };
+
+  const jiaaraSupportSelect = document.getElementById('jiaara-support-faq-select');
+  const jiaaraSupportAnswer = document.getElementById('jiaara-support-answer');
+
+  jiaaraSupportSelect.addEventListener('change', function(){
+
+    const selected = this.value;
+
+    if(jiaaraSupportAnswers[selected]){
+      jiaaraSupportAnswer.innerHTML = jiaaraSupportAnswers[selected];
+    } else {
+      jiaaraSupportAnswer.innerHTML = 'Jawaban Akan Muncul di sini...';
+    }
+
+  });
+
+})();
+</script>
