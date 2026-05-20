@@ -1,0 +1,350 @@
+<style>
+  /* --- WRAPPER UTAMA --- */
+  #jiaara-blog-headline-wrapper {
+    max-width: 85%;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    box-sizing: border-box;
+  }
+  #jiaara-blog-headline-wrapper * {
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+
+  /* --- TRENDING BAR --- */
+  .jiaara-blog-headline-trending-box {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 20px;
+    height: 40px;
+    overflow: hidden;
+  }
+  .jiaara-blog-headline-trending-label {
+    background-color: #ff0000;
+    color: #fff;
+    font-weight: bold;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    z-index: 2;
+  }
+  .jiaara-blog-headline-trending-ticker {
+    flex: 1;
+    padding: 0 15px;
+    font-style: italic;
+    font-size: 15px;
+  }
+  .jiaara-blog-headline-trending-ticker a {
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  .jiaara-blog-headline-trending-ticker a:hover {
+    color: #00b4ed;
+  }
+
+  /* --- SECTION TITLE --- */
+  .jiaara-blog-headline-section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+  .jiaara-blog-headline-border-line {
+    border-bottom: 1px solid #ddd;
+    margin-top: -21px;
+    margin-bottom: 20px;
+  }
+
+  /* --- LAYOUT GRID UTAMA --- */
+  .jiaara-blog-headline-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 25px;
+  }
+
+  /* --- HEADLINE BESAR (KIRI) --- */
+  .jiaara-blog-headline-main-post {
+    position: relative;
+    display: block; 
+    width: 100%;
+    aspect-ratio: 16 / 10; 
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: #eee;
+  }
+  .jiaara-blog-headline-main-post img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    margin: 0; 
+    padding: 0;
+  }
+  .jiaara-blog-headline-main-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #43a8df;
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 2px;
+    z-index: 3;
+  }
+  .jiaara-blog-headline-gradient {
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(17, 172, 227, 1) 0%, rgba(17, 172, 227, 0.8) 50%, transparent 100%);
+    padding: 80px 25px 25px 25px;
+    z-index: 2;
+    box-sizing: border-box;
+  }
+  .jiaara-blog-headline-main-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.3;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  /* --- HEADLINE KECIL (KANAN) - PERBAIKAN AREA KLIK --- */
+  .jiaara-blog-headline-small-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 25px;
+  }
+  .jiaara-blog-headline-small-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #333;
+  }
+  .jiaara-blog-headline-small-item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .jiaara-blog-headline-small-thumb {
+    display: block; /* Diubah menjadi block karena sekarang menggunakan tag <a> */
+    width: 100px;
+    height: 80px;
+    flex-shrink: 0;
+    background-color: #e0f0ff;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .jiaara-blog-headline-small-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .jiaara-blog-headline-small-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .jiaara-blog-headline-small-tag {
+    background-color: #3b9cd7;
+    color: #fff;
+    font-size: 14px;
+    padding: 2px 8px;
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 5px;
+    border-radius: 2px;
+  }
+  .jiaara-blog-headline-small-title-link {
+    text-decoration: none;
+    display: block;
+  }
+  .jiaara-blog-headline-small-title {
+    color: #000;
+    font-size: 16px;
+    margin: 0;
+    font-weight: normal;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s ease;
+  }
+  .jiaara-blog-headline-small-title-link:hover .jiaara-blog-headline-small-title {
+    color: #43a8df; /* Efek hover biru saat teks judul diklik */
+  }
+
+  /* --- RESPONSIVE MOBILE --- */
+  @media (max-width: 900px) {
+    .jiaara-blog-headline-grid { grid-template-columns: 1fr; }
+    .jiaara-blog-headline-small-item:nth-last-child(-n+2) { border-bottom: 1px solid #333; }
+    .jiaara-blog-headline-small-item:last-child { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    #jiaara-blog-headline-wrapper { max-width: 100%; padding: 0 10px; }
+    .jiaara-blog-headline-small-grid { grid-template-columns: 1fr; }
+    .jiaara-blog-headline-trending-label { font-size: 14px; padding: 0 10px; }
+  }
+</style>
+
+<div id="jiaara-blog-headline-wrapper">
+  
+  <div class="jiaara-blog-headline-trending-box">
+    <div class="jiaara-blog-headline-trending-label">TRENDING</div>
+    <div class="jiaara-blog-headline-trending-ticker">
+      <marquee direction="left" scrollamount="5" onmouseover="this.stop()" onmouseout="this.start()" id="jiaara-blog-headline-trending-content">
+        Loading trending...
+      </marquee>
+    </div>
+  </div>
+
+  <div class="jiaara-blog-headline-section-title">HEADLINE</div>
+  <div class="jiaara-blog-headline-border-line"></div>
+
+  <div class="jiaara-blog-headline-grid">
+    <div id="jiaara-blog-headline-main-area"></div>
+    <div class="jiaara-blog-headline-small-grid" id="jiaara-blog-headline-small-area"></div>
+  </div>
+</div>
+
+<script>
+  function jiaara_blog_headline_getImg(entry, size) {
+    var imgUrl = '';
+    if (entry.media$thumbnail) {
+      imgUrl = entry.media$thumbnail.url;
+      if (imgUrl.match(/\/s[0-9]+(\-c)?\//)) {
+        return imgUrl.replace(/\/s[0-9]+(\-c)?\//, '/' + size + '/');
+      }
+      return imgUrl;
+    }
+    var postContent = '';
+    if (entry.content && entry.content.$t) {
+      postContent = entry.content.$t;
+    } else if (entry.summary && entry.summary.$t) {
+      postContent = entry.summary.$t;
+    }
+    if (postContent) {
+      var imgRegex = /<img[^>]+src=(["'])(.*?)\1/i;
+      var match = postContent.match(imgRegex);
+      if (match && match[2]) {
+        return match[2];
+      }
+    }
+    return 'https://via.placeholder.com/600x400?text=Tidak+Ada+Gambar';
+  }
+
+  // Perbaikan Filter Label Murni Tanpa Tulisan "Berita" Manual
+  function jiaara_blog_headline_getCat(entry) {
+    var exclude = ['headline', 'headline1', 'headline2', 'blog', 'trending'];
+    if (entry.category) {
+      for (var i = 0; i < entry.category.length; i++) {
+        var cat = entry.category[i].term;
+        if (exclude.indexOf(cat.toLowerCase()) === -1) {
+          return cat; // Mengembalikan label asli selain label yang dilarang di atas
+        }
+      }
+    }
+    return ''; // Mengembalikan kosong jika tidak ada label valid
+  }
+
+  function jiaara_blog_headline_renderTrending(json) {
+    var container = document.getElementById('jiaara-blog-headline-trending-content');
+    var html = '';
+    if (json.feed.entry) {
+      for (var i = 0; i < json.feed.entry.length; i++) {
+        var entry = json.feed.entry[i];
+        var title = entry.title.$t;
+        var link = entry.link.find(l => l.rel === 'alternate').href;
+        html += '<a href="' + link + '">' + title + '</a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; ';
+      }
+    } else {
+      html = 'Tidak ada post trending saat ini.';
+    }
+    container.innerHTML = html;
+  }
+
+  function jiaara_blog_headline_renderMain(json) {
+    var container = document.getElementById('jiaara-blog-headline-main-area');
+    if (json.feed.entry && json.feed.entry.length > 0) {
+      var entry = json.feed.entry[0];
+      var title = entry.title.$t;
+      var link = entry.link.find(l => l.rel === 'alternate').href;
+      var img = jiaara_blog_headline_getImg(entry, 'w800-h500-c');
+      var cat = jiaara_blog_headline_getCat(entry);
+      
+      // Jika label/kategori ada, tampilkan. Jika kosong, sembunyikan kotak birunya.
+      var tagHtml = cat !== '' ? `<span class="jiaara-blog-headline-main-tag">${cat}</span>` : '';
+
+      container.innerHTML = `
+        <a href="${link}" class="jiaara-blog-headline-main-post">
+          <img src="${img}" alt="${title}">
+          ${tagHtml}
+          <div class="jiaara-blog-headline-gradient">
+            <h3 class="jiaara-blog-headline-main-title">${title}</h3>
+          </div>
+        </a>
+      `;
+    }
+  }
+
+  function jiaara_blog_headline_renderSmall(json) {
+    var container = document.getElementById('jiaara-blog-headline-small-area');
+    var html = '';
+    if (json.feed.entry) {
+      for (var i = 0; i < json.feed.entry.length; i++) {
+        var entry = json.feed.entry[i];
+        var title = entry.title.$t;
+        var link = entry.link.find(l => l.rel === 'alternate').href;
+        var img = jiaara_blog_headline_getImg(entry, 'w150-h120-c'); 
+        var cat = jiaara_blog_headline_getCat(entry);
+
+        // Jika label/kategori ada, tampilkan. Jika kosong, sembunyikan kotak birunya.
+        var tagHtml = cat !== '' ? `<span class="jiaara-blog-headline-small-tag">${cat}</span>` : '';
+
+        // Struktur HTML diubah: Area luar menggunakan <div>, link <a> hanya di gambar dan judul
+        html += `
+          <div class="jiaara-blog-headline-small-item">
+            <a href="${link}" class="jiaara-blog-headline-small-thumb">
+              <img src="${img}" alt="${title}">
+            </a>
+            <div class="jiaara-blog-headline-small-content">
+              ${tagHtml}
+              <a href="${link}" class="jiaara-blog-headline-small-title-link">
+                <h4 class="jiaara-blog-headline-small-title">${title}</h4>
+              </a>
+            </div>
+          </div>
+        `;
+      }
+    }
+    container.innerHTML = html;
+  }
+  
+  function jiaara_blog_headline_injectScript(url) {
+    var s = document.createElement('script');
+    s.src = url;
+    document.body.appendChild(s);
+  }
+
+  // Pemanggilan API berdasarkan Label masing-masing (Pastikan kapital hurufnya persis di blog anda)
+  jiaara_blog_headline_injectScript('/feeds/posts/default/-/trending?max-results=5&alt=json-in-script&callback=jiaara_blog_headline_renderTrending');
+  
+  jiaara_blog_headline_injectScript('/feeds/posts/default/-/headline1?max-results=1&alt=json-in-script&callback=jiaara_blog_headline_renderMain');
+  
+  jiaara_blog_headline_injectScript('/feeds/posts/default/-/headline2?max-results=6&alt=json-in-script&callback=jiaara_blog_headline_renderSmall');
+</script>
