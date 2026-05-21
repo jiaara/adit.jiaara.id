@@ -1,0 +1,192 @@
+<p></p><div class="separator" style="clear: both; text-align: center;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrrUci7Dni59qt0qETee9PUg07-rMg60HFqCQe2EGW1hkfzdLYmlHC5UjQ86-EAAJ74CeZ-Lx4XxI-HDa8nH_66OXXBCzwZq-tkYnOGFqSs0s6g2GLmh9hRBxWL5UoohBvOvXQgB7St6DxcGYmLqptl9znKqi4rRCNwX-FOTr1phvQk2hvuHnO8GIOuJk/s1350/ADHITYA%20RAMADHAN%20-%20ADITLAB%20-%20Hidup%20Bersama%20Gen-Z%20The%20Series.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1350" data-original-width="1080" height="320" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrrUci7Dni59qt0qETee9PUg07-rMg60HFqCQe2EGW1hkfzdLYmlHC5UjQ86-EAAJ74CeZ-Lx4XxI-HDa8nH_66OXXBCzwZq-tkYnOGFqSs0s6g2GLmh9hRBxWL5UoohBvOvXQgB7St6DxcGYmLqptl9znKqi4rRCNwX-FOTr1phvQk2hvuHnO8GIOuJk/s320/ADHITYA%20RAMADHAN%20-%20ADITLAB%20-%20Hidup%20Bersama%20Gen-Z%20The%20Series.jpg" width="256" /></a></div><br />&nbsp;<p></p>
+
+
+<!-- Container Utama -->
+<div class="aditlab-toc-bytitle-main-container">
+    <!-- Header sesuai gambar -->
+    <div class="aditlab-toc-bytitle-header">
+        The Series: Hidup Melawan Bersama Gen-Z
+    </div>
+
+    <!-- Tempat Daftar Judul Muncul -->
+    <div id="aditlab-toc-bytitle-list">
+        <div class="aditlab-toc-bytitle-loading">Memuat daftar isi...</div>
+    </div>
+
+    <!-- Navigasi Pagination -->
+    <div id="aditlab-toc-bytitle-pagination" class="aditlab-toc-bytitle-pagination"></div>
+</div>
+
+<style>
+/* CSS dengan Prefix Unik */
+.aditlab-toc-bytitle-main-container {
+    max-width: 85%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.aditlab-toc-bytitle-header {
+    background-color: #3498db; /* Warna biru sesuai gambar */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    border: 1px solid #000;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.aditlab-toc-bytitle-item {
+    border: 1px solid #000;
+    margin-top: -1px; /* Menghilangkan double border antar baris */
+    padding: 8px 15px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.aditlab-toc-bytitle-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.aditlab-toc-bytitle-item:hover {
+    background-color: #f9f9f9;
+}
+
+.aditlab-toc-bytitle-loading {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+/* Style Pagination */
+.aditlab-toc-bytitle-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.aditlab-toc-bytitle-page-btn {
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    cursor: pointer;
+    background: white;
+    color: #333;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.aditlab-toc-bytitle-page-btn:hover {
+    background-color: #eee;
+}
+
+.aditlab-toc-bytitle-page-btn.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.aditlab-toc-bytitle-page-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+</style>
+
+<script>
+/* JavaScript dengan Prefix Unik */
+var aditlab_toc_config = {
+    maxResults: 20, // Maksimal baris per halaman
+    filterKeyword: "Hidup Bersama Gen-Z:", // Filter kata kunci
+    excludeKeyword: "The Series" // Kecualikan kata ini
+};
+
+var aditlab_toc_data = [];
+var aditlab_toc_current_page = 1;
+
+function aditlab_toc_bytitle_load() {
+    // Mengambil feed dari blog itu sendiri
+    const feedUrl = "/feeds/posts/summary?alt=json&max-results=999";
+    
+    fetch(feedUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.feed.entry) {
+                // Proses filtering data
+                aditlab_toc_data = data.feed.entry.filter(entry => {
+                    let title = entry.title.$t;
+                    return title.includes(aditlab_toc_config.filterKeyword) && 
+                          !title.includes(aditlab_toc_config.excludeKeyword);
+                }).map(entry => {
+                    // Cari URL postingan
+                    let postUrl = "#";
+                    for (let i = 0; i < entry.link.length; i++) {
+                        if (entry.link[i].rel === 'alternate') {
+                            postUrl = entry.link[i].href;
+                            break;
+                        }
+                    }
+                    return {
+                        title: entry.title.$t,
+                        url: postUrl
+                    };
+                });
+
+                aditlab_toc_bytitle_render(1);
+            } else {
+                document.getElementById('aditlab-toc-bytitle-list').innerHTML = '<div class="aditlab-toc-bytitle-item">Tidak ada postingan ditemukan.</div>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching feed:', error);
+            document.getElementById('aditlab-toc-bytitle-list').innerHTML = '<div class="aditlab-toc-bytitle-item">Gagal memuat data.</div>';
+        });
+}
+
+function aditlab_toc_bytitle_render(page) {
+    aditlab_toc_current_page = page;
+    const listContainer = document.getElementById('aditlab-toc-bytitle-list');
+    const paginationContainer = document.getElementById('aditlab-toc-bytitle-pagination');
+    
+    // Hitung index data
+    const start = (page - 1) * aditlab_toc_config.maxResults;
+    const end = start + aditlab_toc_config.maxResults;
+    const paginatedItems = aditlab_toc_data.slice(start, end);
+
+    // Tampilkan List
+    let html = '';
+    if (paginatedItems.length > 0) {
+        paginatedItems.forEach(item => {
+            html += `<div class="aditlab-toc-bytitle-item"><a href="${item.url}">${item.title}</a></div>`;
+        });
+    } else {
+        html = '<div class="aditlab-toc-bytitle-item">Data kosong.</div>';
+    }
+    listContainer.innerHTML = html;
+
+    // Setup Pagination
+    const totalPages = Math.ceil(aditlab_toc_data.length / aditlab_toc_config.maxResults);
+    let paginationHtml = '';
+
+    if (totalPages > 1) {
+        // Tombol Sebelumnya
+        paginationHtml += `<button class="aditlab-toc-bytitle-page-btn ${page === 1 ? 'disabled' : ''}" onclick="if(${page} > 1) aditlab_toc_bytitle_render(${page - 1})">&lt;</button>`;
+
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHtml += `<button class="aditlab-toc-bytitle-page-btn ${i === page ? 'active' : ''}" onclick="aditlab_toc_bytitle_render(${i})">${i}</button>`;
+        }
+
+        // Tombol Sesudahnya
+        paginationHtml += `<button class="aditlab-toc-bytitle-page-btn ${page === totalPages ? 'disabled' : ''}" onclick="if(${page} < ${totalPages}) aditlab_toc_bytitle_render(${page + 1})">&gt;</button>`;
+    }
+    paginationContainer.innerHTML = paginationHtml;
+}
+
+// Jalankan fungsi saat window load
+window.onload = aditlab_toc_bytitle_load;
+</script>
