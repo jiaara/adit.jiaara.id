@@ -1,4 +1,5 @@
 <style>
+  /* ========== CSS TRENDING DAN HEADLINE ========== */
   /* --- WRAPPER UTAMA --- */
   #jiaara-blog-headline-wrapper {
     max-width: 85%;
@@ -200,6 +201,416 @@
     .jiaara-blog-headline-small-grid { grid-template-columns: 1fr; }
     .jiaara-blog-headline-trending-label { font-size: 14px; padding: 0 10px; }
   }
+  
+  /* ========== CSS TRENDING DAN HEADLINE ========== */
+   /* Reset & Container */
+    .jiaara-blog-series-container {
+        max-width: 85%;
+        margin: 30px auto;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        box-sizing: border-box;
+    }
+    
+    .jiaara-blog-series-container * {
+        box-sizing: border-box;
+    }
+
+    /* Header Styling */
+    .jiaara-blog-series-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .jiaara-blog-series-title {
+        font-size: 24px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #000;
+        letter-spacing: 0.5px;
+        margin: 0;
+    }
+
+    /* Navigation Buttons */
+    .jiaara-blog-series-nav {
+        display: flex;
+        gap: 15px;
+    }
+
+    .jiaara-blog-series-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .jiaara-blog-series-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .jiaara-blog-series-btn:hover {
+        transform: scale(1.1);
+        color: #555;
+    }
+
+    /* Track / Slider Styling */
+    .jiaara-blog-series-track {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        padding-bottom: 15px; /* Space for box-shadow if needed */
+    }
+
+    .jiaara-blog-series-track::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    /* Individual Item Card */
+    .jiaara-blog-series-item {
+        flex: 0 0 calc(25% - 15px); /* 4 items layout by default */
+        scroll-snap-align: start;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Image Wrapper (4:5 Aspect Ratio & Rounded) */
+    .jiaara-blog-series-img-wrap {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: #d8f1ff; /* Warna background default awan */
+        position: relative;
+    }
+
+    .jiaara-blog-series-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures external/internal images fill 4:5 perfectly */
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .jiaara-blog-series-item:hover .jiaara-blog-series-img-wrap img {
+        transform: scale(1.05);
+    }
+
+    /* Post Title Text */
+    .jiaara-blog-series-post-title {
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: 700;
+        color: #000;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Max 2 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-decoration: none;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+        .jiaara-blog-series-item { flex: 0 0 calc(33.333% - 13.33px); } /* 3 items */
+    }
+    @media (max-width: 768px) {
+        .jiaara-blog-series-container { max-width: 95%; }
+        .jiaara-blog-series-item { flex: 0 0 calc(50% - 10px); } /* 2 items */
+        .jiaara-blog-series-title { font-size: 20px; }
+    }
+    @media (max-width: 480px) {
+        .jiaara-blog-series-item { flex: 0 0 85%; } /* 1.2 items showing partial next */
+        .jiaara-blog-series-track { gap: 15px; }
+    }
+  
+  
+    /* ========== CSS KATEGORI BERLABEL 2 WARNA ========== */
+  
+  /* Wrapper Utama dengan Max-Width 85% */
+    #jiaara-blog-kategori-wrapper {
+        max-width: 85%;
+        margin: 0 auto;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Bagian Header Merah */
+    .jiaara-blog-kategori-header {
+        background-color: #ff0000;
+        color: #ffffff;
+        text-align: center;
+        font-weight: bold;
+        padding: 8px 10px;
+        font-size: 16px;
+    }
+
+    /* Container List Postingan */
+    #jiaara-blog-kategori-list {
+        border-left: 1px solid #888;
+        border-right: 1px solid #888;
+        border-bottom: 1px solid #888;
+        background-color: #ffffff;
+    }
+
+    /* Baris Postingan */
+    .jiaara-blog-kategori-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #888; /* Garis pembatas setiap baris */
+        padding: 6px 12px;
+    }
+
+    /* Judul Postingan (Desktop tetap 1 baris) */
+    .jiaara-blog-kategori-title {
+        font-weight: bold;
+        color: #000000;
+        text-decoration: none;
+        font-size: 14px;
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 15px;
+    }
+
+    .jiaara-blog-kategori-title:hover {
+        text-decoration: underline;
+    }
+
+    /* Area Label Kanan */
+    .jiaara-blog-kategori-labels {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-shrink: 0; /* Agar label tidak menyusut tertekan judul */
+    }
+
+    /* Desain Dasar Label */
+    .jiaara-blog-kategori-label-red,
+    .jiaara-blog-kategori-label-blue {
+        padding: 4px 0;
+        color: #ffffff;
+        font-size: 12px;
+        text-align: center;
+        min-width: 90px;
+        display: inline-block;
+        text-transform: lowercase;
+    }
+
+    /* Warna Label Khusus */
+    .jiaara-blog-kategori-label-red {
+        background-color: #ff0000;
+    }
+    .jiaara-blog-kategori-label-blue {
+        background-color: #358ee1;
+    }
+
+    /* Navigasi Pagination */
+    #jiaara-blog-kategori-pagination {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 15px;
+    }
+
+    .jiaara-blog-kategori-page-btn {
+        padding: 6px 12px;
+        border: 1px solid #358ee1;
+        background-color: #ffffff;
+        color: #358ee1;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: all 0.2s;
+    }
+
+    .jiaara-blog-kategori-page-btn.active {
+        background-color: #358ee1;
+        color: #ffffff;
+    }
+
+    .jiaara-blog-kategori-page-btn:hover:not(:disabled):not(.active) {
+        background-color: #e6f2ff;
+    }
+
+    .jiaara-blog-kategori-page-btn:disabled {
+        border-color: #cccccc;
+        color: #cccccc;
+        cursor: not-allowed;
+    }
+    
+    .jiaara-blog-kategori-loading, .jiaara-blog-kategori-error {
+        text-align: center;
+        padding: 20px;
+        font-weight: bold;
+    }
+    .jiaara-blog-kategori-error { color: red; }
+
+    /* =========================================
+       PERBAIKAN UNTUK MOBILE VIEW (MAX 3 BARIS)
+       ========================================= */
+    @media screen and (max-width: 768px) {
+        #jiaara-blog-kategori-wrapper {
+            max-width: 100%; /* Melebarkan wrapper di layar HP */
+        }
+        .jiaara-blog-kategori-item {
+            align-items: flex-start; /* Meratakan posisi ke atas jika judul multi-baris */
+            padding: 10px 12px;
+        }
+        .jiaara-blog-kategori-title {
+            white-space: normal; /* Mematikan paksaan 1 baris */
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Maksimal 3 baris */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.4; /* Jarak antar baris agar nyaman dibaca */
+        }
+        .jiaara-blog-kategori-labels {
+            flex-direction: column; /* Membuat kotak label menumpuk ke bawah (opsional, agar lebih lega) */
+            margin-top: 2px;
+            gap: 4px;
+        }
+        .jiaara-blog-kategori-label-red,
+        .jiaara-blog-kategori-label-blue {
+            min-width: 75px; /* Sedikit mengecilkan kotak label di HP */
+            font-size: 11px;
+        }
+    }
+  
+  /* ========== CSS TRAKTIR MIE AYAM ========== */
+  
+  /* Wrapper utama dengan max-width 85% */
+  .aditlab-blog-support-wrapper {
+    max-width: 85%;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: #333;
+  }
+
+  /* Grid/Flex container */
+  .aditlab-blog-support-container {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  /* Kolom Gambar Kiri */
+  .aditlab-blog-support-image-col {
+    flex: 0 0 35%; 
+  }
+
+  /* Ketentuan 1: Gambar kotak 1:1 sudut melengkung */
+  .aditlab-blog-support-image-col img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    background-color: #e0f2fe; /* Warna fallback placeholder */
+  }
+
+  /* Kolom Konten Kanan */
+  .aditlab-blog-support-content-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Gaya Heading */
+  .aditlab-blog-support-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  /* Ketentuan 3: Garis bawah melengkung pada @ADIT.LAB */
+  .aditlab-blog-support-highlight-blue {
+    color: #2b82c9;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .aditlab-blog-support-highlight-blue::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 8px;
+    /* Menggunakan SVG CSS background untuk mendapatkan lengkungan yang natural */
+    background: url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none" viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg"><path d="M0 8 Q 50 2 100 8" stroke="%232b82c9" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>') no-repeat center;
+    background-size: 100% 100%;
+  }
+
+  /* Teks merah miring */
+  .aditlab-blog-support-highlight-red {
+    color: #e31e24;
+    font-style: italic;
+  }
+
+  /* Gaya Quote (Sub-judul) */
+  .aditlab-blog-support-quote {
+    font-size: 1.95rem;
+    font-style: italic;
+    color: #222;
+    margin: 0 0 16px 0;
+  }
+
+  /* Ketentuan 2: Paragraf Align Justify */
+  .aditlab-blog-support-paragraph {
+    font-size: 1.95rem;
+    text-align: justify;
+    line-height: 1.6;
+    color: #333;
+    margin: 0 0 20px 0;
+  }
+
+  .aditlab-blog-support-button-area {
+    margin-bottom: 6px;
+  }
+
+  /* Catatan kaki waktu */
+  .aditlab-blog-support-footer {
+    font-size: 1.75rem;
+    color: #a3a3a3;
+    margin: 0;
+  }
+
+  /* Agar responsif bila dibuka dari layar Handphone */
+  @media (max-width: 768px) {
+    .aditlab-blog-support-wrapper {
+      max-width: 100%; /* Otomatis penuh di HP */
+    }
+    .aditlab-blog-support-container {
+      flex-direction: column;
+    }
+    .aditlab-blog-support-image-col {
+      width: 60%;
+      margin: 0 auto;
+    }
+    .aditlab-blog-support-title {
+      font-size: 1.25rem;
+    }
+  }
 </style>
 
 <div id="jiaara-blog-headline-wrapper">
@@ -207,7 +618,7 @@
   <div class="jiaara-blog-headline-trending-box">
     <div class="jiaara-blog-headline-trending-label">TRENDING</div>
     <div class="jiaara-blog-headline-trending-ticker">
-      <marquee direction="left" scrollamount="5" onmouseover="this.stop()" onmouseout="this.start()" id="jiaara-blog-headline-trending-content">
+      <marquee direction="left" id="jiaara-blog-headline-trending-content" onmouseout="this.start()" onmouseover="this.stop()" scrollamount="5">
         Loading trending...
       </marquee>
     </div>
@@ -348,3 +759,330 @@
   
   jiaara_blog_headline_injectScript('/feeds/posts/default/-/headline2?max-results=6&alt=json-in-script&callback=jiaara_blog_headline_renderSmall');
 </script>
+
+
+
+<!--BUNGKUSAN UTAMA-->
+<div class="jiaara-blog-series-container">
+    
+    <!--BAGIAN HEADER-->
+    <div class="jiaara-blog-series-header">
+        <div class="jiaara-blog-series-title">THE SERIES</div>
+        <div class="jiaara-blog-series-nav">
+            <button aria-label="Previous" class="jiaara-blog-series-btn" id="jiaara-blog-series-prev">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+            </button>
+            <button aria-label="Next" class="jiaara-blog-series-btn" id="jiaara-blog-series-next">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <!--BAGIAN CAROUSEL/SLIDER-->
+    <div class="jiaara-blog-series-track" id="jiaara-blog-series-track">
+        <!--Konten akan dimuat di sini oleh JavaScript-->
+        <div style="color: #666666; font-family: sans-serif; padding: 20px 0px;">Memuat data series...</div>
+    </div>
+
+</div>
+
+
+
+<!--JAVASCRIPT-->
+<script>
+    // Konfigurasi Label Blogger (Ganti "series" jika nama label berbeda)
+    const jiaara_blog_series_label = "series-headline";
+    // Jumlah maksimal postingan yang ditarik
+    const jiaara_blog_series_maxResult = 12;
+
+    // Fungsi Callback JSONP untuk mengambil data dari API Blogger
+    window.jiaaraBlogSeriesCallback = function(json) {
+        const track = document.getElementById('jiaara-blog-series-track');
+        let html = '';
+
+        if (json.feed && json.feed.entry) {
+            const entries = json.feed.entry;
+            
+            for (let i = 0; i < entries.length; i++) {
+                const entry = entries[i];
+                let title = entry.title.$t;
+                let postUrl = '';
+                let imgUrl = '';
+
+                // 1. Dapatkan URL Postingan
+                for (let j = 0; j < entry.link.length; j++) {
+                    if (entry.link[j].rel === 'alternate') {
+                        postUrl = entry.link[j].href;
+                        break;
+                    }
+                }
+
+                // 2. Dapatkan URL Gambar (Internal/Upload maupun Eksternal)
+                if ('media$thumbnail' in entry) {
+                    // Jika dari Blogger, ubah ukuran resolusi (Blogger Image Hack)
+                    // Mengubah s72-c menjadi w600-h750-c untuk memaksa ukuran resolusi tinggi 4:5
+                    imgUrl = entry.media$thumbnail.url.replace(/\/s[0-9]+(\-c)?\//, '/w600-h750-c/');
+                } else if ('content' in entry) {
+                    // Jika tidak ada thumbnail, cari gambar pertama di dalam konten postingan
+                    const htmlContent = entry.content.$t;
+                    const imgMatch = htmlContent.match(/<img[^>]+src="([^">]+)"/);
+                    if (imgMatch && imgMatch[1]) {
+                        imgUrl = imgMatch[1];
+                    }
+                }
+
+                // Fallback gambar jika postingan benar-benar tidak ada gambar
+                if (!imgUrl) {
+                    imgUrl = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZThmNGY4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSIjYmJiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Tm8gSW1hZ2U8L3RleHQ+PC9zdmc+';
+                }
+
+                // Bangun HTML Card
+                html += `
+                    <a href="${postUrl}" class="jiaara-blog-series-item" title="${title}">
+                        <div class="jiaara-blog-series-img-wrap">
+                            <img src="${imgUrl}" alt="${title}" loading="lazy">
+                        </div>
+                        <div class="jiaara-blog-series-post-title">${title}</div>
+                    </a>
+                `;
+            }
+        } else {
+            html = '<div style="padding: 20px 0; color: #666;">Tidak ada postingan dalam series ini. Pastikan label "series" sudah ditambahkan pada postingan Anda.</div>';
+        }
+
+        // Masukkan HTML ke dalam track slider
+        track.innerHTML = html;
+        
+        // Aktifkan Fungsi Tombol Navigasi
+        jiaara_blog_series_initNavigation();
+    };
+
+    // Fungsi untuk mengaktifkan tombol kanan dan kiri
+    function jiaara_blog_series_initNavigation() {
+        const track = document.getElementById('jiaara-blog-series-track');
+        const prevBtn = document.getElementById('jiaara-blog-series-prev');
+        const nextBtn = document.getElementById('jiaara-blog-series-next');
+        
+        if (!track || !prevBtn || !nextBtn) return;
+
+        // Ambil lebar satu item beserta gap-nya (20px)
+        const getScrollAmount = () => {
+            const item = track.querySelector('.jiaara-blog-series-item');
+            return item ? item.offsetWidth + 20 : 300; 
+        };
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+    }
+
+    // Fungsi Injector Script API Blogger
+    (function() {
+        const script = document.createElement('script');
+        // URL API Blogger JSONP (Hanya mengambil feed ringkasan/summary)
+        script.src = `/feeds/posts/summary/-/${jiaara_blog_series_label}?alt=json-in-script&callback=jiaaraBlogSeriesCallback&max-results=${jiaara_blog_series_maxResult}`;
+        document.body.appendChild(script);
+    })();
+</script>
+
+
+
+<div id="jiaara-blog-kategori-wrapper">
+    <div class="jiaara-blog-kategori-header">Blog Terbaru</div>
+    <div id="jiaara-blog-kategori-list">
+        <!--List postingan akan dimuat di sini oleh JavaScript-->
+    </div>
+    <div id="jiaara-blog-kategori-pagination">
+        <!--Tombol pagination akan dimuat di sini-->
+    </div>
+</div>
+
+<script>
+    // Konfigurasi Utama
+    const jiaara_blog_kategori_config = {
+        postsPerPage: 10, // Sesuai dengan jumlah baris di gambar (bisa diubah)
+        currentPage: 1,
+        totalPosts: 0,
+        mainLabel: 'blog', // Label Utama
+        redLabels: ['headline', 'series'], // Label yang menghasilkan warna merah
+        excludedBlueLabels: ['headline', 'headline1', 'headline2', 'series', 'blog', 'series-headline'] // Label yang dilarang tampil di warna biru
+    };
+
+    // Fungsi Fetch dari Blogger API
+    function jiaara_blog_kategori_fetchPosts(page) {
+        jiaara_blog_kategori_config.currentPage = page;
+        const startIndex = (page - 1) * jiaara_blog_kategori_config.postsPerPage + 1;
+        
+        // URL Feed JSON Blogger
+        const url = `/feeds/posts/default/-/${jiaara_blog_kategori_config.mainLabel}?alt=json&start-index=${startIndex}&max-results=${jiaara_blog_kategori_config.postsPerPage}`;
+
+        // Loading State
+        document.getElementById('jiaara-blog-kategori-list').innerHTML = '<div class="jiaara-blog-kategori-loading">Memuat postingan...</div>';
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error("Gagal mengambil data");
+                return response.json();
+            })
+            .then(data => {
+                const feed = data.feed;
+                // Simpan total postingan untuk hitung pagination
+                jiaara_blog_kategori_config.totalPosts = parseInt(feed.openSearch$totalResults.$t, 10);
+                jiaara_blog_kategori_renderPosts(feed.entry || []);
+                jiaara_blog_kategori_renderPagination();
+            })
+            .catch(error => {
+                console.error(error);
+                document.getElementById('jiaara-blog-kategori-list').innerHTML = '<div class="jiaara-blog-kategori-error">Gagal memuat atau tidak ada postingan dengan label "blog".</div>';
+                document.getElementById('jiaara-blog-kategori-pagination').innerHTML = '';
+            });
+    }
+
+    // Fungsi Render HTML Postingan ke dalam tabel
+    function jiaara_blog_kategori_renderPosts(entries) {
+        const listContainer = document.getElementById('jiaara-blog-kategori-list');
+        listContainer.innerHTML = ''; 
+
+        if (entries.length === 0) {
+            listContainer.innerHTML = '<div class="jiaara-blog-kategori-loading">Tidak ada postingan ditemukan.</div>';
+            return;
+        }
+
+        entries.forEach(entry => {
+            const title = entry.title.$t;
+            let link = '';
+            
+            // Ambil URL postingan
+            for (let i = 0; i < entry.link.length; i++) {
+                if (entry.link[i].rel === 'alternate') {
+                    link = entry.link[i].href;
+                    break;
+                }
+            }
+
+            // Ambil semua label postingan
+            const rawLabels = entry.category ? entry.category.map(cat => cat.term) : [];
+            const labelsLowercase = rawLabels.map(l => l.toLowerCase());
+
+            let redLabelHtml = '';
+            let blueLabelHtml = '';
+
+            // 1. Cek Label Merah ("headline" atau "series")
+            const foundRedLabel = rawLabels.find(l => jiaara_blog_kategori_config.redLabels.includes(l.toLowerCase()));
+            if (foundRedLabel) {
+                redLabelHtml = `<span class="jiaara-blog-kategori-label-red">${foundRedLabel}</span>`;
+            }
+
+            // 2. Cek Label Biru (Selain yang dikecualikan)
+            const foundBlueLabel = rawLabels.find(l => !jiaara_blog_kategori_config.excludedBlueLabels.includes(l.toLowerCase()));
+            if (foundBlueLabel) {
+                blueLabelHtml = `<span class="jiaara-blog-kategori-label-blue">${foundBlueLabel}</span>`;
+            } else {
+                 // Jika tidak ada label biru yang valid tapi ingin tetap menampilkan blok kosong biru (opsional agar rata)
+                 // Bisa uncomment di bawah ini jika diperlukan. Berdasarkan gambar, selalu ada label biru.
+                 // blueLabelHtml = `<span class="jiaara-blog-kategori-label-blue">label</span>`;
+            }
+
+            // Buat elemen Baris
+            const row = document.createElement('div');
+            row.className = 'jiaara-blog-kategori-item';
+            row.innerHTML = `
+                <a href="${link}" class="jiaara-blog-kategori-title" target="_blank">${title}</a>
+                <div class="jiaara-blog-kategori-labels">
+                    ${redLabelHtml}
+                    ${blueLabelHtml}
+                </div>
+            `;
+            listContainer.appendChild(row);
+        });
+    }
+
+    // Fungsi Render Pagination
+    function jiaara_blog_kategori_renderPagination() {
+        const totalPages = Math.ceil(jiaara_blog_kategori_config.totalPosts / jiaara_blog_kategori_config.postsPerPage);
+        const currentPage = jiaara_blog_kategori_config.currentPage;
+        const paginationContainer = document.getElementById('jiaara-blog-kategori-pagination');
+        paginationContainer.innerHTML = '';
+
+        if (totalPages <= 1) return; 
+
+        // Tombol Sebelumnya (Prev)
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'jiaara-blog-kategori-page-btn';
+        prevBtn.innerHTML = '&laquo;';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => jiaara_blog_kategori_fetchPosts(currentPage - 1);
+        paginationContainer.appendChild(prevBtn);
+
+        // Angka Halaman (Max 5 angka berjejer agar rapi)
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = Math.min(totalPages, currentPage + 2);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `jiaara-blog-kategori-page-btn ${i === currentPage ? 'active' : ''}`;
+            pageBtn.innerText = i;
+            if (i !== currentPage) {
+                pageBtn.onclick = () => jiaara_blog_kategori_fetchPosts(i);
+            }
+            paginationContainer.appendChild(pageBtn);
+        }
+
+        // Tombol Selanjutnya (Next)
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'jiaara-blog-kategori-page-btn';
+        nextBtn.innerHTML = '&raquo;';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => jiaara_blog_kategori_fetchPosts(currentPage + 1);
+        paginationContainer.appendChild(nextBtn);
+    }
+
+    // Inisialisasi Script saat halaman dimuat
+    if (document.readyState === 'loading') {
+        document.addEventListener("DOMContentLoaded", () => jiaara_blog_kategori_fetchPosts(1));
+    } else {
+        jiaara_blog_kategori_fetchPosts(1);
+    }
+</script>
+
+
+
+
+<div class="aditlab-blog-support-wrapper">
+  <div class="aditlab-blog-support-container">
+    
+    <div class="aditlab-blog-support-image-col">
+      <img alt="Adit Lab Profile" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNgQj0RDq8IHsKxmD1_G5NSQyJLhqWUyNVsTVJyCoT1VQmfo2AoLByvBzd_OyEA9C3EY27T2HN6ckVqWJWVtziFuLW0ozW2LIe0kq03epOVG3iOWGjUSYg-IKILjCqWU1Zxoyi4blWi4c92ioscOYqZwzaaLi-fr5HfGK0klovidxYy6tDnkxv5Q5iXlo/s500/ADITLAB%20TRAKTIR%20MIE%20AYAM.jpg" />
+    </div>
+
+    <div class="aditlab-blog-support-content-col">
+      <h2 class="aditlab-blog-support-title">
+        DUKUNG <span class="aditlab-blog-support-highlight-blue">@ADIT.LAB</span> AGAR TETAP SEMANGAT MEMBUAT <span class="aditlab-blog-support-highlight-red">APLIKASI, ASSET DIGITAL DAN KONTEN YANG GRATIS !</span>
+      </h2>
+      
+      <p class="aditlab-blog-support-quote">"Sudah jadi Founder JIAARA.ID, tapi kok masih minta dukungan?"</p>
+      
+      <p class="aditlab-blog-support-paragraph">
+        Sederhananya, saya ingin bersikap profesional. Urusan bisnis dan peran sebagai konten kreator adalah dua hal yang berbeda. Seluruh pendapatan yang dihasilkan oleh JIAARA.ID akan dialokasikan khusus untuk keperluan operasional dan pengembangan bisnis. Sementara itu, dukungan kalian di sini adalah bentuk apresiasi langsung atas konten-konten yang saya buat.
+      </p>
+      
+      <div class="aditlab-blog-support-button-area">
+        <script src="https://edge-cdn.trakteer.id/js/trbtn-overlay.min.js?v=14-05-2025" type="text/javascript"></script>
+        <script class="troverlay" type="text/javascript">
+          (function() {
+            /* Prefix aditlab_blog_support_ pada variabel script untuk menghindari bentrok */
+            var aditlab_blog_support_trbtnId = trbtnOverlay.init('Traktir Saya Mie Ayam','#be1e2d','https://trakteer.id/v1/adit.lab/tip/embed/modal','https://mirror-uploads.trakteer.id/images/units/uic-sY4r9867nvQjyVnTJUZHvQqUGvIY7fSD1779287660.png','40','inline');
+            trbtnOverlay.draw(aditlab_blog_support_trbtnId);
+          })();
+        </script>
+      </div>
+
+      <p class="aditlab-blog-support-footer">Membutuhkan waktu kurang dari satu menit</p>
+    </div>
+
+  </div>
+</div>
