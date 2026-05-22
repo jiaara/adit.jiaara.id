@@ -1,0 +1,590 @@
+<!-- JIAARA BIO LINK NOTIF STYLE -->
+<style>
+    :root {
+        /* Ganti link di bawah untuk mengubah background */
+        --jiaara-bg-lock: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLN7jvUCi_WoKDVBreh3lgIZRWI4JNLA8qPHGozL1c4tcxcACuah2J6WoTsPIuLDE1gRunIcxvdWgyjNiWqDmUZlcYKefiDAm9NL-5lblaViCInacM_m9yVsVgma1TBSDQY93RwfLSuDdG_6UgxB_r3kIMA3a-SJCKbKL9Se7hL8Gv56SDD8sNl11RToE/s1000/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20WALLPAPER%20LOCKSCREEN.jpg');
+        --jiaara-bg-home: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-e18ALep0lRVvkGTBAK4r_j6u2mvI40vJKfJRSwcaHdIPBWQsaXCycXk5hgcDle1tCvz1WNspScUW9u2oM0qgwMXHZi_OBGhccalZs8BR6Lu2-tdar3kgoQvc1ds_OyahjtNw0D36ucoZPppRndt7YhL1OAxSaaQBw-bhIC5K5_ClYaR-ePPnEBrZT50/s1000/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20WALLPAPER%20MENU.jpg');
+    }
+
+    #jiaara-biolink-notif-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999999;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    /* LOCK SCREEN SECTION */
+    .jiaara-biolink-notif-screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        background-size: cover;
+        background-position: center;
+    }
+
+    #jiaara-biolink-notif-lock {
+        background-image: var(--jiaara-bg-lock);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+    }
+
+    .jiaara-biolink-notif-lock-icon {
+        font-size: 30px;
+        margin-bottom: 10px;
+        color: #000;
+    }
+
+    .jiaara-biolink-notif-time {
+        font-size: 80px;
+        font-weight: 300;
+        color: #222;
+        line-height: 1;
+    }
+
+    .jiaara-biolink-notif-date {
+        font-size: 18px;
+        font-weight: 500;
+        color: #222;
+        margin-bottom: 30px;
+    }
+
+    .jiaara-biolink-notif-container {
+        width: 90%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .jiaara-biolink-notif-item {
+        background-color: rgba(74, 164, 239, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 18px;
+        padding: 12px;
+        color: white;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        text-decoration: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        position: relative;
+    }
+
+    /* Efek geser kiri */
+    .jiaara-biolink-notif-item.jiaara-removing {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+
+    .jiaara-biolink-notif-img {
+        width: 45px;
+        height: 45px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .jiaara-biolink-notif-content {
+        flex: 1;
+    }
+
+    .jiaara-biolink-notif-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .jiaara-biolink-notif-body {
+        font-size: 13px;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .jiaara-biolink-notif-close-btn {
+        margin-top: 30px;
+        width: 45px;
+        height: 45px;
+        background: #ff4d4d;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* HOME SCREEN SECTION */
+    #jiaara-biolink-notif-home {
+        background-image: var(--jiaara-bg-home);
+        z-index: 5;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .jiaara-biolink-notif-search-bar {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid #4099ff;
+        border-radius: 25px;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .jiaara-biolink-notif-search-bar input {
+        border: none;
+        background: transparent;
+        width: 100%;
+        outline: none;
+        padding-left: 10px;
+        color: #333;
+    }
+
+    .jiaara-biolink-notif-menu-trigger {
+        cursor: pointer;
+        font-size: 20px;
+        padding-left: 10px;
+    }
+
+    .jiaara-biolink-notif-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px 10px;
+        max-height: 70vh;
+        overflow-y: auto;
+        padding: 10px;
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .jiaara-biolink-notif-app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        font-size: 11px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .jiaara-biolink-notif-app img {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        margin-bottom: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+        object-fit: cover;
+    }
+
+    .jiaara-biolink-notif-app:active img,
+    .jiaara-biolink-notif-app:active .jiaara-folder-cover {
+        transform: scale(0.9);
+    }
+
+    .jiaara-biolink-notif-dropdown {
+        position: absolute;
+        right: 0;
+        top: 45px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: none;
+        z-index: 100;
+        min-width: 120px;
+    }
+
+    .jiaara-biolink-notif-dropdown div {
+        padding: 10px 15px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        color: #333;
+        text-align: left;
+    }
+
+    /* Swipe down handle */
+    .jiaara-biolink-notif-handle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        cursor: ns-resize;
+    }
+
+    .jiaara-biolink-notif-handle::after {
+        content: '';
+        width: 50px;
+        height: 5px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 3px;
+    }
+
+    /* ----- FOLDER STYLES ----- */
+    /* Cover folder (Grid 2x2 kecil) */
+    .jiaara-folder-cover {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 4px;
+        padding: 6px;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+    
+    .jiaara-folder-cover img {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        box-shadow: none;
+        margin-bottom: 0;
+    }
+
+    /* Overlay Folder saat dibuka */
+    .jiaara-folder-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .jiaara-folder-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .jiaara-folder-content {
+        width: 90%;
+        max-width: 380px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 30px;
+        padding: 25px 15px;
+        box-sizing: border-box;
+        transform: scale(0.8);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .jiaara-folder-overlay.active .jiaara-folder-content {
+        transform: scale(1);
+    }
+
+    .jiaara-folder-header {
+        text-align: center;
+        color: white;
+        font-size: 26px;
+        font-weight: 400;
+        margin-bottom: 25px;
+    }
+
+    .jiaara-folder-inner-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px 10px;
+    }
+
+    .jiaara-folder-inner-grid .jiaara-biolink-notif-app {
+        color: white; /* Teks dalam folder berwarna putih agar kontras */
+    }
+</style>
+
+<div id="jiaara-biolink-notif-wrapper">
+    <!-- Screen 1: Lock Screen -->
+    <div id="jiaara-biolink-notif-lock" class="jiaara-biolink-notif-screen">
+        <div class="jiaara-biolink-notif-lock-icon">🔒</div>
+        <div class="jiaara-biolink-notif-time" id="jiaara-time">00:00</div>
+        <div class="jiaara-biolink-notif-date" id="jiaara-date">Loading...</div>
+
+        <div class="jiaara-biolink-notif-container" id="jiaara-notif-list">
+            <!-- Items generated by JS -->
+        </div>
+
+        <div class="jiaara-biolink-notif-close-btn" onclick="jiaaraClearAllNotif()">✖</div>
+    </div>
+
+    <!-- Screen 2: Home Screen -->
+    <div id="jiaara-biolink-notif-home" class="jiaara-biolink-notif-screen" style="transform: translateY(100%);">
+        <div class="jiaara-biolink-notif-handle" onclick="jiaaraBackToLock()"></div>
+        
+        <div style="padding-top: 20px; height: 100%; box-sizing: border-box;">
+            <div class="jiaara-biolink-notif-search-bar">
+                <input type="text" id="jiaara-app-search" placeholder="Cari Aplikasi ...." />
+                <div class="jiaara-biolink-notif-menu-trigger" onclick="jiaaraToggleMenu()">⋮</div>
+                <div class="jiaara-biolink-notif-dropdown" id="jiaara-sort-menu">
+                    <div onclick="jiaaraSortApps('default')">Default</div>
+                    <div onclick="jiaaraSortApps('az')">Urutkan A-Z</div>
+                </div>
+            </div>
+
+            <div class="jiaara-biolink-notif-grid" id="jiaara-app-grid">
+                <!-- Apps generated by JS -->
+            </div>
+        </div>
+
+        <!-- Screen 3: Folder Overlay -->
+        <div id="jiaara-folder-overlay" class="jiaara-folder-overlay" onclick="jiaaraCloseFolder(event)">
+            <div class="jiaara-folder-content">
+                <div class="jiaara-folder-header" id="jiaara-folder-title">Folder</div>
+                <div class="jiaara-folder-inner-grid" id="jiaara-folder-grid">
+                    <!-- Isi folder generated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- KONFIGURASI DATA ---
+    const jiaaraNotifData = [
+        { name: "Adhitya Ramadhan", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2zxL4s9WVuNfKYLlZkJ-H2xm54c1AHaszCZH9eT8z3AkojaLwpcTbGlftQpaK8dxJUh17Mpf0C5T3aM3v6nrgBvTxA0EbrzpoH-guYPiyCl27d-qw5gxPuKWNlZjxf4dKDPgrKsigwUh6mgmgXFDWJi0eyQcIBZSe-Zuu8gbZnEKc7SxBKSvdrULLBBs/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20AVATAR%20.png", text: "Hai Kawan! Lihat ini, Aku bikin video baru...", link: "/video" },
+        { name: "JIAARA Studio", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieNI3S8w4reeBRN8R_eO8gB8c2FvRUnyfIsEXPvM9vjFQaBUl5jN0HXqFgrRSpBrnuRFGZE6I1u6aoQxmO9Iqp3pi3gbnCvM3Pcy4C8FdgNucp0eXMe-nVADW8-zEKVI6CdNpvNhQdcwG5Lw0dmO55LdF-1eJnb-v4VL00IoB4pu0jYqeUaGBpbzR4Wpk/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN.png", text: "Sobat, Taukah kamu kalau mas Adit habis bikin Aplikasi?", link: "https://jiaara.blogspot.com/apps" },
+        { name: "Adhitya Ramadhan", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2zxL4s9WVuNfKYLlZkJ-H2xm54c1AHaszCZH9eT8z3AkojaLwpcTbGlftQpaK8dxJUh17Mpf0C5T3aM3v6nrgBvTxA0EbrzpoH-guYPiyCl27d-qw5gxPuKWNlZjxf4dKDPgrKsigwUh6mgmgXFDWJi0eyQcIBZSe-Zuu8gbZnEKc7SxBKSvdrULLBBs/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20AVATAR%20.png", text: "Wah, Pakai Produk ini emang se-Worth It ini! Cobain deh!", link: "/co" },
+        { name: "Psst... Jangan Lupa!", img: "https://cdn-icons-png.flaticon.com/512/3652/3652191.png", text: "Cek Promo di Akun Sosial Media @JIAARA atau Situs JIAARA.ID", link: "https://jiaara.blogspot.com/promo" },
+        { name: "Adhitya Ramadhan", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2zxL4s9WVuNfKYLlZkJ-H2xm54c1AHaszCZH9eT8z3AkojaLwpcTbGlftQpaK8dxJUh17Mpf0C5T3aM3v6nrgBvTxA0EbrzpoH-guYPiyCl27d-qw5gxPuKWNlZjxf4dKDPgrKsigwUh6mgmgXFDWJi0eyQcIBZSe-Zuu8gbZnEKc7SxBKSvdrULLBBs/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20AVATAR%20.png", text: "Eh tau gak? mau cerita nih. Tadi masa ada ....", link: "/blog" }
+    ];
+
+    const jiaaraAppData = [
+        { name: "Galeri", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGqZ-n8c4q0Hn1684McY9MINLrQHN3AFwXZMNVzODyHRfi4lqJEJWqzTgJlRDgrCGkMvc0ILj3cSfqLj223w6i3ZxW_gsXSyCqm42XzWOnZh-EPsElJPJqcLRYojQUCUG_O7Y2_eksjoylft4T0jix-7fhu77bl-aJRkt0Uw4D3YL3DPwbaha8IjoPzC0/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GALERI.png", link: "https://unsplash.com/jiaara" },
+        { name: "Github", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjeD6KYDSv0ZbSwwbRcnKVEjsmXDcRGDU3MhWLkh1OOFFY9_hpBqx09EO_yezpMC3qk_-qai0rMjq6U_8BBY62vh4u8PIFrnLRt0gpObkVIk9pwV1Rm-_frKAs7fCqhxWUiUmTeqqSE2bAXaYz5ck6DM5pZIdr_10Two5Id7QVj8DTMPSKVdtLYY_DcY7I/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GITHUB.png", link: "https://github.com/jiaara" },
+        { name: "Blogger", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhC5qpZ2sKSi92lHy0KDZ8aCGMWfKYhyphenhyphenFm1JN-smspUr-DSDx7EiN40HytekluwAg6wqtvdsbi5PT9-Q-KPd-hbDOvKsK0u3C8-viPmeWxfZB99vbk8bkAFVYyy8jb-JH71hDJY6xkwsWqMq7g3PyhjeFCOSquOuEvM0UUa7WAkHSuGDDL7DpskrzmLDNI/s500/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20BLOGGER.png", link: "/blog" },
+        
+        // --- CONTOH FOLDER ALAT EDITOR ---
+        { 
+            name: "Editor Tools", 
+            isFolder: true, 
+            apps: [
+                { name: "Image Crop", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZzyGhNRUczl4jjLEvKeHEWBFwZOvZfI0Df1EJd8aSOeWPNk9vr4HCuIaLiplWVDqY58s8YaPNbVnFvX13xJ-wbF_l45LBUTDbRao7MvgY5ktUJPe9Y4XSUSGVMFMfJdD6z5W10g2vtLPKy0hSlSdt6vTitMskFk22TNEx3HzKg4YUTHVuWqIXmuQt3fE/s500/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20IMAGE%20CROPPER.png", link: "#link-app" },
+                { name: "Compress", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTXZFydsvANQ5u3MHKyNXXgd0svHpgmE3X0xnr4fJ5D2rdsEpfghpW5WlqKAnWPRCo761k-Gm1T2eTxpP-t2A1bmmzTE1QVkd_ndD1G7bv6VBMnwlNkMEqQMM8BUuu6dHdxFMv38GT21sDkVqeLjpH1wPYS-YqYR3AwCrSRT0xnzGEhxaQRBboVOjV1wY/s500/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20IMAGE%20COMPRESSOR.png", link: "#link-app" },
+                { name: "Censored", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQHWFPqeh4zGm8XUmVus73N3-EJxtqxbbPtK6MTEroQKfNf7a5GyAYeQ6nIhYoOGn2urERaFZXg6T3ZSynf3KD6kXt7iJlYrko8-XCUVEp4HbIgp_i0Ux-eGKYdkVeeBRr9fNQQ7tqqMjmmy8jvcUHbdUrFbjw59yUSAFyyySOLc1AFBVld3GggAUQ9Q4/s500/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20IMAGE%20CENSORED.png", link: "#link-app" },
+                { name: "CapCut", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4yUWDsRNZGPJdop3wXzIOPeNIxuF_AaLImR1tB3ak2S7xxAgdINWrihPjaWtLAT9iqtLMPqIBiSZ8sqf5Cmtamrkdd6fkZbnxykkQMgznO58nqEd-xyo7bp9SQOD4eYCUVpkv19SEFpbdCWesJPrx2hk76bRm-dTR5JHeUuvJIk4U9tKJJNknrnNuGpM/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20CAPCUT.png", link: "#" }
+            ]
+        },
+
+        // --- CONTOH FOLDER GAMES ---
+        {
+            name: "Games",
+            isFolder: true,
+            apps: [
+                { name: "Call of Duty", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0UBpqO61nlwRIt8iqtPHB-AfEUHvGFJrmjl79Le_QudfHBKt-gN92lBq7upu5Im_uEOt2BovliyGNEVs6iFGOO9pMGhtL8IMqhBI27LqLGx0uVf_emxfbCsfyr1qPNkfQYeKDvWBE0Nd8F9KCIcTcNJfwIFTa7zumJxqK4mnrwBETTw2X9ihqd3WSKA8/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20CALL%20OF%20DUTY%20MOBILE.png", link: "#" },
+                { name: "FC Mobile", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD9PLeyU2KZkbytFjun9WpRHB-pe2FijLF5eplruPTC5vFttMMcerIOkcjoSnsCEIkRst8NQtQyjw5ZN7EfCTFM7Gnlxqr1LrVfoGyAbqI_2hJsne7qrkEZBI8_1rvtBBmI28hYZ9UPxbzvackzAC5Uj3_ouNjVknjMwDUvU5DQlX9U80xW2vLvk438lY/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20FC%20MOBILE.png", link: "#" },
+                { name: "Ninja Sage", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEix63XNn_VYU1BJTWUCbiVFa6NZJJaQh5jLTtdRLeVaLprNAySNB6S1oneoFmbh9u2HHwEckylMVWWr65AG_KUyJF62n6ztAi-xLBdjN12DyXv-Inh_rybn1wNQllReA_VxlNMGRt7gqQjZyBprUxp1RAtdMCnuAJARHERClw-21Uv6YqTtQjE_j7cszpY/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20NINJA%20SAGE.png", link: "#" }
+            ]
+        },
+
+        { name: "Google Bisnis", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRqZJ6tw0HJyPsUfOt7cMLZRiwHktztadkjN3CtD_oGSCvRMBbXLGfPVOdCdmzJ_8OvFf4GCKZ2uZiC2I-R1mrCviIzOWi4Xcj9wOaSliv2GE9W22NQmDI15U_5Mq1VjvsPE0q0XRqRcwThSadM8y1xsCVwBLxxgwFOmppV09IM7mem9cU8Vap5FG3Td8/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GOOGLE%20BUSINESS.png", link: "https://g.page/r/CdXWadJ_Ztx-EAI/review" },
+        { name: "Instagram", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdfK-zRighWI1BAtlGLChOGkcxjIaLFIgkn7BWe6bMr4j4Syz3AWzjR-5S2xGgFdD6nnRZ3XPzs7H2qBKAxNRLH1hGzLlHfZqcRyOzWdxHNeIFgi7fdiYB5lL-VxO9xNUadg3E9SIhxP3wSRRb3L0XGn3wSy5cMZs1zLzfnjPV1u8ML0xvADb7LdHHFk0/s500/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20INSTAGRAM.png", link: "https://instagram.com/adit.lab" },
+        { name: "Shopee", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4TjE7fpl1Ch0bDyTlQJWAGjlCLFw9u1kYG2IQ9a_s6NzrjVUveBfQrGV0TN8iFF-GKykwFGy7FdP3V28nQkkM3CV7qAIeUIpcJuPwYLq80wmZFrzB1DHhUuqw4tmG2kY4Jt1la68_CnGJBy8Tz3tjr4g11PM91ILzlUc9eD9qzKMR0YnzFvoDXBpYOPE/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20SHOPEE.png", link: "https://shopee.co.id/jiaara" },
+        { name: "Tiktok", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5jVx402p7h45hlvOx9L6LBxfgCamV26KXYGp48ZmW8P4dUNIu-aHZFEHhTypA-OEkViEMP__zaYQkEvBtaigh_0z6hxQzwWBjRRapktNL3387dOb-YR8hSRK3Lsdx74x5kmasVerdCd11c7tyyPYEugPwkrF8LizVi6cmpQqwhr7Lf1wus3Njy2mZS5M/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20TIKTOK.png", link: "https://tiktok.com/@adit.lab" },
+        { name: "Whatsapp", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2CF758vTa-gqh9ydGaq-JH2XDHK0uR09M4gKuyLCySdfvePralsrayfMMXAMFVR6u4CPoG4UtgRpDt7r6zUPlb9aidTLoFqXtA-dy66fqNV_w4dVUyywvXrE2Og5mCd9lJwcVqFTlt5T-9gtOgiTLQIBW-LtmEfw241YcMZidckGkoxLRaDH_NQLnSXk/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20WHATSAPP.png", type: "wa" },
+        { name: "WA Bisnis", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijqam7jscmXIE9Y0CNa6cduUU-LJS-br3w-GuFcDwFVBuJkeR8DGc6Kmgxzk_UgrHIuN_o3C2pCt1D6d2anQgiaez268i3bp_UHlbJ4PQylpTAGnUfyrtUo2h1XpVVQdo7-VXdlcqRiw6L83-504fG8ynzPTLO-bIGbMwMgxl1gszNG6F1LspgrYQ8p8E/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20WHATSAPP%20BUSINESS.png", link: "https://wa.me/6281542662648" },
+        { name: "X", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnT0w2COZCOhowGfUAws0sZIY2fe0OHO3FOT7ZOfY8LI4Dyjj_xKewplfawhGZPdr94QjlIjdgZnYgFVAEheJNb0nCEgfy8yUBEShulboNaG8ZRpl8-yIuz_qFg10_K-vbcwRlYS8RQfF6ntoBtjdfUoxVL1i2BTdBchWsHUQ1b2xS2stxsz76HIwbpmQ/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20X%20TWITTER.png", link: "https://x.com/jiaara" },
+        { name: "Youtube", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQ9N4EzCe_nVi96f_ZKx8Q9eqyxBDpXaCxS4jSTLfc-gZliYy2k8wnVXXqVBzy5M7d7UdXFmlHcNZwpzKhQdUSTGYgDzFqDo8ITu5xNFT_lYEtMFJlEn77ZKuB89vuH-TXv4ms7ns77LkkXVrM-raZ6hcR5qEO2pKmlnYpathW7PK0Y-xsQ0NW9yBfBuk/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20YOUTUBE.png", link: "https://youtube.com/jiaara98?sub_confirmation=1" },
+        { name: "WoiLo", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhP_C_isBUjYUudSuWx00WpFmtXe7yR5Snkc59wL2_JLRK30evAvzN_5VVn50w7LoxnZA807xN2LsCgJPFwc4Gsi5YNR-JR_LfnVMhADhbd9J7MLlB-MVa-OzhEtMhfwkJ3JEcG-_VBicw-2DTUMXyk4bPkQ9EizWpD_p-nt7rIqrBXbo8lEcRHp3WvZjI/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20WOILO.png", link: "#" },
+        { name: "Playstore", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2OdsErYJLNqPsp0mfqf-xWZaO74pNOCBmsejlN3t33PBrBk_R1QbswybI9OSV4gTOofP3AvU57oYf1L71TLVnORap4CMk9tO2neH3VgqlAxLEHLGC7e8751kfXG_gJZjxHQKEzQPjevMkxUCyvDhQGiYq0McVk2yqhR1JLNUdgSiRWimAdpEePUQ7GnQ/s500/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20PLAYSTORE.png", link: "https://play.google.com/" },
+        { name: "Gmail", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFAw92GheAZ2a2fhbvL5WdUj-SKkO-jwNbAamOzresy7nuEemanXgFANCCx396rEUowRZGexA61GChHSJrE_q1Z17GDzK5mllXSlbmAQjofRoxKSumqaYTHTc9rLIeYaLHWU0VWveoHepQNQk0do8gKKkcCAesQ8SLbDPpmaPqdJUnWoCFJc4PDcvsyYw/s250/JIAARA.ID%20-%20ADHITYA%20RAMADHAN%20ICON%20GMAIL.png", link: "#" }
+    ];
+
+    let currentApps = [...jiaaraAppData];
+
+    // --- LOGIKA UTAMA ---
+    document.addEventListener("DOMContentLoaded", () => {
+        updateJiaaraTime();
+        renderJiaaraNotifs();
+        renderJiaaraApps();
+        setInterval(updateJiaaraTime, 1000);
+
+        // Pencarian Aplikasi
+        document.getElementById('jiaara-app-search').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = jiaaraAppData.filter(app => {
+                // Bisa cari nama folder ATAU nama aplikasi tunggal
+                return app.name.toLowerCase().includes(term);
+            });
+            renderJiaaraApps(filtered);
+        });
+    });
+
+    function updateJiaaraTime() {
+        const now = new Date();
+        const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        const dateStr = now.toLocaleDateString('id-ID', options);
+        
+        document.getElementById('jiaara-time').innerText = timeStr;
+        document.getElementById('jiaara-date').innerText = dateStr;
+    }
+
+    function renderJiaaraNotifs() {
+        const container = document.getElementById('jiaara-notif-list');
+        container.innerHTML = jiaaraNotifData.map((n, i) => `
+            <a href="${n.link}" class="jiaara-biolink-notif-item" id="jiaara-notif-${i}">
+                <img src="${n.img}" class="jiaara-biolink-notif-img">
+                <div class="jiaara-biolink-notif-content">
+                    <div class="jiaara-biolink-notif-header">
+                        <span>${n.name}</span>
+                        <span>Sekarang ▾</span>
+                    </div>
+                    <div class="jiaara-biolink-notif-body">${n.text}</div>
+                </div>
+            </a>
+        `).join('');
+    }
+
+    function renderJiaaraApps(dataArr = currentApps) {
+        const grid = document.getElementById('jiaara-app-grid');
+        grid.innerHTML = dataArr.map((item, index) => {
+            // JIKA TIPE FOLDER
+            if (item.isFolder) {
+                // Ambil maksimal 4 icon pertama untuk cover folder
+                const miniIcons = item.apps.slice(0, 4).map(app => `<img src="${app.img}" alt="${app.name}">`).join('');
+                return `
+                    <div class="jiaara-biolink-notif-app" onclick="jiaaraOpenFolder(${index})">
+                        <div class="jiaara-folder-cover">
+                            ${miniIcons}
+                        </div>
+                        <span>${item.name}</span>
+                    </div>
+                `;
+            } 
+            // JIKA APLIKASI BIASA
+            else {
+                return `
+                    <div class="jiaara-biolink-notif-app" onclick="jiaaraHandleAppClick('${item.type}', '${item.link}')">
+                        <img src="${item.img}" alt="${item.name}">
+                        <span>${item.name}</span>
+                    </div>
+                `;
+            }
+        }).join('');
+    }
+
+    // FUNGSI MEMBUKA FOLDER
+    function jiaaraOpenFolder(index) {
+        const folder = currentApps[index];
+        document.getElementById('jiaara-folder-title').innerText = folder.name;
+        
+        const folderGrid = document.getElementById('jiaara-folder-grid');
+        folderGrid.innerHTML = folder.apps.map(app => `
+            <div class="jiaara-biolink-notif-app" onclick="jiaaraHandleAppClick('${app.type}', '${app.link}')">
+                <img src="${app.img}" alt="${app.name}">
+                <span>${app.name}</span>
+            </div>
+        `).join('');
+
+        const overlay = document.getElementById('jiaara-folder-overlay');
+        overlay.style.display = 'flex'; // Reset display agar tampil
+        
+        // Timeout kecil untuk trigger animasi CSS
+        setTimeout(() => {
+            overlay.classList.add('active');
+        }, 10);
+    }
+
+    // FUNGSI MENUTUP FOLDER
+    function jiaaraCloseFolder(event) {
+        // Hanya menutup saat klik background hitamnya, bukan klik area konten
+        if (event.target.id === 'jiaara-folder-overlay') {
+            const overlay = document.getElementById('jiaara-folder-overlay');
+            overlay.classList.remove('active');
+            
+            // Tunggu animasi selesai baru di-hide penuh
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    async function jiaaraClearAllNotif() {
+        const items = document.querySelectorAll('.jiaara-biolink-notif-item');
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.add('jiaara-removing');
+            await new Promise(r => setTimeout(r, 100));
+        }
+        
+        setTimeout(() => {
+            document.getElementById('jiaara-biolink-notif-lock').style.transform = 'translateY(-100%)';
+            document.getElementById('jiaara-biolink-notif-home').style.transform = 'translateY(0)';
+        }, 400);
+    }
+
+    function jiaaraBackToLock() {
+        document.getElementById('jiaara-biolink-notif-lock').style.transform = 'translateY(0)';
+        document.getElementById('jiaara-biolink-notif-home').style.transform = 'translateY(100%)';
+        
+        const items = document.querySelectorAll('.jiaara-biolink-notif-item');
+        items.forEach(item => {
+            item.classList.remove('jiaara-removing');
+        });
+    }
+
+    function jiaaraHandleAppClick(type, link) {
+        if (type === 'wa') {
+            alert('Maaf, tidak membagikan nomor pribadi');
+        } else if (link && link !== '#') {
+            window.open(link, '_blank');
+        }
+    }
+
+    function jiaaraToggleMenu() {
+        const menu = document.getElementById('jiaara-sort-menu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function jiaaraSortApps(mode) {
+        if (mode === 'az') {
+            currentApps.sort((a, b) => a.name.localeCompare(b.name));
+        } else {
+            currentApps = [...jiaaraAppData];
+        }
+        renderJiaaraApps();
+        jiaaraToggleMenu();
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.jiaara-biolink-notif-menu-trigger')) {
+            const menu = document.getElementById('jiaara-sort-menu');
+            if (menu) menu.style.display = 'none';
+        }
+    }
+</script>
