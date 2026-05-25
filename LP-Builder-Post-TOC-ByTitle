@@ -1,24 +1,25 @@
+
+
 <div style="display: none;">
-  <img src="#link-thumbnail" />
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-_nIX_o1qsj3wn1hsIgedG97BkxHN0uN2kIOXD50u-MEG8pms4Nou2OzdHKBgVRTigG-bfb8kE29WtU3bGnPyLFcyJOuOPA52G33Fx1MEkhPkUCsJbUbB46OGRAeaLTXK-5VaApxwmYmfzVzvm8SA0VXja_Gu-hi2IJbT5QAOXU5n77MgmIDZpay_crSl/s1350/JIAARA.ID%20The%20Series%20-%20Jiaara%20Website.jpg" />
 </div>
 
 
 
-
-<!-- Container Utama -->
+<!--Container Utama-->
 <div class="aditlab-toc-bytitle-main-container">
-    <!-- Header sesuai gambar -->
+    <!--Header sesuai gambar-->
     <div class="aditlab-toc-bytitle-header">
-        The Series: Hidup Melawan Bersama Gen-Z
+        The Series: Jiaara Website
     </div>
 
-    <!-- Tempat Daftar Judul Muncul -->
+    <!--Tempat Daftar Judul Muncul-->
     <div id="aditlab-toc-bytitle-list">
         <div class="aditlab-toc-bytitle-loading">Memuat daftar isi...</div>
     </div>
 
-    <!-- Navigasi Pagination -->
-    <div id="aditlab-toc-bytitle-pagination" class="aditlab-toc-bytitle-pagination"></div>
+    <!--Navigasi Pagination-->
+    <div class="aditlab-toc-bytitle-pagination" id="aditlab-toc-bytitle-pagination"></div>
 </div>
 
 <style>
@@ -106,7 +107,7 @@
 /* JavaScript dengan Prefix Unik */
 var aditlab_toc_config = {
     maxResults: 20, // Maksimal baris per halaman
-    filterKeyword: "Hidup Bersama Gen-Z:", // Filter kata kunci
+    filterKeyword: ["Bisnis", "Website"], // <-- Diubah menjadi Array
     excludeKeyword: "The Series" // Kecualikan kata ini
 };
 
@@ -124,8 +125,12 @@ function aditlab_toc_bytitle_load() {
                 // Proses filtering data
                 aditlab_toc_data = data.feed.entry.filter(entry => {
                     let title = entry.title.$t;
-                    return title.includes(aditlab_toc_config.filterKeyword) && 
-                          !title.includes(aditlab_toc_config.excludeKeyword);
+                    
+                    // Menggunakan .some() untuk mengecek array keyword
+                    let isKeywordMatch = aditlab_toc_config.filterKeyword.some(keyword => title.includes(keyword));
+                    let isNotExcluded = !title.includes(aditlab_toc_config.excludeKeyword);
+                    
+                    return isKeywordMatch && isNotExcluded;
                 }).map(entry => {
                     // Cari URL postingan
                     let postUrl = "#";
