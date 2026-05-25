@@ -1,24 +1,16 @@
-
-
 <div style="display: none;">
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-_nIX_o1qsj3wn1hsIgedG97BkxHN0uN2kIOXD50u-MEG8pms4Nou2OzdHKBgVRTigG-bfb8kE29WtU3bGnPyLFcyJOuOPA52G33Fx1MEkhPkUCsJbUbB46OGRAeaLTXK-5VaApxwmYmfzVzvm8SA0VXja_Gu-hi2IJbT5QAOXU5n77MgmIDZpay_crSl/s1350/JIAARA.ID%20The%20Series%20-%20Jiaara%20Website.jpg" />
+  <img src="#link-gambar" />
 </div>
 
-
-
-<!--Container Utama-->
 <div class="aditlab-toc-bytitle-main-container">
-    <!--Header sesuai gambar-->
     <div class="aditlab-toc-bytitle-header">
         The Series: Jiaara Website
     </div>
 
-    <!--Tempat Daftar Judul Muncul-->
     <div id="aditlab-toc-bytitle-list">
         <div class="aditlab-toc-bytitle-loading">Memuat daftar isi...</div>
     </div>
 
-    <!--Navigasi Pagination-->
     <div class="aditlab-toc-bytitle-pagination" id="aditlab-toc-bytitle-pagination"></div>
 </div>
 
@@ -107,8 +99,9 @@
 /* JavaScript dengan Prefix Unik */
 var aditlab_toc_config = {
     maxResults: 20, // Maksimal baris per halaman
-    filterKeyword: ["Bisnis", "Website"], // <-- Diubah menjadi Array
-    excludeKeyword: "The Series" // Kecualikan kata ini
+    filterKeyword: ["Aset","Asset"], // Diubah menjadi Array
+    excludeKeyword: "The Series", // Kecualikan kata ini pada judul
+    excludeLabel: "produk" // <-- BARU: Kecualikan label ini
 };
 
 var aditlab_toc_data = [];
@@ -126,11 +119,24 @@ function aditlab_toc_bytitle_load() {
                 aditlab_toc_data = data.feed.entry.filter(entry => {
                     let title = entry.title.$t;
                     
-                    // Menggunakan .some() untuk mengecek array keyword
+                    // 1. Cek apakah ada keyword yang cocok di judul
                     let isKeywordMatch = aditlab_toc_config.filterKeyword.some(keyword => title.includes(keyword));
+                    
+                    // 2. Cek apakah judul mengandung kata yang dilarang
                     let isNotExcluded = !title.includes(aditlab_toc_config.excludeKeyword);
                     
-                    return isKeywordMatch && isNotExcluded;
+                    // 3. Cek apakah postingan memiliki label yang dilarang
+                    let isNotExcludedLabel = true;
+                    if (entry.category) {
+                        // Menggunakan .some() untuk mencari label "produk" (tidak case sensitive)
+                        let hasExcludedLabel = entry.category.some(cat => cat.term.toLowerCase() === aditlab_toc_config.excludeLabel.toLowerCase());
+                        if (hasExcludedLabel) {
+                            isNotExcludedLabel = false; // Jika ada label "produk", tandai sebagai false
+                        }
+                    }
+                    
+                    // Lolos filter jika memenuhi semua kriteria
+                    return isKeywordMatch && isNotExcluded && isNotExcludedLabel;
                 }).map(entry => {
                     // Cari URL postingan
                     let postUrl = "#";
