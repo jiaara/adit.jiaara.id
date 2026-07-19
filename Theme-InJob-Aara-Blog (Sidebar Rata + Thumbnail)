@@ -2423,6 +2423,18 @@ color:#ffffff;
 }
 
 
+/* Sembunyikan iklan di halaman postingan/item */
+.item #ads-blog, .static_page #ads-blog {
+    display: none !important;
+}
+
+/* Pastikan terlihat di menu Tata Letak */
+body#layout #ads-blog, body#layout .ad-home-widget {
+    display: block !important;
+    margin: 20px 0;
+    border: 1px dashed #ccc;
+}
+
 ]]></b:skin>
 
 <style>
@@ -2497,8 +2509,10 @@ margin: 0 auto;
 padding:0;
 }
 body#layout #adwidegt1 .widget, body#layout #adwidegt2 .widget, body#layout #adwidegt3 .widget {
-display:block;
+display:block; !important;
+    visibility: visible !important;
 }
+
 
 
 /* Cari dan ganti bagian ini di dalam b:template-skin */
@@ -3467,28 +3481,9 @@ text-decoration: none !important;
   </b:widget>
 </b:section>
   </div>
+  
 <div style='clear: both;'/>
-<div id='ads-blog'>
-<b:section class='ad-home-widget' id='adwidegt1' maxwidgets='1' name='Home Ad Widget' showaddelement='yes'>
-  <b:widget id='HTML90' locked='false' title='Post Top Ad' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<center><img alt="ads" src="https://3.bp.blogspot.com/-PDVYNXgYwJg/WDg0HmIEbnI/AAAAAAAACX0/MdxOHjwGuzAuuXCusu07myZhIN_IyBBwgCLcB/s1600/728-90.png" /></center>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <!-- only display title if it's non-empty -->
-  <b:if cond='data:title != &quot;&quot;'>
-    <h2 class='title'><data:title/></h2>
-  </b:if>
-  <div class='widget-content'>
-    <span>  <data:content/></span>
-  </div>
 
-  <!--b:include name='quickedit'/-->
-</b:includable>
-  </b:widget>
-</b:section>
-<div style='clear: both;'/>
-      </div>
   </b:if>
 <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
 <b:if cond='data:blog.pageType!= &quot;item&quot;'>
@@ -3501,6 +3496,19 @@ text-decoration: none !important;
       </div>
     </b:if> </b:if> </b:if>
    <b:section class='main' id='main' showaddelement='yes'>
+     <b:widget id='HTML4' locked='false' title='' type='HTML'>
+       <b:includable id='main'>
+  <!-- only display title if it's non-empty -->
+  <b:if cond='data:title != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+
+  <b:include name='quickedit'/>
+</b:includable>
+     </b:widget>
      <b:widget id='Blog1' locked='true' title='Postingan Blog' type='Blog' version='1'>
        <b:widget-settings>
          <b:widget-setting name='commentLabel'>Feedback</b:widget-setting>
@@ -5217,88 +5225,7 @@ letter-spacing:1.5px;
  <b:if cond='data:blog.url == data:blog.homepageUrl'>
 <div style='clear: both;'/>
 <div class='tyard-wrapper'>
-<b:section class='featured preload' id='featured' maxwidget='1' showaddelement='yes'>
-  <b:widget id='HTML11' locked='false' title='Latest Results' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<span data-type="tyard" data-label="Results" data-no="6"></span>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <!-- only display title if it's non-empty -->
-  <b:if cond='data:title != &quot;&quot;'>
-    <h2 class='title'><data:title/></h2>
-  </b:if>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-
- <!--b:include name='quickedit'/-->
-</b:includable>
-  </b:widget>
-  <b:widget id='HTML10' locked='false' title='Latest Admit Cards' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<span data-type="tyard" data-label="Admit" data-no="6"></span>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <!-- only display title if it's non-empty -->
-  <b:if cond='data:title != &quot;&quot;'>
-    <h2 class='title'><data:title/></h2>
-  </b:if>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-
- <!--b:include name='quickedit'/-->
-</b:includable>
-  </b:widget>
-  <b:widget id='HTML9' locked='false' title='Latest Admissions' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<span data-type="tyard" data-label="Admission" data-no="6"></span>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <!-- only display title if it's non-empty -->
-  <b:if cond='data:title != &quot;&quot;'>
-    <h2 class='title'><data:title/></h2>
-  </b:if>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-
- <!--b:include name='quickedit'/-->
-</b:includable>
-  </b:widget>
-  <b:widget id='HTML299' locked='false' title='Latest Syllabus' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<span data-type="tyard" data-label="Syllabus" data-no="6"></span>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <!-- only display title if it's non-empty -->
-  <b:if cond='data:title != &quot;&quot;'>
-    <h2 class='title'><data:title/></h2>
-  </b:if>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-
-  <!--b:include name='quickedit'/-->
-</b:includable>
-  </b:widget>
-  <b:widget id='HTML5' locked='false' title='Latest Answer Key' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<span data-type="tyard" data-label="Answer" data-no="6"></span>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <!-- only display title if it's non-empty -->
-  <b:if cond='data:title != &quot;&quot;'>
-    <h2 class='title'><data:title/></h2>
-  </b:if>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-
-<!--b:include name='quickedit'/-->
-</b:includable>
-  </b:widget>
-</b:section>
+<b:section class='featured preload' id='featured' maxwidget='1' showaddelement='yes'/>
   </div>
 <div style='clear: both;'/>
       </b:if>
