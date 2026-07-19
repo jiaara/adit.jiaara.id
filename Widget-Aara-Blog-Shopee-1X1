@@ -1,0 +1,273 @@
+<div id="shopee-ads-widget-container">
+  <!-- CSS INTERNAL -->
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+
+    #shopee-ads-widget-container {
+      margin: 20px auto;
+      max-width: 400px; /* Ukuran ideal untuk format square */
+      width: 95%;
+    }
+
+    #shopee-ads-widget-container * {
+      box-sizing: border-box; /* Mencegah padding merusak ukuran */
+    }
+
+    .shopee-wrapper {
+      display: flex;
+      background: #ee4d2d; 
+      border-radius: 20px;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      position: relative;
+      aspect-ratio: 1 / 1; /* Kunci aspek kotak */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    /* SISI KIRI: Banner (Dikecilkan ukurannya) */
+    .shopee-banner-side {
+      flex: 0 0 35%; /* Area banner dipersempit agar produk tidak terpotong */
+      position: relative;
+      background-image: linear-gradient(to right, rgba(238, 77, 45, 0.4), #ee4d2d), 
+                        url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhc4eDjgeKcNzeHwpcskSVHgCiKlebQBQXBDuRB5MrgorqgqQsvfyPRr_ulD2PVldsgr3-Op7jhVy5f-1vNHw0vn2bu4evTnd7ngdwKgEZK_8AjQ4mxtwtfbGzEPer5uQnorbg14N-VIdByVey2aWvXl2buy-gFyMHuCqMzDCo6gobU6WZthbovbimc-jBY/s1920/SKHCITIZEN%20-%20SHOPEE%20ADS.png'); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      z-index: 1;
+    }
+
+    .shopee-text-box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 8px;
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+      border-left: 3px solid white;
+    }
+
+    .shopee-logo-box {
+      background: white;
+      padding: 4px 8px;
+      display: inline-block;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .shopee-logo-box img { height: 10px; display: block; }
+
+    .shopee-banner-side h2 {
+      color: white;
+      font-size: 14px; 
+      font-weight: 900;
+      margin: 0;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .shopee-banner-side p {
+      color: white;
+      font-size: 10px; /* Ukuran teks diperkecil sesuai permintaan */
+      margin-top: 5px;
+      opacity: 0.95;
+      line-height: 1.2;
+      font-weight: bold;
+    }
+
+    /* SISI KANAN: Slider (Diberi ruang lebih luas) */
+    .shopee-slider-side {
+      flex: 0 0 65%;
+      padding: 15px 10px 15px 5px;
+      position: relative;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .swiper-ads-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .product-card-shopee {
+      background: white;
+      border-radius: 15px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 92%; /* Mengurangi lebar card agar tidak mepet ke tepi */
+      margin: 0 auto;
+      height: auto;
+    }
+
+    .product-img-box {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-title {
+      font-size: 11px;
+      font-weight: bold;
+      color: #333;
+      height: 32px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .btn-shopee {
+      display: block;
+      background: #ee4d2d;
+      color: white !important;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 10px 0;
+      border-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    /* Tombol Navigasi Tengah */
+    .shopee-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      background: white;
+      border-radius: 50%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      color: #ee4d2d;
+      font-size: 12px;
+    }
+    .shopee-prev { left: -5px; } /* Posisi panah disesuaikan */
+    .shopee-next { right: 5px; }
+
+  </style>
+
+  <!-- HTML -->
+  <div class="shopee-wrapper">
+    <div class="shopee-banner-side">
+      <div class="shopee-text-box">
+        <div class="shopee-logo-box">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Shopee.svg" alt="Logo" />
+        </div>
+        <p>Diskon s/d 70% & Gratis Ongkir!</p>
+      </div>
+    </div>
+
+    <div class="shopee-slider-side">
+      <div class="shopee-nav shopee-prev">❮</div>
+      <div class="shopee-nav shopee-next">❯</div>
+      
+      <div class="swiper swiper-ads-container">
+        <div class="swiper-wrapper" id="product-list-target">
+          <!-- Produk via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    (function() {
+      const dataProduk = [
+        { nama: "Tumbler Stainless Jumbo Hook 890ml", link: "https://s.shopee.co.id/8ATjj9KVMf", img: "https://down-bs-id.img.susercontent.com/id-11134207-81ztm-mfakxmwrw5qn32.webp" },
+      { nama: "Tas Ransel Pria Xarier", link: "https://s.shopee.co.id/6pyM8rkdKn", img: "https://down-bs-id.img.susercontent.com/id-11134207-7r98t-lvpv60flkn7bf9.webp" },
+      { nama: "Samsung X-PRIME 10.1 inch (16GB+1TB)", link: "https://s.shopee.co.id/gNinpMM7M", img: "https://down-bs-id.img.susercontent.com/id-11134207-822ws-mlz7fom2sp38e5.webp" },
+      { nama: "Payung Lipat Anti Sinar UV", link: "https://s.shopee.co.id/7pqtL7AFy1", img: "https://down-bs-id.img.susercontent.com/id-11134207-7ra0p-mcj21v0fr8d334.webp" },
+      { nama: "Jaket Bolak Balik Unisex", link: "https://s.shopee.co.id/6fevwzIh4T", img: "https://down-bs-id.img.susercontent.com/id-11134207-7rasa-m1c6xuid5vbj6e.webp" },
+      { nama: "TV Smart 32-43 inch 4K", link: "https://s.shopee.co.id/5L9YMnq5kU", img: "https://down-bs-id.img.susercontent.com/id-11134207-82251-ml2yuw5y8b2f93.webp" },
+      { nama: "Jaket Bomber Pria", link: "https://s.shopee.co.id/7fXT97pL1r", img: "https://down-bs-id.img.susercontent.com/sg-11134201-7rcbx-lrmse2dnki0oc8.webp" },
+      { nama: "Tumbler Kopi 530ml", link: "https://s.shopee.co.id/9AMGw8zmWg", img: "https://down-bs-id.img.susercontent.com/id-11134207-81zte-mepetpqh2l1c16.webp" },
+      { nama: "Jet Cleaner Alat Cuci Kendaraan", link: "https://s.shopee.co.id/7AbCYVWzBo", img: "https://down-bs-id.img.susercontent.com/id-11134207-822wj-mpevbwitu6805c.webp" },
+      { nama: "DJI Osmo Pocket 3 - Pocket Gimbal Camera", link: "https://s.shopee.co.id/20t6P2i0gv", img: "https://down-bs-id.img.susercontent.com/id-11134207-7rasd-m0co4fwhgok65a.webp" },
+      { nama: "Jas Hujan HOODIE", link: "https://s.shopee.co.id/2VpMzzEYaq", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224y-mgc967xvyb670a.webp" },
+      { nama: "Kursi Lipat Outdoor Beban 150kg", link: "https://s.shopee.co.id/9Uz7Krr0hu", img: "https://down-bs-id.img.susercontent.com/id-11134207-81ztj-mf6ohegnfpxo1d.webp" },
+      { nama: "Printer All-in-One Canon", link: "https://s.shopee.co.id/9fIXXDyrD7", img: "https://down-bs-id.img.susercontent.com/id-11134207-82250-mj6solvax2br28.webp" },
+      { nama: "Sepeda gunung 26-27,5 inci", link: "https://s.shopee.co.id/2VpN0MughM", img: "https://down-bs-id.img.susercontent.com/id-11134207-7ra0s-md9zie36gt6d7d.webp" },
+      { nama: "Kipas Lipat Portable 199 Level Turbo", link: "https://s.shopee.co.id/6AifN9WiYa", img: "https://down-bs-id.img.susercontent.com/id-11134207-81ztl-mens10n52o7480.webp" },
+      { nama: "Lampu jalan tenaga surya", link: "https://s.shopee.co.id/gNipavWKJ", img: "https://down-bs-id.img.susercontent.com/id-11134207-81ztq-mejquipnz0g5be.webp" },
+      { nama: "Printer Epson L3211 All-in-One", link: "https://s.shopee.co.id/7fXTAVLLGD", img: "https://down-bs-id.img.susercontent.com/id-11134207-81ztl-mf7oad7hdczs9c.webp" },
+      { nama: "CCTV V380 Pro 1080P Kamera CCTV 360", link: "https://s.shopee.co.id/9AMGxAEtQE", img: "https://down-bs-id.img.susercontent.com/id-11134207-81ztq-mf3dtbf4mfig1d.webp" },
+      { nama: "MLA J5 Helm Half Face", link: "https://s.shopee.co.id/1gGG1VIHdR", img: "https://down-bs-id.img.susercontent.com/id-11134207-7ras9-m2t9c9n9tkup8c.webp" },
+      { nama: "Infinix Smartwatch S10 Pro Ultra", link: "https://s.shopee.co.id/4LH1CQo4hu", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224t-mfuwwihgfcax99.webp" },
+      { nama: "Kacamata Las Otomatis Auto Dark", link: "https://s.shopee.co.id/40eAnqUBfu", img: "https://down-bs-id.img.susercontent.com/id-11134207-7r98s-lvphqqtyte1qe8.webp" },
+      { nama: "Acroder Action Camera 4K", link: "https://s.shopee.co.id/5q5ozEpoZR", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224q-mgw4erby677ub2.webp" },
+      { nama: "Charger Aki Motor Mobil 12V 24V", link: "https://s.shopee.co.id/4ftrb7cT5o", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224s-mhbj3fd5yxor0e.webp" },
+      { nama: "Mesin Cuci Mini Mesin Cuci Mini 4,5 Kg", link: "https://s.shopee.co.id/7fXTAl2Zba", img: "https://down-bs-id.img.susercontent.com/id-11134207-7rbk2-machpfhqzyp7c4.webp" },
+      { nama: "ups wifi 12V+12V mini", link: "https://s.shopee.co.id/60PFEdsXHW", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224r-mi18ejihs7wi60.webp" },
+      { nama: "15.6-inch Display Screen", link: "https://s.shopee.co.id/5Aq8F9lhH4", img: "https://down-bs-id.img.susercontent.com/sg-11134201-82611-mj87s3nqnjeoe3.webp" },
+      { nama: "Thermal Printer Resi A6 Barcode", link: "https://s.shopee.co.id/4LH1FeD0XN", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224s-mi5r9grp2fig1e.webp" },
+      { nama: "set meja belajar anak", link: "https://s.shopee.co.id/8pjQbwD8lb", img: "https://down-bs-id.img.susercontent.com/id-11134207-7r98v-lplqxa90u0oe48.webp" },
+      { nama: "MONITOR LED HP 20INCH", link: "https://s.shopee.co.id/5L9YRZG7NC", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224s-mknovcu2wdtz9e.webp" },
+      { nama: "PRINTER BLUETOOTH MINI", link: "https://s.shopee.co.id/4Axb3RP2JQ", img: "https://down-bs-id.img.susercontent.com/dfacda9971c434bf5ebfd799e02e31c3.webp" },
+      { nama: "CUSTOM BOBBER MATIC 115CC", link: "https://s.shopee.co.id/7pqtQX6jCI", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224u-mgbxc3r6nk7edc.webp" },
+      { nama: "BOBBER HARLEY BYSON 155CC 2011", link: "https://s.shopee.co.id/7VE31xbIda", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224x-mhej60w9hc0b6c.webp" },
+      { nama: "Custom Case Aklirik ", link: "https://s.shopee.co.id/7KucqA34uQ", img: "https://down-bs-id.img.susercontent.com/058af34ca75b348bf7fb4cf98d4f060a.webp" },
+      { nama: "Kamera Vlog 4K WIFI", link: "https://s.shopee.co.id/1VwptT712L", img: "https://down-bs-id.img.susercontent.com/id-11134207-822wr-mp8vmuz5e68d1e.webp" },
+      { nama: "JAS HUJAN STELAN", link: "https://s.shopee.co.id/3LOU4rCcqe", img: "https://down-bs-id.img.susercontent.com/id-11134207-7rasj-m1o0tnyvtk1da1.webp" },
+      { nama: "Brica B-Steady Stabilizer", link: "https://s.shopee.co.id/1LdPhCXEyg", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224r-mkkn7zhl5m2tad.webp" },
+      { nama: "Tandon Air Praxis Kerang 350 Liter", link: "https://s.shopee.co.id/8ATjpsndLZ", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224y-mggcfqg8acy696.webp" },
+      { nama: "Helm Half Face Pria Wanita JPX", link: "https://s.shopee.co.id/7pqtRIZero", img: "https://down-bs-id.img.susercontent.com/825b874a4dd9034c810a661f44414b37.webp" },
+      { nama: "BLAISE V6 Plus Intercom", link: "https://s.shopee.co.id/8KnA2L1J2w", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224z-mk3fnogem39j05.webp" },
+      { nama: "WiFi Signal Amplifier 1800Mbps 6 Antena", link: "https://s.shopee.co.id/LksVfcRmj", img: "https://down-bs-id.img.susercontent.com/id-11134207-82251-mjz0x5jfi0w0cb.webp" },
+      { nama: "Holder Motor Holder HP", link: "https://s.shopee.co.id/3g1KTp3ufy", img: "https://down-bs-id.img.susercontent.com/id-11134207-8224p-miya2us45uyu0a.webp" },
+      { nama: "MIPOW Power Bank 5000Mah", link: "https://s.shopee.co.id/3VhuD0bDjn", img: "https://down-bs-id.img.susercontent.com/id-11134207-822wr-mnfcxkjbu48wa9.webp" }
+      ];
+
+      function initAds() {
+        const target = document.getElementById('product-list-target');
+        dataProduk.forEach(p => {
+          target.innerHTML += `
+            <div class="swiper-slide">
+              <div class="product-card-shopee">
+                <div class="product-img-box">
+                  <img src="${p.img}" loading="lazy">
+                </div>
+                <div class="product-title">${p.nama}</div>
+                <a href="${p.link}" target="_blank" class="btn-shopee">BELI</a>
+              </div>
+            </div>`;
+        });
+
+        new Swiper('.swiper-ads-container', {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          loop: true,
+          autoplay: { delay: 3000, disableOnInteraction: false },
+          navigation: { nextEl: '.shopee-next', prevEl: '.shopee-prev' },
+        });
+      }
+
+      if (typeof Swiper === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+        script.onload = initAds;
+        document.head.appendChild(script);
+      } else {
+        initAds();
+      }
+    })();
+  </script>
+</div>
