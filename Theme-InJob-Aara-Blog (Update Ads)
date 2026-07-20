@@ -2736,19 +2736,21 @@ text-decoration: none !important;
         <b:section class='menu' id='menu' maxwidgets='1' name='Main Menu' showaddelement='yes'>
           <b:widget id='LinkList210' locked='true' title='Menu' type='LinkList' version='1'>
             <b:widget-settings>
-              <b:widget-setting name='link-5'>/search/label/review</b:widget-setting>
-              <b:widget-setting name='link-3'>/search/label/desain</b:widget-setting>
-              <b:widget-setting name='link-4'>/search/label/gadget</b:widget-setting>
-              <b:widget-setting name='text-1'>Kategori Blog</b:widget-setting>
-              <b:widget-setting name='text-0'>Kompasiana</b:widget-setting>
-              <b:widget-setting name='text-3'>_Desain</b:widget-setting>
-              <b:widget-setting name='text-2'>_Blogging</b:widget-setting>
-              <b:widget-setting name='text-5'>_Review</b:widget-setting>
-              <b:widget-setting name='text-4'>_Gadget</b:widget-setting>
+              <b:widget-setting name='link-5'>https://jiaara.id/blog</b:widget-setting>
+              <b:widget-setting name='link-6'>https://www.kompasiana.com/adhityaramadhan6427</b:widget-setting>
+              <b:widget-setting name='link-3'>/search/label/gadget</b:widget-setting>
+              <b:widget-setting name='link-4'>/search/label/review</b:widget-setting>
+              <b:widget-setting name='text-1'>_Blogging (blogger.com)</b:widget-setting>
+              <b:widget-setting name='text-0'>71AARA</b:widget-setting>
+              <b:widget-setting name='text-3'>_Gadget</b:widget-setting>
+              <b:widget-setting name='text-2'>_Desain</b:widget-setting>
+              <b:widget-setting name='text-5'>Jiaara Blog</b:widget-setting>
+              <b:widget-setting name='text-4'>_Review</b:widget-setting>
+              <b:widget-setting name='text-6'>Kompasiana</b:widget-setting>
               <b:widget-setting name='sorting'>NONE</b:widget-setting>
-              <b:widget-setting name='link-1'>#</b:widget-setting>
-              <b:widget-setting name='link-2'>/search/label/blogger</b:widget-setting>
-              <b:widget-setting name='link-0'>https://www.kompasiana.com/adhityaramadhan6427</b:widget-setting>
+              <b:widget-setting name='link-1'>/search/label/blogger</b:widget-setting>
+              <b:widget-setting name='link-2'>/search/label/desain</b:widget-setting>
+              <b:widget-setting name='link-0'>#</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
             <div class='widget-content'>
