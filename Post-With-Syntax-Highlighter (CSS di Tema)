@@ -1,3 +1,6 @@
+<p style="text-align: justify;"><b>Sukoharjo, 71AARA</b> - Artikel di sini</p>
+
+
 <div class="css71aara-Syntax-highlighter-wrapper">
   <!-- Navigasi Bahasa (Tabs) -->
   <div class="css71aara-Syntax-highlighter-tabs">
@@ -20,20 +23,11 @@
           </svg>
         </button>
       </div>
-      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code">&lt;!DOCTYPE <span class="css71aara-Syntax-highlighter-c-attr">html</span>&gt;
-&lt;<span class="css71aara-Syntax-highlighter-c-tag">html</span> <span class="css71aara-Syntax-highlighter-c-attr">lang</span>=<span class="css71aara-Syntax-highlighter-c-val">"en"</span>&gt;
-&lt;<span class="css71aara-Syntax-highlighter-c-tag">head</span>&gt;
-  &lt;<span class="css71aara-Syntax-highlighter-c-tag">title</span>&gt;<span class="css71aara-Syntax-highlighter-c-text">Ubah Warna Latar</span>&lt;/<span class="css71aara-Syntax-highlighter-c-tag">title</span>&gt;
-  &lt;<span class="css71aara-Syntax-highlighter-c-tag">link</span> <span class="css71aara-Syntax-highlighter-c-attr">rel</span>=<span class="css71aara-Syntax-highlighter-c-val">"stylesheet"</span> <span class="css71aara-Syntax-highlighter-c-attr">href</span>=<span class="css71aara-Syntax-highlighter-c-val">"styles.css"</span>&gt;
-&lt;/<span class="css71aara-Syntax-highlighter-c-tag">head</span>&gt;
-&lt;<span class="css71aara-Syntax-highlighter-c-tag">body</span>&gt;
-  &lt;<span class="css71aara-Syntax-highlighter-c-tag">div</span> <span class="css71aara-Syntax-highlighter-c-attr">class</span>=<span class="css71aara-Syntax-highlighter-c-val">"container"</span>&gt;
-    &lt;<span class="css71aara-Syntax-highlighter-c-tag">h1</span>&gt;<span class="css71aara-Syntax-highlighter-c-text">Tekan Tombol di Bawah</span>&lt;/<span class="css71aara-Syntax-highlighter-c-tag">h1</span>&gt;
-    &lt;<span class="css71aara-Syntax-highlighter-c-tag">button</span> <span class="css71aara-Syntax-highlighter-c-attr">id</span>=<span class="css71aara-Syntax-highlighter-c-val">"changeBtn"</span>&gt;<span class="css71aara-Syntax-highlighter-c-text">Ubah Warna</span>&lt;/<span class="css71aara-Syntax-highlighter-c-tag">button</span>&gt;
-  &lt;/<span class="css71aara-Syntax-highlighter-c-tag">div</span>&gt;
-  &lt;<span class="css71aara-Syntax-highlighter-c-tag">script</span> <span class="css71aara-Syntax-highlighter-c-attr">src</span>=<span class="css71aara-Syntax-highlighter-c-val">"script.js"</span>&gt;&lt;/<span class="css71aara-Syntax-highlighter-c-tag">script</span>&gt;
-&lt;/<span class="css71aara-Syntax-highlighter-c-tag">body</span>&gt;
-&lt;/<span class="css71aara-Syntax-highlighter-c-tag">html</span>&gt;</code></pre>
+      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code">
+      
+      ISI SCRIPT HARUS DI ENCODE / ESCAPE TERLEBIH DAHULU
+      
+      </code></pre>
     </div>
 
     <!-- PANEL CSS -->
@@ -47,23 +41,11 @@
           </svg>
         </button>
       </div>
-      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code"><span class="css71aara-Syntax-highlighter-c-tag">body</span> {
-  <span class="css71aara-Syntax-highlighter-c-attr">font-family</span>: <span class="css71aara-Syntax-highlighter-c-val">sans-serif</span>;
-  <span class="css71aara-Syntax-highlighter-c-attr">transition</span>: <span class="css71aara-Syntax-highlighter-c-val">background-color 0.3s ease</span>;
-}
-
-<span class="css71aara-Syntax-highlighter-c-tag">.container</span> {
-  <span class="css71aara-Syntax-highlighter-c-attr">text-align</span>: <span class="css71aara-Syntax-highlighter-c-val">center</span>;
-  <span class="css71aara-Syntax-highlighter-c-attr">margin-top</span>: <span class="css71aara-Syntax-highlighter-c-val">50px</span>;
-}
-
-<span class="css71aara-Syntax-highlighter-c-tag">#changeBtn</span> {
-  <span class="css71aara-Syntax-highlighter-c-attr">padding</span>: <span class="css71aara-Syntax-highlighter-c-val">10px 20px</span>;
-  <span class="css71aara-Syntax-highlighter-c-attr">background-color</span>: <span class="css71aara-Syntax-highlighter-c-val">#3b82f6</span>;
-  <span class="css71aara-Syntax-highlighter-c-attr">color</span>: <span class="css71aara-Syntax-highlighter-c-val">white</span>;
-  <span class="css71aara-Syntax-highlighter-c-attr">border</span>: <span class="css71aara-Syntax-highlighter-c-val">none</span>;
-  <span class="css71aara-Syntax-highlighter-c-attr">cursor</span>: <span class="css71aara-Syntax-highlighter-c-val">pointer</span>;
-}</code></pre>
+      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code">
+      
+      ISI SCRIPT HARUS DI ENCODE / ESCAPE TERLEBIH DAHULU
+      
+      </code></pre>
     </div>
 
     <!-- PANEL JAVASCRIPT -->
@@ -77,18 +59,19 @@
           </svg>
         </button>
       </div>
-      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code"><span class="css71aara-Syntax-highlighter-c-comment">// Mengambil elemen tombol</span>
-<span class="css71aara-Syntax-highlighter-c-tag">const</span> btn = document.<span class="css71aara-Syntax-highlighter-c-attr">getElementById</span>(<span class="css71aara-Syntax-highlighter-c-val">'changeBtn'</span>);
-
-<span class="css71aara-Syntax-highlighter-c-comment">// Menambahkan event listener</span>
-btn.<span class="css71aara-Syntax-highlighter-c-attr">addEventListener</span>(<span class="css71aara-Syntax-highlighter-c-val">'click'</span>, <span class="css71aara-Syntax-highlighter-c-tag">function</span>() {
-  <span class="css71aara-Syntax-highlighter-c-tag">const</span> randomColor = Math.<span class="css71aara-Syntax-highlighter-c-attr">floor</span>(Math.<span class="css71aara-Syntax-highlighter-c-attr">random</span>()*<span class="css71aara-Syntax-highlighter-c-val">16777215</span>).<span class="css71aara-Syntax-highlighter-c-attr">toString</span>(<span class="css71aara-Syntax-highlighter-c-val">16</span>);
-  document.body.style.<span class="css71aara-Syntax-highlighter-c-attr">backgroundColor</span> = <span class="css71aara-Syntax-highlighter-c-val">"#"</span> + randomColor;
-});</code></pre>
+      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code">
+      
+      ISI SCRIPT HARUS DI ENCODE / ESCAPE TERLEBIH DAHULU
+      
+      </code></pre>
     </div>
 
   </div>
 </div>
+
+
+
+    <!-- JAVASCRIPT TIDAK PERLU DIDUPLIKAT -->
 
 <script>
 // Fungsi untuk mengganti visual Tab dan konten Panel
@@ -110,7 +93,7 @@ function copyCode71aara(button) {
   // Mencari elemen <pre> di dalam panel (pane) yang sedang aktif
   const preElement = button.closest('.css71aara-Syntax-highlighter-pane').querySelector('.css71aara-Syntax-highlighter-pre');
   
-  // Mengambil teks murni tanpa tag <span>
+  // Mengambil teks murni
   const codeText = preElement.innerText || preElement.textContent;
   
   navigator.clipboard.writeText(codeText).then(() => {
