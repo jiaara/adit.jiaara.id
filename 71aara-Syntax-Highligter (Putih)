@@ -1,0 +1,241 @@
+<style>
+/* --- Pengaturan Kontainer Utama --- */
+.css71aara-Syntax-highlighter-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 20px 0;
+  background-color: #fff;
+}
+
+/* --- Pengaturan Navigasi Tab --- */
+.css71aara-Syntax-highlighter-tabs {
+  display: flex;
+  padding: 0 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.css71aara-Syntax-highlighter-tab {
+  padding: 16px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  color: #6b7280;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.css71aara-Syntax-highlighter-tab:hover {
+  color: #111827;
+}
+
+.css71aara-Syntax-highlighter-tab.active {
+  color: #111827;
+  border-bottom: 3px solid #3b82f6;
+}
+
+/* --- Pengaturan Area Kode & Panel --- */
+.css71aara-Syntax-highlighter-content {
+  background-color: #212529;
+  padding: 16px;
+}
+
+/* Menyembunyikan panel yang tidak aktif */
+.css71aara-Syntax-highlighter-pane {
+  display: none;
+}
+
+/* Menampilkan panel yang aktif */
+.css71aara-Syntax-highlighter-pane.active {
+  display: block;
+}
+
+.css71aara-Syntax-highlighter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.css71aara-Syntax-highlighter-filename {
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+  font-weight: bold;
+  color: #e5e7eb;
+}
+
+.css71aara-Syntax-highlighter-copy-btn {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.css71aara-Syntax-highlighter-copy-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.css71aara-Syntax-highlighter-copy-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: #374151;
+}
+
+/* --- Pengaturan Teks Kode & Pewarnaan --- */
+.css71aara-Syntax-highlighter-pre {
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+}
+
+.css71aara-Syntax-highlighter-code {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff; /* Warna disetel menjadi putih untuk semua teks */
+}
+</style>
+
+<div class="css71aara-Syntax-highlighter-wrapper">
+  <!-- Navigasi Bahasa (Tabs) -->
+  <div class="css71aara-Syntax-highlighter-tabs">
+    <button class="css71aara-Syntax-highlighter-tab active" onclick="switchTab71aara(event, 'html')">HTML</button>
+    <button class="css71aara-Syntax-highlighter-tab" onclick="switchTab71aara(event, 'css')">CSS</button>
+    <button class="css71aara-Syntax-highlighter-tab" onclick="switchTab71aara(event, 'js')">JavaScript</button>
+  </div>
+
+  <!-- Area Konten Utama -->
+  <div class="css71aara-Syntax-highlighter-content">
+    
+    <!-- PANEL HTML -->
+    <div id="css71aara-pane-html" class="css71aara-Syntax-highlighter-pane active">
+      <div class="css71aara-Syntax-highlighter-header">
+        <span class="css71aara-Syntax-highlighter-filename">index.html</span>
+        <button class="css71aara-Syntax-highlighter-copy-btn" onclick="copyCode71aara(this)" title="Salin Kode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;title&gt;Ubah Warna Latar&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Tekan Tombol di Bawah&lt;/h1&gt;
+    &lt;button id="changeBtn"&gt;Ubah Warna&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <!-- PANEL CSS -->
+    <div id="css71aara-pane-css" class="css71aara-Syntax-highlighter-pane">
+      <div class="css71aara-Syntax-highlighter-header">
+        <span class="css71aara-Syntax-highlighter-filename">styles.css</span>
+        <button class="css71aara-Syntax-highlighter-copy-btn" onclick="copyCode71aara(this)" title="Salin Kode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code">body {
+  font-family: sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#changeBtn {
+  padding: 10px 20px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  cursor: pointer;
+}</code></pre>
+    </div>
+
+    <!-- PANEL JAVASCRIPT -->
+    <div id="css71aara-pane-js" class="css71aara-Syntax-highlighter-pane">
+      <div class="css71aara-Syntax-highlighter-header">
+        <span class="css71aara-Syntax-highlighter-filename">script.js</span>
+        <button class="css71aara-Syntax-highlighter-copy-btn" onclick="copyCode71aara(this)" title="Salin Kode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <pre class="css71aara-Syntax-highlighter-pre"><code class="css71aara-Syntax-highlighter-code">// Mengambil elemen tombol
+const btn = document.getElementById('changeBtn');
+
+// Menambahkan event listener
+btn.addEventListener('click', function() {
+  const randomColor = Math.floor(Math.random()*16777215).toString(16);
+  document.body.style.backgroundColor = "#" + randomColor;
+});</code></pre>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Fungsi untuk mengganti visual Tab dan konten Panel
+function switchTab71aara(event, langId) {
+  // 1. Mengubah status tombol tab
+  const wrapper = event.target.closest('.css71aara-Syntax-highlighter-wrapper');
+  const tabs = wrapper.querySelectorAll('.css71aara-Syntax-highlighter-tab');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // 2. Menyembunyikan semua panel dan menampilkan yang diklik
+  const panes = wrapper.querySelectorAll('.css71aara-Syntax-highlighter-pane');
+  panes.forEach(pane => pane.classList.remove('active'));
+  wrapper.querySelector('#css71aara-pane-' + langId).classList.add('active');
+}
+
+// Fungsi untuk fitur tombol Salin Kode
+function copyCode71aara(button) {
+  // Mencari elemen <pre> di dalam panel (pane) yang sedang aktif
+  const preElement = button.closest('.css71aara-Syntax-highlighter-pane').querySelector('.css71aara-Syntax-highlighter-pre');
+  
+  // Mengambil teks murni
+  const codeText = preElement.innerText || preElement.textContent;
+  
+  navigator.clipboard.writeText(codeText).then(() => {
+    const originalIcon = button.innerHTML;
+    // Mengubah ikon menjadi ceklis hijau
+    button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    
+    // Kembalikan ke ikon semula setelah 2 detik
+    setTimeout(() => {
+      button.innerHTML = originalIcon;
+    }, 2000);
+  }).catch(err => {
+    console.error('Gagal menyalin kode: ', err);
+  });
+}
+</script>
+
+
+Panduan Mengubah Isi Kode
+Jika Anda ingin mengganti script di dalamnya dengan kode milik Anda, ubah bagian yang berada di dalam tag <pre><code>...</code></pre>. Pastikan untuk mengubah karakter < menjadi &lt; dan > menjadi &gt; agar kode HTML tidak dieksekusi sebagai elemen nyata oleh browser.
