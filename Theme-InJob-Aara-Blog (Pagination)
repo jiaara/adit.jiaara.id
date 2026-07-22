@@ -2907,17 +2907,23 @@ text-decoration: none !important;
         <b:section class='menu' id='menu' maxwidgets='1' name='Main Menu' showaddelement='yes'>
           <b:widget id='LinkList210' locked='true' title='Menu' type='LinkList' version='1'>
             <b:widget-settings>
-              <b:widget-setting name='link-5'>https://www.kompasiana.com/adhityaramadhan6427</b:widget-setting>
-              <b:widget-setting name='link-6'>/p/tools.html</b:widget-setting>
-              <b:widget-setting name='link-3'>/search/label/koding</b:widget-setting>
-              <b:widget-setting name='link-4'>/search/label/review</b:widget-setting>
+              <b:widget-setting name='text-9'>Alat / Tools</b:widget-setting>
+              <b:widget-setting name='link-9'>/p/tools.html</b:widget-setting>
+              <b:widget-setting name='text-8'>Kompasiana</b:widget-setting>
+              <b:widget-setting name='link-7'>/search/label/review</b:widget-setting>
+              <b:widget-setting name='link-8'>https://www.kompasiana.com/adhityaramadhan6427</b:widget-setting>
+              <b:widget-setting name='link-5'>/search/label/coreldraw</b:widget-setting>
+              <b:widget-setting name='link-6'>/search/label/koding</b:widget-setting>
+              <b:widget-setting name='link-3'>/search/label/photoshop</b:widget-setting>
+              <b:widget-setting name='link-4'>/search/label/canva</b:widget-setting>
               <b:widget-setting name='text-1'>_Blogging (blogger)</b:widget-setting>
               <b:widget-setting name='text-0'>71AARA</b:widget-setting>
-              <b:widget-setting name='text-3'>_Koding (HTML)</b:widget-setting>
-              <b:widget-setting name='text-2'>_Desain</b:widget-setting>
-              <b:widget-setting name='text-5'>Kompasiana</b:widget-setting>
-              <b:widget-setting name='text-4'>_Review</b:widget-setting>
-              <b:widget-setting name='text-6'>Alat / Tools</b:widget-setting>
+              <b:widget-setting name='text-3'>__Adobe Photoshop</b:widget-setting>
+              <b:widget-setting name='text-2'><![CDATA[_Desain & Edit]]></b:widget-setting>
+              <b:widget-setting name='text-5'>__CorelDraw</b:widget-setting>
+              <b:widget-setting name='text-4'>__Canva</b:widget-setting>
+              <b:widget-setting name='text-7'>_Review</b:widget-setting>
+              <b:widget-setting name='text-6'>_Koding (HTML)</b:widget-setting>
               <b:widget-setting name='sorting'>NONE</b:widget-setting>
               <b:widget-setting name='link-1'>/search/label/blogger</b:widget-setting>
               <b:widget-setting name='link-2'>/search/label/desain</b:widget-setting>
