@@ -96,6 +96,58 @@ body#layout #mostpopularpage1 {float: left;  width: 28%;}
 body#layout #mostpopularpage2 {float: left; width: 28%;}
 body#layout #mostpopularpage3 {float: right; width: 28%;}
 body#layout ul {display: none;}
+
+
+
+ /* Mengimpor font dari Google Fonts agar mirip dengan desain asli */
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@700&display=swap');
+
+  .btn-salin-desain {
+    /* Gradasi warna background dari kiri (biru muda/cyan) ke kanan (biru tua) */
+    background: linear-gradient(90deg, #4ac4e0 0%, #3090d0 50%, #0647ad 100%);
+    border: none;
+    border-radius: 999px; /* Membuat sudut membulat sempurna (pill shape) */
+    padding: 15px 50px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Efek saat tombol disorot atau ditekan (opsional untuk interaktivitas) */
+  .btn-salin-desain:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  .btn-salin-desain:active {
+    transform: translateY(1px);
+  }
+
+  /* Styling untuk teks "SALIN" */
+  .text-salin {
+    font-family: 'Poppins', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    line-height: 1;
+    /* Memberikan bayangan tipis pada teks */
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15); 
+  }
+
+  /* Styling untuk teks "Canva" */
+  .text-canva {
+    font-family: 'Pacifico', cursive;
+    font-size: 54px;
+    color: #ffffff;
+    font-weight: 400;
+    line-height: 1;
+    /* Memberikan bayangan yang lebih jelas sesuai gambar */
+    text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+  }
 */]]></b:skin>
 
 <style type='text/css'>
