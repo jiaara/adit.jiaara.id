@@ -2398,7 +2398,7 @@ var dw='';titles=new Array();titlesNum=0;urls=new Array();timeR=new Array();thum
 <b:if cond='data:blog.url == data:blog.homepageUrl'><b:if cond='data:blog.isMobileRequest == &quot;false&quot;'>
 <b:section class='sidebar-label1' id='sidebar-label1' showaddelement='no'/></b:if></b:if>
   <b:section class='right-ads' id='right-ads' preferred='yes'>
-    <b:widget id='HTML12' locked='false' title='' type='HTML'>
+    <b:widget id='HTML12' locked='false' title='Traktir Ngopi' type='HTML'>
       <b:widget-settings>
         <b:widget-setting name='content'><![CDATA[<script type='text/javascript' src='https://edge-cdn.trakteer.id/js/trbtn-overlay.min.js?v=14-05-2025'></script><script type='text/javascript' class='troverlay'>(function() {var trbtnId = trbtnOverlay.init('Traktir Ngopi','#be1e2d','https://trakteer.id/v1/jiaara/tip/embed/modal','https://trakteer.id/storage/images/units/uic-dDur2OGvLz1ohHRf1cx61PPJ1I00jGqA1628823839.png','50','inline');trbtnOverlay.draw(trbtnId);})();</script>]]></b:widget-setting>
       </b:widget-settings>
@@ -2702,6 +2702,22 @@ var dw='';titles=new Array();titlesNum=0;urls=new Array();timeR=new Array();thum
   <b:include name='quickedit'/>
 </b:includable>
     </b:widget>
+    <b:widget id='HTML17' locked='false' title='' type='HTML'>
+      <b:widget-settings>
+        <b:widget-setting name='content'><![CDATA[<a href="https://my.domainesia.com/ref.php?u=5384"><img src="https://dnva.me/8tmnf" width="100%" height="100%" alt="DomaiNesia" /></a>]]></b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+  <!-- only display title if it's non-empty -->
+  <b:if cond='data:title != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+
+  <b:include name='quickedit'/>
+</b:includable>
+    </b:widget>
   </b:section>
 
 <b:if cond='data:blog.url == data:blog.homepageUrl'><b:if cond='data:blog.isMobileRequest == &quot;false&quot;'>
@@ -2836,6 +2852,27 @@ document.write(&quot;&lt;script src=\&quot;/feeds/posts/default/-/<data:content/
 </b:if>
 <b:if cond='data:blog.isMobileRequest == &quot;false&quot;'>
 <b:section class='sidebar-item' id='sidebar-item' preferred='yes'>
+  <b:widget id='HTML13' locked='false' title='' type='HTML'>
+    <b:widget-settings>
+      <b:widget-setting name='content'><![CDATA[<script type="text/javascript">
+    var go_url = 'https://sfl.gl/';
+    var api = 'da803417b92670e7ca95b908c8cbe9b68c91d458';
+    var shorten_includ = ["canva.link","canva.com","drive.google.com"];
+</script>
+<script src="//safelinku.com/js/web-script.js"></script>]]></b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <!-- only display title if it's non-empty -->
+  <b:if cond='data:title != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+
+  <b:include name='quickedit'/>
+</b:includable>
+  </b:widget>
   <b:widget id='HTML8' locked='false' title='Konten Terbaru' type='HTML' version='1'>
     <b:widget-settings>
       <b:widget-setting name='content'><![CDATA[<h2 class="title" style="display: block;">
