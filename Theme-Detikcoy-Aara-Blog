@@ -1391,12 +1391,12 @@ var LableName = "Video"
 </b:if>
 </aside>
 <div class='main-wrapper' itemscope='itemscope' itemtype='https://schema.org/Blog'>
-  <b:if cond='data:blog.url == data:blog.homepageUrl'><div id='titlesticky'><div class='t_lfl'>News Feed</div><a href='/search?max-results=10'>+</a></div></b:if>
+  <b:if cond='data:blog.url == data:blog.homepageUrl'><div id='titlesticky'><div class='t_lfl'>Terbaru</div><a href='/search?max-results=10'>+</a></div></b:if>
 <b:if cond='data:blog.isMobileRequest == &quot;false&quot;'>
  <b:section class='iklan-newsfeed' id='iklan-newsfeed' showaddelement='no'>
    <b:widget id='HTML3' locked='false' title='Iklan Halaman Depan' type='HTML' version='1'>
      <b:widget-settings>
-       <b:widget-setting name='content'>Masukkan kode iklan di sini. Diwajibkan iklan ukuran 400px x 250px. Iklan ini akan tampil hanya di halaman utama.</b:widget-setting>
+       <b:widget-setting name='content'/>
      </b:widget-settings>
      <b:includable id='main'><b:if cond='data:blog.url == data:blog.homepageUrl'>
   <!-- only display title if it's non-empty -->
@@ -2813,15 +2813,15 @@ document.write(&quot;&lt;script src=\&quot;/feeds/posts/default/-/<data:content/
 <footer itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/WPFooter'>
 <div id='footer-wrapper'>
 <b:section class='footer1' id='footer1' showaddelement='no'>
-  <b:widget id='Image1' locked='false' title='detikcoy' type='Image' version='1'>
+  <b:widget id='Image1' locked='false' title='71AARA' type='Image' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='displayUrl'>http://1.bp.blogspot.com/-LlgFuxRdc_U/XCHo_G6h7WI/AAAAAAAACVU/TiATeh1tsLE_m1rQngcfyrxjQ6ZyFrcwwCK4BGAYYCw/s1600/logo-detik-coy-white.png</b:widget-setting>
-      <b:widget-setting name='displayHeight'>80</b:widget-setting>
+      <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh89zDFf88aQZ6DSHbVOP6J0vxKdX_LASlmru31DE3D5fA6GhJlNiL7Cp8ngUMKzOs-QBPCxI3exgm5rtbj9ftJdukjSPlMUDajnLcyBf7-qEACm9LKp1z0WryDD-SDG1K7raQrQFWAiVERMRrJ3z1UkR3thu2ix4Mqbx4icJnxRFkeng/s189/adit.jiaara.id.png</b:widget-setting>
+      <b:widget-setting name='displayHeight'>48</b:widget-setting>
       <b:widget-setting name='sectionWidth'>150</b:widget-setting>
       <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-      <b:widget-setting name='displayWidth'>310</b:widget-setting>
+      <b:widget-setting name='displayWidth'>189</b:widget-setting>
       <b:widget-setting name='link'>/</b:widget-setting>
-      <b:widget-setting name='caption'>detikcoy</b:widget-setting>
+      <b:widget-setting name='caption'>71AARA</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
     <b:if cond='data:title != &quot;&quot;'>
@@ -2872,15 +2872,9 @@ document.write(&quot;&lt;script src=\&quot;/feeds/posts/default/-/<data:content/
 <b:section class='bottom-link' id='bottom-link' showaddelement='no'>
   <b:widget id='LinkList2' locked='false' title='Link Bawah' type='LinkList'>
     <b:widget-settings>
-      <b:widget-setting name='link-3'>https://id.xmlthemes.com/p/contact.html</b:widget-setting>
       <b:widget-setting name='sorting'>NONE</b:widget-setting>
-      <b:widget-setting name='text-1'>Pedoman</b:widget-setting>
-      <b:widget-setting name='link-1'>/p/pedoman-pemberitaan-media-siber.html</b:widget-setting>
-      <b:widget-setting name='text-0'>Redaksi</b:widget-setting>
-      <b:widget-setting name='link-2'>/p/pedoman-pemberitaan-media-siber.html</b:widget-setting>
-      <b:widget-setting name='text-3'>Beli Template</b:widget-setting>
-      <b:widget-setting name='link-0'>/p/pedoman-pemberitaan-media-siber.html</b:widget-setting>
-      <b:widget-setting name='text-2'>Info Iklan</b:widget-setting>
+      <b:widget-setting name='text-0'>Domain Utama</b:widget-setting>
+      <b:widget-setting name='link-0'>https://jiaara.blogspot.com</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
 
