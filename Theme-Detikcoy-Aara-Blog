@@ -98,6 +98,7 @@ body#layout #mostpopularpage3 {float: right; width: 28%;}
 body#layout ul {display: none;}
 
 
+<!-- Bagian CSS Post - Salin Canva / Download --->
 
  /* Mengimpor font dari Google Fonts agar mirip dengan desain asli */
   @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@700&display=swap');
@@ -147,6 +148,109 @@ body#layout ul {display: none;}
     line-height: 1;
     /* Memberikan bayangan yang lebih jelas sesuai gambar */
     text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+  }
+
+
+<!-- Bagian CSS Post - Affiliate Card --->
+
+.adit71aara-affiliate-card {
+    width: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 10px auto;
+    border: 1px solid #f0f0f0;
+  }
+
+  /* Kontainer Gambar 1:1 */
+  .adit71aara-affiliate-img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Rasio 1:1 */
+    overflow: hidden;
+    background-color: #f9f9f9;
+  }
+
+  .adit71aara-affiliate-slider {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .adit71aara-affiliate-slider img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Tombol Navigasi */
+  .adit71aara-affiliate-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .adit71aara-affiliate-nav:hover { background: #fff; }
+  .adit71aara-affiliate-prev { left: 5px; }
+  .adit71aara-affiliate-next { right: 5px; }
+
+  /* Konten Teks */
+  .adit71aara-affiliate-content {
+    padding: 12px;
+    text-align: left;
+  }
+
+  .adit71aara-affiliate-title {
+    font-size: 15px;
+    font-weight: bold; /* Bold sesuai permintaan */
+    color: #222;
+    margin: 0 0 15px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+    height: 40px;
+  }
+
+  /* Tombol Beli Orange Shopee */
+  .adit71aara-affiliate-btn {
+    display: block;
+    background-color: #ee4d2d; /* Warna Orange Shopee */
+    color: white !important;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 0;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background 0.2s;
+    text-transform: uppercase;
+  }
+
+  .adit71aara-affiliate-btn:hover {
+    background-color: #d73211;
+    text-decoration: none;
   }
 */]]></b:skin>
 
