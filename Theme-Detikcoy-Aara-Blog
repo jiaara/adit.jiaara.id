@@ -154,104 +154,218 @@ body#layout ul {display: none;}
 <!-- Bagian CSS Post - Affiliate Card --->
 
 .adit71aara-affiliate-card {
-    width: 220px;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    margin: 10px auto;
-    border: 1px solid #f0f0f0;
-  }
+  width: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 20px auto; /* Membuat card otomatis berada di tengah secara horizontal */
+  border: 1px solid #f0f0f0;
+}
 
-  /* Kontainer Gambar 1:1 */
-  .adit71aara-affiliate-img-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 100%; /* Rasio 1:1 */
-    overflow: hidden;
-    background-color: #f9f9f9;
-  }
+/* Kontainer Gambar 1:1 */
+.adit71aara-affiliate-img-wrapper {
+  position: relative;
+  width: 100%; /* Diubah menjadi 100% agar pas dengan lebar card */
+  padding-top: 100%; /* Rasio 1:1 (lebar dan tinggi sama) */
+  overflow: hidden;
+  background-color: #f9f9f9;
+  margin: 0 auto; /* Memastikan wrapper berada di tengah */
+}
 
-  .adit71aara-affiliate-slider {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.3s ease-in-out;
-  }
+.adit71aara-affiliate-slider {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
 
-  .adit71aara-affiliate-slider img {
-    min-width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.adit71aara-affiliate-slider img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  /* Tombol Navigasi */
-  .adit71aara-affiliate-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    z-index: 2;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-  
-  .adit71aara-affiliate-nav:hover { background: #fff; }
-  .adit71aara-affiliate-prev { left: 5px; }
-  .adit71aara-affiliate-next { right: 5px; }
+/* Tombol Navigasi */
+.adit71aara-affiliate-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
 
-  /* Konten Teks */
-  .adit71aara-affiliate-content {
-    padding: 12px;
-    text-align: left;
-  }
+.adit71aara-affiliate-nav:hover { background: #fff; }
+.adit71aara-affiliate-prev { left: 5px; }
+.adit71aara-affiliate-next { right: 5px; }
 
-  .adit71aara-affiliate-title {
-    font-size: 15px;
-    font-weight: bold; /* Bold sesuai permintaan */
-    color: #222;
-    margin: 0 0 15px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 1.3;
-    height: 40px;
-  }
+/* Konten Teks */
+.adit71aara-affiliate-content {
+  padding: 12px;
+  text-align: left; /* Ubah ke 'center' jika ingin teksnya rata tengah */
+}
 
-  /* Tombol Beli Orange Shopee */
-  .adit71aara-affiliate-btn {
-    display: block;
-    background-color: #ee4d2d; /* Warna Orange Shopee */
-    color: white !important;
-    text-align: center;
-    text-decoration: none;
-    padding: 10px 0;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 13px;
-    transition: background 0.2s;
-    text-transform: uppercase;
-  }
+.adit71aara-affiliate-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #222;
+  margin: 0 0 15px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+  height: 40px;
+}
 
-  .adit71aara-affiliate-btn:hover {
-    background-color: #d73211;
-    text-decoration: none;
-  }
+/* Tombol Beli Orange Shopee */
+.adit71aara-affiliate-btn {
+  display: block;
+  background-color: #ee4d2d;
+  color: white !important;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 13px;
+  transition: background 0.2s;
+  text-transform: uppercase;
+}
+
+.adit71aara-affiliate-btn:hover {
+  background-color: #d73211;
+  text-decoration: none;
+}
+
+
+
+/* --- Pengaturan Kontainer Utama Syntax Highlighter --- */
+.css71aara-Syntax-highlighter-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 20px 0;
+  background-color: #fff;
+}
+
+/* --- Pengaturan Navigasi Tab --- */
+.css71aara-Syntax-highlighter-tabs {
+  display: flex;
+  padding: 0 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.css71aara-Syntax-highlighter-tab {
+  padding: 16px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  color: #6b7280;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.css71aara-Syntax-highlighter-tab:hover {
+  color: #111827;
+}
+
+.css71aara-Syntax-highlighter-tab.active {
+  color: #111827;
+  border-bottom: 3px solid #3b82f6;
+}
+
+/* --- Pengaturan Area Kode & Panel --- */
+.css71aara-Syntax-highlighter-content {
+  background-color: #212529;
+  padding: 16px;
+}
+
+.css71aara-Syntax-highlighter-pane {
+  display: none;
+}
+
+.css71aara-Syntax-highlighter-pane.active {
+  display: block;
+}
+
+.css71aara-Syntax-highlighter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.css71aara-Syntax-highlighter-filename {
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+  font-weight: bold;
+  color: #e5e7eb;
+}
+
+.css71aara-Syntax-highlighter-copy-btn {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.css71aara-Syntax-highlighter-copy-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.css71aara-Syntax-highlighter-copy-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: #374151;
+}
+
+/* --- Pengaturan Teks Kode & Pewarnaan --- */
+.css71aara-Syntax-highlighter-pre {
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+}
+
+.css71aara-Syntax-highlighter-code {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d4d4d4;
+}
+
+/* Kelas Pewarnaan Sintaks */
+.css71aara-Syntax-highlighter-c-tag { color: #8bc34a; } 
+.css71aara-Syntax-highlighter-c-attr { color: #ff5252; } 
+.css71aara-Syntax-highlighter-c-val { color: #ffb300; } 
+.css71aara-Syntax-highlighter-c-text { color: #ffffff; } 
+.css71aara-Syntax-highlighter-c-comment { color: #6b7280; font-style: italic; }
 */]]></b:skin>
 
 <style type='text/css'>
@@ -1274,9 +1388,9 @@ document.write(&quot;&lt;script src=\&quot;/feeds/posts/default/-/<data:content/
 <div id='xmlthemes-feat-box'>
 <div id='xmlthemes-feat'>
   <b:section class='featleft' id='featleft' showaddelement='no'>
-    <b:widget id='HTML80' locked='false' title='Percetakan' type='HTML' version='1'>
+    <b:widget id='HTML80' locked='false' title='Desain Grafis' type='HTML' version='1'>
       <b:widget-settings>
-        <b:widget-setting name='content'>percetakan</b:widget-setting>
+        <b:widget-setting name='content'>desain</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
 <h2><span class='data-title'>&lt;a href=&#39;/search/label/<data:content/>?&amp;max-results=10&#39;&gt;<data:content/>&lt;/a&gt;</span></h2>
